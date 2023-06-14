@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{D76EA8A4-686B-408B-B8BA-EC8554761A87}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScripBaseDatos", "ScripBaseDatos", "{A20480A7-9FA8-47A5-90CD-673058F3B667}"
+	ProjectSection(SolutionItems) = preProject
+		organizAR_DB.txt = organizAR_DB.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
