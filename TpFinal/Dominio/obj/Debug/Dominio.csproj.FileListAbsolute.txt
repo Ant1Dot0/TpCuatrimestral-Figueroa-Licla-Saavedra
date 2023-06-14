@@ -1,0 +1,6 @@
+C:\proyectos\TpFinal2023\TpFinal\Dominio\bin\Debug\Dominio.dll
+C:\proyectos\TpFinal2023\TpFinal\Dominio\bin\Debug\Dominio.pdb
+C:\proyectos\TpFinal2023\TpFinal\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\proyectos\TpFinal2023\TpFinal\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\proyectos\TpFinal2023\TpFinal\Dominio\obj\Debug\Dominio.dll
+C:\proyectos\TpFinal2023\TpFinal\Dominio\obj\Debug\Dominio.pdb
