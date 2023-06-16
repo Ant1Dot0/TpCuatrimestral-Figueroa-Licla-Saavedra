@@ -31,5 +31,11 @@ namespace Dominio
 
         public decimal totalComprobante { get; set; }
 
+        public CompCompra()
+        {
+            this.proveedor = new Proveedor();
+            this.vendedor = new Usuario();
+        }
+
     }
 }

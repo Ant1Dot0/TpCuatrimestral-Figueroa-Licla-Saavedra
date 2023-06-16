@@ -30,5 +30,10 @@ namespace Dominio
 
         public decimal totalComprobante { get; set; }
 
+        public CompVenta()
+        {
+            this.cliente = new Cliente();
+            this.vendedor = new Usuario();
+        }
     }
 }

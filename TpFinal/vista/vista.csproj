@@ -68,10 +68,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AltaArticulo.aspx" />
+    <Content Include="AltaCategoriaCliente.aspx" />
+    <Content Include="AltaCategoriaProducto.aspx" />
+    <Content Include="AltaCategoriaProveedor.aspx" />
+    <Content Include="AltaCliente.aspx" />
+    <Content Include="AltaMarcaProducto.aspx" />
+    <Content Include="AltaProveedor.aspx" />
     <Content Include="assets\estilos\estiloMaster.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="ListaCategoriaCliente.aspx" />
+    <Content Include="ListacategoriaProducto.aspx" />
+    <Content Include="ListaCategoriaProveedor.aspx" />
+    <Content Include="ListaClientes.aspx" />
+    <Content Include="ListaMarcasProductos.aspx" />
     <Content Include="ListaProductos.aspx" />
+    <Content Include="ListaProveedores.aspx" />
     <Content Include="MenuAltas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -83,6 +95,48 @@
     <Compile Include="AltaArticulo.aspx.designer.cs">
       <DependentUpon>AltaArticulo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AltaCategoriaCliente.aspx.cs">
+      <DependentUpon>AltaCategoriaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaCategoriaCliente.aspx.designer.cs">
+      <DependentUpon>AltaCategoriaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaCategoriaProducto.aspx.cs">
+      <DependentUpon>AltaCategoriaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaCategoriaProducto.aspx.designer.cs">
+      <DependentUpon>AltaCategoriaProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaCategoriaProveedor.aspx.cs">
+      <DependentUpon>AltaCategoriaProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaCategoriaProveedor.aspx.designer.cs">
+      <DependentUpon>AltaCategoriaProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaCliente.aspx.cs">
+      <DependentUpon>AltaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaCliente.aspx.designer.cs">
+      <DependentUpon>AltaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaMarcaProducto.aspx.cs">
+      <DependentUpon>AltaMarcaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaMarcaProducto.aspx.designer.cs">
+      <DependentUpon>AltaMarcaProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaProveedor.aspx.cs">
+      <DependentUpon>AltaProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaProveedor.aspx.designer.cs">
+      <DependentUpon>AltaProveedor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -93,12 +147,54 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ListaCategoriaCliente.aspx.cs">
+      <DependentUpon>ListaCategoriaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaCategoriaCliente.aspx.designer.cs">
+      <DependentUpon>ListaCategoriaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListacategoriaProducto.aspx.cs">
+      <DependentUpon>ListacategoriaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListacategoriaProducto.aspx.designer.cs">
+      <DependentUpon>ListacategoriaProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaCategoriaProveedor.aspx.cs">
+      <DependentUpon>ListaCategoriaProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaCategoriaProveedor.aspx.designer.cs">
+      <DependentUpon>ListaCategoriaProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaClientes.aspx.cs">
+      <DependentUpon>ListaClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaClientes.aspx.designer.cs">
+      <DependentUpon>ListaClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaMarcasProductos.aspx.cs">
+      <DependentUpon>ListaMarcasProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaMarcasProductos.aspx.designer.cs">
+      <DependentUpon>ListaMarcasProductos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListaProductos.aspx.cs">
       <DependentUpon>ListaProductos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ListaProductos.aspx.designer.cs">
       <DependentUpon>ListaProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaProveedores.aspx.cs">
+      <DependentUpon>ListaProveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaProveedores.aspx.designer.cs">
+      <DependentUpon>ListaProveedores.aspx</DependentUpon>
     </Compile>
     <Compile Include="MenuAltas.aspx.cs">
       <DependentUpon>MenuAltas.aspx</DependentUpon>

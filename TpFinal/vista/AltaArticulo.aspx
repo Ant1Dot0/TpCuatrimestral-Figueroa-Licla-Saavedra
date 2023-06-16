@@ -35,8 +35,8 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblMarca">Marca</span>
                                 <asp:DropDownList ID="ddlMarca" runat="server" CssClass="btn btn-outline-secondary">
-                                    <asp:ListItem Selected="True" Value="Chirolita"></asp:ListItem>
-                                    <asp:ListItem Value="Random"></asp:ListItem>
+                                    <asp:ListItem Selected="True" Value="Cuchuflito"></asp:ListItem>
+                                    <asp:ListItem Value="Pindonga"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -45,8 +45,8 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblCategoria">Categoría</span>
                                 <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="btn btn-outline-secondary">
-                                    <asp:ListItem Selected="True" Value="Chirolita"></asp:ListItem>
-                                    <asp:ListItem Value="Random"></asp:ListItem>
+                                    <asp:ListItem Selected="True" Value="Alimento"></asp:ListItem>
+                                    <asp:ListItem Value="Libros"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>

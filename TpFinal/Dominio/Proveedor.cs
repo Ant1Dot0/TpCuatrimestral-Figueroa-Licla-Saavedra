@@ -21,5 +21,9 @@ namespace Dominio
         public string email { get; set; }
 
         public string direccion { get; set; }
+        public Proveedor()
+        {
+            this.categoria = new CategoriaProveedor();
+        }
     }
 }

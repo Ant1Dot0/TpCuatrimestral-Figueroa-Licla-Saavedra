@@ -22,8 +22,14 @@ namespace Dominio
 
         public decimal ganacia { get; set; }
 
-        public int stockActual { get; set; }
+        public decimal stockActual { get; set; }
 
-        public int stockMinimo { get; set; }
+        public decimal stockMinimo { get; set; }
+        
+        public Producto()
+        {
+            this.marca = new MarcaArticulo();
+            this.categoria = new CategoriaArticulo();
+        }
     }
 }

@@ -25,5 +25,10 @@ namespace Dominio
         public string email { get; set; }
 
         public string direccion { get; set; }
+
+        public Cliente()
+        {
+            this.categoria = new CategoriaCliente();
+        }
     }
 }

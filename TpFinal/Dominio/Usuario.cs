@@ -24,7 +24,12 @@ namespace Dominio
 
         public string direccion { get; set; }
 
-        public Rol Rol { get; set; }
+        public Rol rol { get; set; }
+
+        public Usuario()
+        {
+            this.rol = new Rol();
+        }
 
     }
 }

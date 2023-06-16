@@ -13,6 +13,7 @@ go
 create table Proveedor
 (
 id int NOT NULL,
+codigo [VARCHAR](16) NOT NULL,
 razonSocial [varchar](50) NOT NULL,
 cuit [varchar](50) NOT NULL,
 idCategoriaProveedor int NOT NULL,
@@ -36,6 +37,7 @@ idCategoriaArticulo int NOT NULL,
 precioCompra [decimal] NOT NULL,
 ganancia [decimal] NOT NULL,
 stock [decimal] NOT NULL,
+stockMin [decimal] NOT NULL,
 )
 GO
 
