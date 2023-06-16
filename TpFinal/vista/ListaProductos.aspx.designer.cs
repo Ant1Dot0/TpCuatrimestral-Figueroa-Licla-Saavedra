@@ -13,14 +13,5 @@ namespace vista
 
     public partial class ListaProductos
     {
-
-        /// <summary>
-        /// Control GridViewProductos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewProductos;
     }
 }

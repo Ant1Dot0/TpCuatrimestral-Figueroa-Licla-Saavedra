@@ -15,17 +15,25 @@
                 <a href="AltaArticulo.aspx" class="btn btn-primary">Nuevo Producto</a>
             </div>
         </div>
-        <div class="row justify-content-center mt-2">
-            <div class="col-md-10">
-                <asp:GridView ID="GridViewProductos" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
-                    <Columns>
-                        <asp:BoundField HeaderText="ID" DataField="ID" />
-                        <asp:BoundField HeaderText="Producto" DataField="Codigo" />
-                        <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-                        <asp:BoundField HeaderText="PrecioCompra" DataField="PrecioCompra" />
-                    </Columns>
-                </asp:GridView>
+        <%foreach (var x in productos)
+            {%>
+        <div class="card my-3">
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><%=x.descripcion %> (<%=x.codigo%>)</h5>
+                        <p class="card-text">Marca: <%=x.marca.descripcion %></p>
+                        <p class="card-text">Categoría: <%=x.categoria.descripcion %></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <p class="card-text">Stock Actual: <%=x.stockActual %></p>
+                    <p class="card-text">stock mínimo: <%=x.stockMinimo %></p>
+                    <p class="card-text">Precio de compra: <%=x.precioCompra %></p>
+                    <p class="card-text">Ganancia: <%=x.ganacia %></p>
+                </div>
             </div>
         </div>
+        <%} %>
     </div>
 </asp:Content>

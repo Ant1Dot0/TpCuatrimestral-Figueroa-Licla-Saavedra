@@ -11,9 +11,10 @@ namespace vista
 {
     public partial class ListaProductos : System.Web.UI.Page
     {
+        public List<Producto> productos;
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Producto> productos = new ProductoNegocio().listar();
+            productos = new ProductoNegocio().listar();
            /* Producto aux = new Producto();
             Producto aux2 = new Producto();
             aux.codigo = "S001";
@@ -29,8 +30,6 @@ namespace vista
             productos.Add(aux);
             productos.Add(aux2);*/
             
-            GridViewProductos.DataSource = productos;
-            DataBind();
         }
     }
 }
