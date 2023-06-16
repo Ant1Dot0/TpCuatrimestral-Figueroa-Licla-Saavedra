@@ -17,7 +17,6 @@
                     <asp:Button ID="btnGuardarComo" runat="server" Text="Guardar Como" CssClass="btn btn-secondary mb-1" />
                     <asp:Button ID="btnLista" runat="server" Text="Ver Lista" CssClass="btn btn-success mb-1" />
                 </div>
-
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
@@ -74,6 +73,14 @@
                                 <span class="input-group-text" id="lblStockMinimo">StockMinimo</span>
                                 <input type="number" class="form-control" placeholder="999" aria-label="StockMinimo" aria-describedby="basic-addon1">
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h5>Proveedores <asp:Button runat="server" ID="btnBuscarProveedor" Text="Buscar" CssClass="btn btn-info" /></h5>
+                            <div class="btn btn-secondary">Casa Gaona</div>
+                            <div class="btn btn-secondary">Electronics</div>
+                            <div class="btn btn-secondary">Celulín</div>
                         </div>
                     </div>
                 </div>
