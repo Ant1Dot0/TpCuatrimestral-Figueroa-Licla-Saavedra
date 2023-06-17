@@ -31,5 +31,10 @@ namespace Dominio
             this.rol = new Rol();
         }
 
+        public override string ToString()
+        {
+            return "" + this.nombre + " " + this.apellido;
+        }
+
     }
 }

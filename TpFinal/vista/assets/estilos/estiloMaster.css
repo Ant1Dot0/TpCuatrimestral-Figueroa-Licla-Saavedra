@@ -11,9 +11,6 @@ body {
     color: var(--primary)
 }
 
-.pantalla{
-    overflow: scroll;
-}
 
 a:link { text-decoration: none;}
 a:hover { background-color: #005B96}

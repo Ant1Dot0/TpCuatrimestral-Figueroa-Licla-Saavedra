@@ -74,6 +74,7 @@
     <Content Include="AltaCliente.aspx" />
     <Content Include="AltaMarcaProducto.aspx" />
     <Content Include="AltaProveedor.aspx" />
+    <Content Include="AltaVenta.aspx" />
     <Content Include="assets\estilos\estiloMaster.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -84,6 +85,7 @@
     <Content Include="ListaMarcasProductos.aspx" />
     <Content Include="ListaProductos.aspx" />
     <Content Include="ListaProveedores.aspx" />
+    <Content Include="ListaVentas.aspx" />
     <Content Include="MenuAltas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -136,6 +138,13 @@
     </Compile>
     <Compile Include="AltaProveedor.aspx.designer.cs">
       <DependentUpon>AltaProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaVenta.aspx.cs">
+      <DependentUpon>AltaVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaVenta.aspx.designer.cs">
+      <DependentUpon>AltaVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -195,6 +204,13 @@
     </Compile>
     <Compile Include="ListaProveedores.aspx.designer.cs">
       <DependentUpon>ListaProveedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaVentas.aspx.cs">
+      <DependentUpon>ListaVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaVentas.aspx.designer.cs">
+      <DependentUpon>ListaVentas.aspx</DependentUpon>
     </Compile>
     <Compile Include="MenuAltas.aspx.cs">
       <DependentUpon>MenuAltas.aspx</DependentUpon>

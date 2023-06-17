@@ -36,4 +36,5 @@ namespace Dominio
             this.vendedor = new Usuario();
         }
     }
+
 }
