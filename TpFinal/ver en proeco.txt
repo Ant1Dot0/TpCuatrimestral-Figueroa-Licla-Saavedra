@@ -1,0 +1,5 @@
+Añadir footer con totales.
+llevar grilla de artículos con modal, paginado
+Desplegable autocompletar
+
+Exportación e importacion

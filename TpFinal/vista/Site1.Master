@@ -4,42 +4,63 @@
 
 <html>
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" name="viewport" />
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" name="viewport" content="width=device-width, initial-scale=1">
     <title>OrganizAR</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="assets/estilos/estiloMaster.css?v=<%=DateTime.Now%>" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <nav class="navbar bg-dark border-bottom-dark sticky-top">
+        <div class="container-fluid col-11">
+                <a class="btn btn-dark text-light" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Menú
+                </a>
 
-    <div class="d-flex">
-        <div id="sidebar-container" class="bg-primary">
-            <div class="logo">
-                <h4 class="text-light ">OrganizAR</h4>
+            <div class="dropdown">
+                <a href="#" class="btn btn-dark" data-bs-toggle="dropdown">Usuario<i class="bi bi-file-person-fill"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Info</a></li>
+                    <li><a class="dropdown-item" href="#">Contraseña</a></li>
+                    <li><a class="dropdown-item" href="#">Desloguearse</a></li>
+                </ul>
             </div>
-            <div class="menu">
-                <a href="MenuAltas.aspx" class="d-block text-light p-3">Altas</a>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start bg-primary text-white" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">OrganizAR</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <a href="#" class="d-block text-light p-3" data-bs-toggle="dropdown">Altas</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="ListaClientes.aspx">Clientes</a></li>
+                    <li><a class="dropdown-item" href="ListaProductos.aspx">Productos</a></li>
+                    <li><a class="dropdown-item" href="ListaProveedores.aspx">Proveedores</a></li>
+                    <li><a class="dropdown-item" href="ListaCategoriaCliente.aspx">Categorías Clientes</a></li>
+                    <li><a class="dropdown-item" href="ListacategoriaProducto.aspx">Categorías Productos</a></li>
+                    <li><a class="dropdown-item" href="ListaCategoriaProveedor.aspx">Categorías Proveedores</a></li>
+                    <li><a class="dropdown-item" href="ListaMarcasProductos.aspx">Marcas Productos</a></li>
+                </ul>
                 <a href="ListaVentas.aspx" class="d-block text-light p-3">Ventas</a>
                 <a href="#" class="d-block text-light p-3">Compras</a>
                 <a href="#" class="d-block text-light p-3">Consultas</a>
                 <a href="#" class="d-block text-light p-3">Herramientas</a>
-                <a href="#" class="d-block text-light p-3">Configuración</a>
             </div>
         </div>
-        <div class="w-100 pantalla">
-
-            <form id="form1" runat="server">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
-            </form>
-        </div>
-
     </div>
+
+    <form id="form1" runat="server">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
 </body>
 </html>
