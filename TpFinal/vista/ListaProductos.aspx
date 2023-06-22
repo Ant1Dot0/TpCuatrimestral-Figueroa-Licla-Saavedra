@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row justify-content-end">
-            <div class="col-md-4 text-center">
+            <div class="col-md-4 text-end">
                 <a href="AltaArticulo.aspx" class="btn btn-primary">Nuevo Producto</a>
             </div>
         </div>

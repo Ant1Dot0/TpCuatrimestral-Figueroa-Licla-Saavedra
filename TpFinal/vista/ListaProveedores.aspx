@@ -10,10 +10,89 @@
             </div>
         </div>
         <div class="row justify-content-end">
-            <div class="col-md-4 text-center">
-                <a href="AltaProveedor.aspx" class="btn btn-primary">Nuevo Proveedor</a>
+            <div class="col-md-4 text-end">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Nuevo Proveedor</button>
             </div>
         </div>
+
+        <!--------------------------- INICIO MODAL-------------------------------------->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Nuevo Proveedor</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="container">
+                            <div class="row justify-content-md-center ">
+                                <div class="card col-md-10">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="lblCodigo">Codigo</span>
+                                                    <input type="text" class="form-control" placeholder="Código Proveedor" aria-label="CodigoProveedor" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="lblCuit">CUIT</span>
+                                                    <input type="text" class="form-control" placeholder="12-34567890-9" aria-label="Cuit" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="lblRazonSocial">Razón Social</span>
+                                                    <input type="text" class="form-control" placeholder="Razón Social" aria-label="RazonSocial" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="lblCategoria">Categoría</span>
+                                                    <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="btn btn-outline-secondary">
+                                                        <asp:ListItem Selected="True" Value="Bebidas"></asp:ListItem>
+                                                        <asp:ListItem Value="Carnes"></asp:ListItem>
+                                                        <asp:ListItem Value="Varios"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="lblTelefono">Telefono</span>
+                                                    <input type="tel" class="form-control" placeholder="11-1111-1111" aria-label="Telefono" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="lblEmail">Email</span>
+                                                    <input type="text" class="form-control" placeholder="Ejemplo@mail.com" aria-label="EmailProveedor" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="lblDireccion">Dirección</span>
+                                                    <input type="text" class="form-control" placeholder="Av. Siempreviva 742 - Springfield" aria-label="DireccionCliente" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----------------------------------------- FIN MODAL---------------------------------->
+
+        <!-----------------------------------------INICIO LISTADO------------------------------>
         <div class="row justify-content-center mt-2">
             <div class="col-md-10">
                 <asp:GridView ID="GridViewProveedores" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
@@ -27,5 +106,7 @@
                 </asp:GridView>
             </div>
         </div>
+        <!---------------------------------------FIN LISTADO---------------------------------->
     </div>
+
 </asp:Content>
