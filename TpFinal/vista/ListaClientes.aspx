@@ -32,25 +32,25 @@
                                             <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblCodigo">Codigo</span>
-                                                    <input type="text" class="form-control" placeholder="Código Cliente" aria-label="CodigoCliente" aria-describedby="basic-addon1">
+                                                    <asp:TextBox ID="TxtCodigo" CssClass="form-control"  runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblnDocumento">DNI</span>
-                                                    <input type="text" class="form-control" placeholder="12345678" aria-label="NDocumento" aria-describedby="basic-addon1">
+                                                    <asp:TextBox ID="TxtDNI" CssClass="form-control"  runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblNombre">Nombre</span>
-                                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="NombreCliente" aria-describedby="basic-addon1">
+                                                    <asp:TextBox ID="TxtNombre" CssClass="form-control"  runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblApellido">Apellido</span>
-                                                    <input type="text" class="form-control" placeholder="Apellido" aria-label="ApellidoCliente" aria-describedby="basic-addon1">
+                                                    <asp:TextBox ID="TxtApellido" CssClass="form-control"  runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
 
@@ -67,19 +67,19 @@
                                             <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblTelefono">Telefono</span>
-                                                    <input type="tel" class="form-control" placeholder="11-1111-1111" aria-label="Telefono" aria-describedby="basic-addon1">
+                                                    <asp:TextBox ID="TxtTelefono" CssClass="form-control"  runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblEmail">Email</span>
-                                                    <input type="text" class="form-control" placeholder="Ejemplo@mail.com" aria-label="EmailCliente" aria-describedby="basic-addon1">
+                                                    <asp:TextBox ID="TxtEmail" CssClass="form-control"  runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblDireccion">Dirección</span>
-                                                    <input type="text" class="form-control" placeholder="Av. Siempreviva 742 - Springfield" aria-label="DireccionCliente" aria-describedby="basic-addon1">
+                                                    <asp:TextBox ID="TxtDireccion" CssClass="form-control"  runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,8 +90,10 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-success">Guardar</button>
+                        <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" OnClick="BtnGuardar_Click" CssClass="btn btn-success" />
+                        <asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary" OnClick="BtnCancelar_Click" />
+ 
+                        
                     </div>
                 </div>
             </div>
