@@ -21,7 +21,7 @@ namespace Negocio
             try
             {
                 /*Corregir consulta*/
-                datos.setearConsulta("select B.id as id, B.codigo as codigo, B.razonSocial as razonSocial, B.cuit as cuit, B.idCategoriaProveedor as idCategoriaProveedor, B.movil as movil, B.telefono as telefono, B.email as email, B.direccion as direccion from Proveedor as B");
+                datos.setearConsulta("select B.id as id, B.codigo as codigo, B.razonSocial as razonSocial, B.cuit as cuit, B.idCategoriaProveedor as idCategoriaProveedor, B.telefono as telefono, B.email as email, B.direccion as direccion from Proveedor as B");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -32,7 +32,6 @@ namespace Negocio
                     aux.razonSocial = (string)datos.Lector["razonSocial"];
                     aux.cuit = (string)datos.Lector["cuit"];
                     aux.categoria.id = (int)datos.Lector["CategoriaProveedor"];
-                    aux.movil = (string)datos.Lector["movil"];
                     aux.telefono = (string)datos.Lector["telefono"];
                     aux.email = (string)datos.Lector["Email"];
                     aux.direccion = (string)datos.Lector["Direccion"];
@@ -63,7 +62,6 @@ namespace Negocio
                 datos.SetearPARAMETROS("@razonSocial", Proveedors.razonSocial);
                 datos.SetearPARAMETROS("@acuit", Proveedors.cuit);
                 datos.SetearPARAMETROS("@idCategoriaProveedor", Proveedors.categoria);
-                datos.SetearPARAMETROS("@movil", Proveedors.movil);
                 datos.SetearPARAMETROS("@tel", Proveedors.telefono);
                 datos.SetearPARAMETROS("@email", Proveedors.email);
                 datos.SetearPARAMETROS("@direcc", Proveedors.direccion);

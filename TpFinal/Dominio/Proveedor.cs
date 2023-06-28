@@ -22,7 +22,7 @@ namespace Dominio
 
         public string email { get; set; }
 
-        public string movil { get; set; }
+        
 
         public string direccion { get; set; }
         public Proveedor()
