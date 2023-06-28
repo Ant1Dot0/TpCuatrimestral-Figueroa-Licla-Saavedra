@@ -13,6 +13,28 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+
+                CategoriasProveedorNegocio categoriaProveedor = new CategoriasProveedorNegocio();
+
+                List<CategoriaProveedor> Lista = categoriaProveedor.Listar();
+
+                ddlCategoria.DataSource = Lista;
+                ddlCategoria.DataValueField = "id";
+                ddlCategoria.DataTextField = "descripcion";
+                DataBind();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+
 
         }
 
