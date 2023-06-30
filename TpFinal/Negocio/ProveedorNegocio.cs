@@ -28,15 +28,15 @@ namespace Negocio
                 {
                     Proveedor aux = new Proveedor();
                     aux.id = (int)datos.Lector["id"];
-                    aux.codigo = (int)datos.Lector["codigo"];
+                    aux.codigo = (string)datos.Lector["codigo"];
                     aux.razonSocial = (string)datos.Lector["razonSocial"];
                     aux.cuit = (string)datos.Lector["cuit"];
-                    aux.categoria.id = (int)datos.Lector["CategoriaProveedor"];
+                    aux.categoria.id = (int)datos.Lector["idCategoriaProveedor"];
                     aux.telefono = (string)datos.Lector["telefono"];
-                    aux.email = (string)datos.Lector["Email"];
-                    aux.direccion = (string)datos.Lector["Direccion"];
+                    aux.email = (string)datos.Lector["email"];
+                    aux.direccion = (string)datos.Lector["direccion"];
 
-
+                    proveedores.Add(aux);
                 }
 
                 return proveedores;
@@ -99,11 +99,6 @@ namespace Negocio
             }
         }
     }
-
-
-
-
-
 
 
 

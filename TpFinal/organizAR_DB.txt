@@ -173,11 +173,12 @@ GO
 
 /******************************************************/
 /* TABLA ProveedorxProducto*/
-create table ProvedorxProducto
+create table ProveedorxProducto
 (
 id int NOT NULL,
-codigo [varchar](50) NOT NULL,
-descripcion [varchar](50) NOT NULL,
+codigo[varchar](33) NOT NULL,
+codigoProveedor [varchar](16) NOT NULL,
+codigoProducto [varchar](16) NOT NULL,
 )
 GO
 

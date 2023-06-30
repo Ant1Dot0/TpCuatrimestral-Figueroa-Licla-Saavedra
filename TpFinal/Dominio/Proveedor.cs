@@ -10,7 +10,7 @@ namespace Dominio
     public class Proveedor
     {
         public int id { get; set; }
-        public int codigo { get; set; }
+        public string codigo { get; set; }
 
         public string razonSocial { get; set; }
 

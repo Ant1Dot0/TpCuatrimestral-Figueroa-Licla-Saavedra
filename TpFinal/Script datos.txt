@@ -33,3 +33,10 @@ go
 insert into Proveedor values (2,'ELECTRONICS','ELECTRONICS SA','30708885602',3,'1122222255','','electronics@mail.com','750 Bel Air Road, Los Ángeles, California.')
 go
 insert into Proveedor values (3,'CELULIN','CELULIN SA','20944287168',2,'1122222255','','celulin@mail.com','1675 E Altadena Dr, Altadena, California')
+go
+
+insert into ProveedorxProducto values(1,'CASA GAONA-CEMOE05','CASA GAONA','CEMOE05')
+GO
+insert into ProveedorxProducto values(2,'ELECTRONICS-AUPH007','ELECTRONICS','AUPH007')
+GO
+insert into ProveedorxProducto values(3,'ELECTRONICS-CEMOE05','ELECTRONICS','CEMOE05')

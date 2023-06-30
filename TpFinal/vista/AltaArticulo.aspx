@@ -76,13 +76,49 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">
-                            <h5>Proveedores <asp:Button runat="server" ID="btnBuscarProveedor" Text="Buscar" CssClass="btn btn-info" /></h5>
-                            <div class="btn btn-secondary">Casa Gaona</div>
-                            <div class="btn btn-secondary">Electronics</div>
-                            <div class="btn btn-secondary">Celulín</div>
+                        <div class="col-md-10">
+                            <h5>Proveedores
+                                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Modificar</button></h5>
+                            <div class="col-md-10">
+                                <%foreach (var x in auxProveedoresSeleccionados)
+                                    {%>
+                                <div class="btn btn-secondary mb-1"><%=x.codigoProveedor %></div>
+                                <%} %>
+                            </div>
                         </div>
                     </div>
+
+                    <!--------------------------- INICIO MODAL-------------------------------------->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="exampleModalLabel">Proveedores</h3>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="container">
+                                        <div class="row justify-content-md-center ">
+                                            <div class="card col-md-8">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-success">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!----------------------------------------- FIN MODAL---------------------------------->
+
                 </div>
             </div>
         </div>

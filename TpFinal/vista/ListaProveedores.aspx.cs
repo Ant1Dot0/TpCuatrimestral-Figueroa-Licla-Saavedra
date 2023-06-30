@@ -48,7 +48,7 @@ namespace vista
             try
             {
                 Proveedor Nuevo = new Proveedor();
-                Nuevo.codigo = int.Parse(TxtCodigo.Text);
+                Nuevo.codigo = (string)(TxtCodigo.Text);
                 Nuevo.razonSocial = TxtRazonSocial.Text;
                 Nuevo.cuit = TxtCuit.Text;
                 Nuevo.categoria = new CategoriaProveedor();
