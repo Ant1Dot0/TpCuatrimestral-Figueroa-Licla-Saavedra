@@ -16,15 +16,17 @@ namespace vista
         {
             try
             {
-                
-                    CategoriasClienteNegocio categoriaCliente = new CategoriasClienteNegocio();
+                ClientesNegocio negocio = new ClientesNegocio();
+                GridViewClientes.DataSource = negocio.Listar();
+                DataBind();
 
-                    List<CategoriaCliente> Lista = categoriaCliente.Listar();
+                CategoriasClienteNegocio categoriaCliente = new CategoriasClienteNegocio();
+                List<CategoriaCliente> Lista = categoriaCliente.Listar();
 
-                    ddlCategoria.DataSource = Lista;
-                    ddlCategoria.DataValueField = "id";
-                    ddlCategoria.DataTextField = "descripcion";
-                    DataBind();
+                ddlCategoria.DataSource = Lista;
+                ddlCategoria.DataValueField = "id";
+                ddlCategoria.DataTextField = "descripcion";
+                DataBind();
 
                
             }
@@ -56,6 +58,7 @@ namespace vista
                 Nuevo.direccion = TxtDireccion.Text;
 
                 Negocio.Agregar(Nuevo);
+                Response.Redirect("ListaClientes.aspx", false);
 
             }
             catch (Exception ex)
@@ -71,7 +74,7 @@ namespace vista
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("ListaClientes.aspx", false);
         }
     }
 }

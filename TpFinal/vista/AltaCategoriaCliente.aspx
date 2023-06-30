@@ -12,8 +12,8 @@
         <div class="row justify-content-md-center ">
             <div class="card col-md-10">
                 <div class="card-header text-center">
-                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary mb-1" />
-                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger mb-1" />
+                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" CssClass="btn btn-primary mb-1" />
+                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CssClass="btn btn-danger mb-1" />
                     <asp:Button ID="btnGuardarComo" runat="server" Text="Guardar Como" CssClass="btn btn-secondary mb-1" />
                     <asp:Button ID="btnLista" runat="server" Text="Ver Lista" CssClass="btn btn-success mb-1" />
                 </div>
@@ -21,14 +21,16 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="lblCodigo">Codigo</span>
-                                <input type="text" class="form-control" placeholder="Código Categoría" aria-label="CodigoCategoria" aria-describedby="basic-addon1">
+                                <asp:Label ID="LblCodigo" runat="server" Text="Codigo"></asp:Label>
+                                <asp:TextBox ID="TxtCodigo" CssClass="form-control"  runat="server"></asp:TextBox>
+                                
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="lblDescripcion">Descripción</span>
-                                <input type="text" class="form-control" placeholder="Descripción" aria-label="DescripcionCAtegoria" aria-describedby="basic-addon1">
+                                <asp:Label ID="LblDescripcion" runat="server" Text="Descripcion"></asp:Label>
+                                <asp:TextBox ID="TxtDescripcion" CssClass="form-control"  runat="server"></asp:TextBox>
+                                
                             </div>
                         </div>
                     </div>

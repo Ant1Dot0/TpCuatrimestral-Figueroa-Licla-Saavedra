@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
+
 
 namespace vista
 {
@@ -11,7 +14,7 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
