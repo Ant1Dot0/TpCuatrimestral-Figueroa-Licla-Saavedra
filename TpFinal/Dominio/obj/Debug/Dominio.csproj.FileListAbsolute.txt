@@ -1,18 +1,5 @@
 C:\proyectos\TpFinal2023\TpFinal\Dominio\bin\Debug\Dominio.dll
 C:\proyectos\TpFinal2023\TpFinal\Dominio\bin\Debug\Dominio.pdb
-C:\proyectos\TpFinal2023\TpFinal\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
 C:\proyectos\TpFinal2023\TpFinal\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\proyectos\TpFinal2023\TpFinal\Dominio\obj\Debug\Dominio.dll
 C:\proyectos\TpFinal2023\TpFinal\Dominio\obj\Debug\Dominio.pdb
-C:\Users\figue\Desktop\TP cuatrimestral\TpFinal\Dominio\bin\Debug\Dominio.dll
-C:\Users\figue\Desktop\TP cuatrimestral\TpFinal\Dominio\bin\Debug\Dominio.pdb
-C:\Users\figue\Desktop\TP cuatrimestral\TpFinal\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
-C:\Users\figue\Desktop\TP cuatrimestral\TpFinal\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
-C:\Users\figue\Desktop\TP cuatrimestral\TpFinal\Dominio\obj\Debug\Dominio.dll
-C:\Users\figue\Desktop\TP cuatrimestral\TpFinal\Dominio\obj\Debug\Dominio.pdb
-C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\bin\Debug\Dominio.dll
-C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\bin\Debug\Dominio.pdb
-C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
-C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
-C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.dll
-C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.pdb
