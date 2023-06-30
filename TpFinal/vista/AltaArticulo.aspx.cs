@@ -19,8 +19,10 @@ namespace vista
             proveedores = new ProveedorNegocio().ListarProveedor();
             auxProductoSeleccionado.codigo = "CEMOE05";
             ListarProveedoresSeleccionados();
-        }
+            gvProveedores.DataSource = proveedores;
+            DataBind();
 
+        }
         void ListarProveedoresSeleccionados()
         {
             auxProveedoresSeleccionados.Clear();

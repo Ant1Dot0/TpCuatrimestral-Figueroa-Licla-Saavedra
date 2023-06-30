@@ -100,10 +100,20 @@
 
                                     <div class="container">
                                         <div class="row justify-content-md-center ">
-                                            <div class="card col-md-8">
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                    </div>
+                                            <div class="col-md-8">
+                                                <div class="row">
+                                                    <asp:GridView ID="gvProveedores" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
+                                                        <Columns>
+                                                            <asp:TemplateField>
+                                                                <ItemTemplate>
+                                                                    <asp:CheckBox runat="server" ID="chbCheck"/>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
+                                                            <asp:CheckBoxField HeaderText="Seleccionado" DataField="seleccionado" />
+                                                            <asp:BoundField HeaderText="Codigo" DataField="Codigo"  />
+                                                            <asp:BoundField HeaderText="Descripcion" DataField="razonSocial" />
+                                                        </Columns>
+                                                    </asp:GridView>
                                                 </div>
                                             </div>
                                         </div>
