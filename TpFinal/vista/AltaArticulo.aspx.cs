@@ -17,7 +17,7 @@ namespace vista
         protected void Page_Load(object sender, EventArgs e)
         {
             proveedores = new ProveedorNegocio().ListarProveedor();
-            auxProductoSeleccionado.codigo = "CEMOE05";
+            auxProductoSeleccionado.codigo = "AUPH007";
             ListarProveedoresSeleccionados();
             gvProveedores.DataSource = proveedores;
             DataBind();

@@ -17,14 +17,13 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT id, codigo, codigoProveedor, codigoProducto FROM ProveedorxProducto");
+                datos.setearConsulta("SELECT codigo, codigoProveedor, codigoProducto FROM ProveedorxProducto");
                 datos.ejecutarLectura();
 
 
                 while (datos.Lector.Read())
                 {
                     ProveedorxProducto aux = new ProveedorxProducto();
-                    aux.id = (int)datos.Lector["id"];
                     aux.codigo = (string)datos.Lector["codigo"];
                     aux.codigoProveedor = (string)datos.Lector["codigoProveedor"];
                     aux.codigoProducto = (string)datos.Lector["codigoProducto"];
