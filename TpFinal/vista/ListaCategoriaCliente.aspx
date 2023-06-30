@@ -32,14 +32,16 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="lblCodigo">Codigo</span>
-                                                    <input type="text" class="form-control" placeholder="Código Categoría" aria-label="CodigoCategoria" aria-describedby="basic-addon1">
+                                                    <asp:Label ID="LblCodigo" runat="server" Text="Descripcion"></asp:Label>
+                                                    <asp:TextBox ID="TxtCodigo" CssClass="form-control" runat="server"></asp:TextBox> 
+                    
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="lblDescripcion">Descripción</span>
-                                                    <input type="text" class="form-control" placeholder="Descripción" aria-label="DescripcionCAtegoria" aria-describedby="basic-addon1">
+                                                    <asp:Label ID="LblDescripcion" runat="server" Text="Descripcion"></asp:Label>
+                                                    <asp:TextBox ID="TxtDescripcion" CssClass="form-control" runat="server"></asp:TextBox> 
+                    
                                                 </div>
                                             </div>
                                         </div>
@@ -50,8 +52,9 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-success">Guardar</button>
+                        <asp:Button ID="BtnCancelar" runat="server" CssClass="btn btn-secondary" OnClick="BtnCancelar_Click" Text="Cancelar" />
+                        <asp:Button ID="BtnGuardar"  runat="server" CssClass="btn btn-secondary" OnClick="BtnGuardar_Click" Text="Guardar" />
+
                     </div>
                 </div>
             </div>
