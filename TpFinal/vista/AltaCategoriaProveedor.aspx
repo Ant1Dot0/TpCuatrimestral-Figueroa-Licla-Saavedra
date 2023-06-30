@@ -19,14 +19,14 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="lblCodigo">Codigo</span>
-                                <input type="text" class="form-control" placeholder="Código Categoría" aria-label="CodigoCategoria" aria-describedby="basic-addon1">
+                            <asp:Label ID="LblCodigo" runat="server" Text="Codigo"></asp:Label>
+                            <asp:TextBox ID="TxtCodigo" CssClass="form-control"  runat="server"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="lblDescripcion">Descripción</span>
-                                <input type="text" class="form-control" placeholder="Descripción" aria-label="DescripcionCAtegoria" aria-describedby="basic-addon1">
+                                <asp:Label ID="LblDescripcion" runat="server" Text="Descripcion"></asp:Label>
+                                <asp:TextBox ID="TxtDescripcion" CssClass="form-control"  runat="server"></asp:TextBox>
                             </div>
                         </div>
                     </div>

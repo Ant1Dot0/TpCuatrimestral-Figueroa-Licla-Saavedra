@@ -32,7 +32,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="input-group mb-3">
-                                                    <asp:Label ID="LblCodigo" runat="server" Text="Descripcion"></asp:Label>
+                                                    <asp:Label ID="LblCodigo" runat="server" Text="Codigo"></asp:Label>
                                                     <asp:TextBox ID="TxtCodigo" CssClass="form-control" runat="server"></asp:TextBox> 
                     
                                                 </div>

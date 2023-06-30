@@ -16,8 +16,11 @@ namespace vista
             try
             {
 
-                CategoriasProveedorNegocio categoriaProveedor = new CategoriasProveedorNegocio();
+                ProveedorNegocio negocio = new ProveedorNegocio();
+                GridViewProveedores.DataSource = negocio.ListarProveedor();
+                DataBind();
 
+                CategoriasProveedorNegocio categoriaProveedor = new CategoriasProveedorNegocio();
                 List<CategoriaProveedor> Lista = categoriaProveedor.Listar();
 
                 ddlCategoria.DataSource = Lista;
@@ -59,6 +62,7 @@ namespace vista
                
 
                 Negocio.Agregar(Nuevo);
+                Response.Redirect("ListaProveedores.aspx", false);
 
             }
             catch (Exception ex)
@@ -71,8 +75,16 @@ namespace vista
 
 
         }
-        
-        
+
+
         /*---------------------------------------------*/
+
+        protected void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListaProovedores.aspx", false);
+        }
     }
+
+
+
 }
