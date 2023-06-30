@@ -1,0 +1,196 @@
+use master
+go
+
+CREATE DATABASE [OrganizAR]
+GO
+
+use [OrganizAR]
+go
+
+/******************************************************/
+/* TABLA PROVEEDOR*/
+
+create table Proveedor
+(
+id int primary key identity(1,1) NOT NULL,
+codigo [VARCHAR](16) NOT NULL,
+razonSocial [varchar](50) NOT NULL,
+cuit [varchar](50) NOT NULL,
+idCategoriaProveedor int NOT NULL,
+movil [varchar](50)  NULL,
+telefono [varchar](50) NULL,
+email [varchar](100) NULL,
+direccion [varchar](300) NOT NULL,
+)
+GO
+
+/******************************************************/
+/* TABLA PRODUCTO*/
+
+create table Producto
+(
+id int primary key identity(1,1) NOT NULL,
+codigo [varchar](50) NOT NULL,
+descripcion [varchar](300) NOT NULL,
+idMarcaArticulo int NOT NULL,
+idCategoriaArticulo int NOT NULL,
+precioCompra [decimal] NOT NULL,
+ganancia [decimal] NOT NULL,
+stock [decimal] NOT NULL,
+stockMin [decimal] NOT NULL,
+)
+GO
+
+/******************************************************/
+/* TABLA CLIENTE*/
+
+create table Cliente
+(
+id int primary key identity(1,1) NOT NULL,
+codigo [varchar](50) NOT NULL,
+nombre [varchar](50) NOT NULL,
+apellido [varchar](50) NOT NULL,
+nDocumento [varchar](50) NOT NULL,
+idCategoriaCliente int NOT NULL,
+movil [varchar](50),
+telefono [varchar](50),
+email [varchar](255),
+direccion [varchar](500),
+)
+GO
+
+/******************************************************/
+/* TABLA CATEGORIAPROVEEDOR*/
+
+create table CategoriaProveedor
+(
+id int primary key identity(1,1) NOT NULL,
+codigo [varchar](50) NOT NULL,
+descripcion [varchar](300) NOT NULL,
+)
+GO
+
+/******************************************************/
+/* TABLA TIPODOC*/
+create table TipoDoc
+(
+id int  primary key identity(1,1)NOT NULL,
+codigo [varchar](50) NOT NULL,
+descripcion [varchar](300) NOT NULL,
+)
+GO
+/******************************************************/
+/* TABLA CATEGORIACLIENTE*/
+create table CategoriaCliente
+(
+id int primary key identity(1,1) NOT NULL,
+codigo [varchar](50) NOT NULL,
+descripcion [varchar](300) NOT NULL,
+)
+GO
+
+/******************************************************/
+/* TABLA ROL*/
+create table Rol
+(
+id int primary key identity(1,1) NOT NULL,
+codigo [varchar](50) NOT NULL,
+descripcion [varchar](300) NOT NULL,
+)
+GO
+
+/******************************************************/
+/* TABLA CATEGORIAARTICULO*/
+create table CategoriaArticulo
+(
+id int primary key identity(1,1) NOT NULL,
+codigo [varchar](50) NOT NULL,
+descripcion [varchar](300) NOT NULL,
+)
+GO
+
+
+/******************************************************/
+/* TABLA MARCAARTICULO*/
+create table MarcaArticulo
+(
+id int primary key identity(1,1) NOT NULL,
+codigo [varchar](50) NOT NULL,
+descripcion [varchar](300) NOT NULL,
+)
+GO
+
+/******************************************************/
+/* TABLA USUARIO*/
+create table Usuario
+(
+id int primary key identity(1,1) NOT NULL,
+idLogin [varchar](100) NOT NULL,
+passwordd [varchar](300) NOT NULL,
+email [varchar](300) NOT NULL,
+nombre [varchar](300) NOT NULL,
+apellido [varchar](300) NOT NULL,
+telefono [varchar](300) NOT NULL,
+movil [varchar](300) NOT NULL,
+direccion [varchar](500) NOT NULL,
+idRol int NOT NULL,
+)
+GO
+
+/******************************************************/
+/* TABLA COMPCOMPRA*/
+create table CompCompra
+(
+id int primary key identity(1,1) NOT NULL,
+puntoVenta [varchar](50) NOT NULL,
+numero [varchar](300) NOT NULL,
+idProveedor int NOT NULL,
+fechaComp [datetime] NOT NULL,
+idUsuario int NOT NULL,
+subtotal [decimal] NOT NULL,
+totalDescuento [decimal] NOT NULL,
+descuentoCompra [decimal] NOT NULL,
+totalComprobante [decimal]NOT NULL ,
+)
+GO
+/******************************************************/
+/* TABLA COMPVENTA*/
+create table CompVenta
+(
+id int primary key identity(1,1) NOT NULL,
+puntoVenta [varchar](50) NOT NULL,
+numero [varchar](300) NOT NULL,
+idCliente int NOT NULL,
+fechaComp [datetime] NOT NULL,
+idUsuario int NOT NULL,
+subtotal [decimal] NOT NULL,
+totalDescuento [decimal] NOT NULL,
+descuentoCompra [decimal] NOT NULL,
+totalComprobante [decimal]NOT NULL ,
+)
+GO
+
+/******************************************************/
+/* TABLA ProveedorxProducto*/
+create table ProveedorxProducto
+(
+
+codigo[varchar](33) primary key NOT NULL,
+codigoProveedor [varchar](16) NOT NULL,
+codigoProducto [varchar](16) NOT NULL,
+)
+GO
+
+/******************************************************/
+/* TABLA DETALLEPRODUCTO*/
+create table DetalleProducto
+(
+id int primary key identity(1,1) NOT NULL,
+codProducto [varchar](50) NOT NULL,
+descripcion [varchar](300) NOT NULL,
+cantidad [decimal] NOT NULL,
+precioVenta [decimal] NOT NULL,
+montoDescuento [decimal] NOT NULL,
+monto [decimal]NOT NULL,
+)
+GO

@@ -57,11 +57,11 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("insert into Proveedor (codigo, razonSocial, cuit, idCategoriaProveedor,movil, telefono, email, direccion) values (@codigo, @razonSocial, @cuit, @idCategoriaProv,@movil, @tel, @email, @direcc)");
+                datos.setearConsulta("insert into Proveedor ( codigo, razonSocial, cuit, idCategoriaProveedor, telefono, email, direccion) values ( @codigo, @razonSocial, @cuit, @idCategoriaProv, @tel, @email, @direcc)");
                 datos.SetearPARAMETROS("@codigo", Proveedors.codigo);
                 datos.SetearPARAMETROS("@razonSocial", Proveedors.razonSocial);
-                datos.SetearPARAMETROS("@acuit", Proveedors.cuit);
-                datos.SetearPARAMETROS("@idCategoriaProveedor", Proveedors.categoria);
+                datos.SetearPARAMETROS("@cuit", Proveedors.cuit);
+                datos.SetearPARAMETROS("@idCategoriaProv", Proveedors.categoria.id);
                 datos.SetearPARAMETROS("@tel", Proveedors.telefono);
                 datos.SetearPARAMETROS("@email", Proveedors.email);
                 datos.SetearPARAMETROS("@direcc", Proveedors.direccion);

@@ -103,13 +103,14 @@
         <!-----------------------------------------INICIO LISTADO------------------------------>
         <div class="row justify-content-center mt-2">
             <div class="col-md-10">
-                <asp:GridView ID="GridViewClientes" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
+                <asp:GridView ID="GridViewClientes" CssClass="table table-dark" OnSelectedIndexChanged="GridViewClientes_SelectedIndexChanged" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
                     <Columns>
-                        <asp:BoundField HeaderText="ID" DataField="ID" />
-                        <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
-                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                        <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-                        <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
+                        <asp:BoundField HeaderText="ID" DataField="id" />
+                        <asp:BoundField HeaderText="Codigo" DataField="codigo" />
+                        <asp:BoundField HeaderText="Nombre" DataField="nombre" />
+                        <asp:BoundField HeaderText="Apellido" DataField="apellido" />
+                        <asp:BoundField HeaderText="Telefono" DataField="telefono" />
+                        <asp:CommandField HeaderText="Acciones" ShowSelectButton="true" SelectText="Eliminar"  />
                     </Columns>
                 </asp:GridView>
             </div>

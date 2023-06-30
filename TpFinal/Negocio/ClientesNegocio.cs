@@ -18,14 +18,14 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select C.id as id, C.codigo as codigo, C.nombre as nombre, C.apellido as apellido, C.nDocumento as DNI, C.idCategoriaCliente as CategoriaCliente, CC.codigo as CodigoCat, CC.descripcion as DescripCat, C.telefono as telefono, C.email as email, C.direccion as direccion from Cliente as C, CategoriaCliente as CC");
+                datos.setearConsulta("select C.id as id, C.codigo as codigo, C.nombre as nombre, C.apellido as apellido, C.nDocumento as DNI, C.idCategoriaCliente as CategoriaCliente, CC.codigo as CodigoCat, CC.descripcion as DescripCat, C.telefono as telefono, C.email as email, C.direccion as direccion from Cliente as C, CategoriaCliente as CC where c.idCategoriaCliente = cc.id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Cliente aux = new Cliente();
                     aux.id = (int)datos.Lector["id"];
-                    aux.codigo = (int)datos.Lector["codigo"];
+                    aux.codigo = (string)datos.Lector["codigo"];
                     aux.nombre = (string)datos.Lector["nombre"];
                     aux.apellido = (string)datos.Lector["apellido"];
                     aux.nDocumento = (string)datos.Lector["DNI"];
@@ -36,7 +36,7 @@ namespace Negocio
                     aux.email = (string)datos.Lector["email"];
                     aux.direccion = (string)datos.Lector["direccion"];
 
-
+                    clientes.Add(aux);
                 }
 
                 return clientes;

@@ -47,7 +47,7 @@ namespace vista
             try
             {
                 Cliente Nuevo = new Cliente();
-                Nuevo.codigo = int.Parse(TxtCodigo.Text);
+                Nuevo.codigo = (string)(TxtCodigo.Text);
                 Nuevo.nombre = TxtNombre.Text;
                 Nuevo.apellido = TxtApellido.Text;
                 Nuevo.categoria = new CategoriaCliente();
@@ -67,14 +67,17 @@ namespace vista
                 throw ex;
             }
 
-
-
-
         }
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("ListaClientes.aspx", false);
+        }
+
+        protected void GridViewClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            new ClientesNegocio().Eliminar((int)GridViewClientes.SelectedDataKey.Value);
+            Response.Redirect("ListaClientes.aspx");
         }
     }
 }

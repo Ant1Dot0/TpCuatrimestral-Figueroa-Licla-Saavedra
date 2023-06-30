@@ -24,7 +24,7 @@ namespace vista
             nuevoCliente.nDocumento = TxtDNI.Text;
             nuevoCliente.nombre = TxtNombre.Text;
             nuevoCliente.apellido = TxtApellido.Text;
-            nuevoCliente.codigo = int.Parse(TxtCodigo.Text);
+            nuevoCliente.codigo = TxtCodigo.Text;
             nuevoCliente.categoria = new CategoriaCliente();
             nuevoCliente.categoria.id = int.Parse(ddlCategoria.SelectedValue);
             nuevoCliente.telefono = TxtTelefono.Text;

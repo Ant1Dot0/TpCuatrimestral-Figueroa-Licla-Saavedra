@@ -1,0 +1,47 @@
+use OrganizAR
+GO
+insert into Producto values ('CEMOE05','Motorola E5','1','1',50000.00,20.0,10,2)
+go
+insert into Producto values ('AUPH007','Auriculares Philips 007','2','2',6000.00,18.0,15,2)
+go
+insert into Producto values ('MONG008','Mouse Noganet 008','3','3',3000.00,20.0,10,2)
+go
+insert into Producto values ('TEGE004','Teclado Genius 004','4','3',4000.00,20.0,10,2)
+go
+insert into MarcaArticulo values ('MO','MOTOROLA')
+go
+insert into MarcaArticulo values ('PH','PHILIPS')
+go
+insert into MarcaArticulo values ('NG','NOGANET')
+go
+insert into MarcaArticulo values ('GE','GENIUS')
+go
+insert into CategoriaArticulo values ('CE','CELULARES')
+go
+insert into CategoriaArticulo values ('AU','AURICULARES')
+go
+insert into CategoriaArticulo values ('IN','INFORMATICA')
+go
+insert into CategoriaProveedor values ('IN','INFORMATICA')
+go
+insert into CategoriaProveedor values ('CEL','CELULARES')
+go
+insert into CategoriaProveedor values ('ACC','ACCESORIOS')
+go
+insert into Proveedor values ('CASA GAONA','GRUPO GAONA SA','30697132208',1,'1122222255','','gaona@mail.com','30760 Broad Beach Road, Malibú, California.')
+go
+insert into Proveedor values ('ELECTRONICS','ELECTRONICS SA','30708885602',3,'1122222255','','electronics@mail.com','750 Bel Air Road, Los Ángeles, California.')
+go
+insert into Proveedor values ('CELULIN','CELULIN SA','20944287168',2,'1122222255','','celulin@mail.com','1675 E Altadena Dr, Altadena, California')
+go
+
+insert into ProveedorxProducto values('CASA GAONA-CEMOE05','CASA GAONA','CEMOE05')
+GO
+insert into ProveedorxProducto values('ELECTRONICS-AUPH007','ELECTRONICS','AUPH007')
+GO
+insert into ProveedorxProducto values('ELECTRONICS-CEMOE05','ELECTRONICS','CEMOE05')
+
+GO
+insert into CategoriaCliente values('IMPORTANTE', 'IMPORTANTE')
+GO
+insert into CategoriaCliente values('PERSONAL', 'PERSONAL')
