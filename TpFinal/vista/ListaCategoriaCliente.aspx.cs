@@ -38,5 +38,10 @@ namespace vista
             negocio.Eliminar(Aux);
             Response.Redirect("ListaCategoriaCliente.aspx", false);
         }
+
+        protected void GridViewCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

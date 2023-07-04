@@ -13,5 +13,10 @@ namespace vista
         {
 
         }
+
+        protected void GridViewMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

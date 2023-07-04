@@ -62,11 +62,12 @@
         <!-----------------------------------------INICIO LISTADO------------------------------>
         <div class="row justify-content-center mt-2">
             <div class="col-md-10">
-                <asp:GridView ID="GridViewMarca" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
+                <asp:GridView ID="GridViewMarca" CssClass="table table-dark" runat="server" OnSelectedIndexChanged="GridViewMarca_SelectedIndexChanged" AutoGenerateColumns="false" DataKeyNames="ID">
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="ID" />
                         <asp:BoundField HeaderText="Codigo" DataField="codigo" />
                         <asp:BoundField HeaderText="Descripción" DataField="descripcion" />
+                        <asp:CommandField ShowSelectButton="true" SelectText="✔️" HeaderText=" " />
                     </Columns>
                 </asp:GridView>
             </div>

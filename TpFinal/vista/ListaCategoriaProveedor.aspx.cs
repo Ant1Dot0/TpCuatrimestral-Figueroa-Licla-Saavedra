@@ -41,5 +41,9 @@ namespace vista
             Response.Redirect("ListaCategoriaProveedor.aspx", false);
         }
 
+        protected void GridViewCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

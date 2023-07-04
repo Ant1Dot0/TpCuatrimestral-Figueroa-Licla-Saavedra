@@ -110,7 +110,7 @@
                         <asp:BoundField HeaderText="Nombre" DataField="nombre" />
                         <asp:BoundField HeaderText="Apellido" DataField="apellido" />
                         <asp:BoundField HeaderText="Telefono" DataField="telefono" />
-                        <asp:CommandField HeaderText="Acciones" ShowSelectButton="true" SelectText="Eliminar"  />
+                        <asp:CommandField ShowSelectButton="true" SelectText="✔️" HeaderText=" " />
                     </Columns>
                 </asp:GridView>
             </div>

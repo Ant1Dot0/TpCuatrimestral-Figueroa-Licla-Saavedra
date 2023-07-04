@@ -15,13 +15,14 @@
         </div>
         <div class="row justify-content-center mt-2">
             <div class="col-md-10">
-                <asp:GridView ID="GridViewClientes" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
+                <asp:GridView ID="GridViewClientes" CssClass="table table-dark" runat="server" OnSelectedIndexChanged="GridViewClientes_SelectedIndexChanged" AutoGenerateColumns="false" DataKeyNames="ID">
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="ID" />
                         <asp:BoundField HeaderText="numero" DataField="numero" />
                         <asp:BoundField HeaderText="puntoVenta" DataField="puntoVenta" />
                         <asp:BoundField HeaderText="Cliente" DataField="cliente" />
                         <asp:BoundField HeaderText="Total" DataField="TotalComprobante" />
+                        <asp:CommandField ShowSelectButton="true" SelectText="✔️" HeaderText=" " />
                     </Columns>
                 </asp:GridView>
             </div>

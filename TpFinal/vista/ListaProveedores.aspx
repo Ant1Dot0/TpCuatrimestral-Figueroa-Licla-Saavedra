@@ -102,13 +102,14 @@
         <!-----------------------------------------INICIO LISTADO------------------------------>
         <div class="row justify-content-center mt-2">
             <div class="col-md-10">
-                <asp:GridView ID="GridViewProveedores" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
+                <asp:GridView ID="GridViewProveedores" CssClass="table table-dark" runat="server" OnSelectedIndexChanged="GridViewProveedores_SelectedIndexChanged" AutoGenerateColumns="false" DataKeyNames="ID">
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="ID" />
                         <asp:BoundField HeaderText="Razón Social" DataField="razonSocial" />
                         <asp:BoundField HeaderText="Cuit" DataField="cuit" />
                         <asp:BoundField HeaderText="Email" DataField="email" />
                         <asp:BoundField HeaderText="Dirección" DataField="direccion" />
+                        <asp:CommandField ShowSelectButton="true" SelectText="✔️" HeaderText=" " />
                     </Columns>
                 </asp:GridView>
             </div>
