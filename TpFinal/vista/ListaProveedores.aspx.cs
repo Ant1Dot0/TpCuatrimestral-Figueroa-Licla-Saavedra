@@ -83,6 +83,11 @@ namespace vista
         {
             Response.Redirect("ListaProovedores.aspx", false);
         }
+
+        protected void GridViewProveedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
