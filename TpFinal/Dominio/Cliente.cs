@@ -26,6 +26,8 @@ namespace Dominio
 
         public string direccion { get; set; }
 
+        public bool estado { get; set; }
+
         public Cliente()
         {
             this.categoria = new CategoriaCliente();

@@ -15,7 +15,7 @@ namespace Negocio
             List<Producto> lista = new List<Producto>();
             try
             {
-                datos.setearConsulta("SELECT P.id as ART, P.CODIGO as COD, P.DESCRIPCION as DESCR, M.ID as MAR, M.CODIGO as MARCOD, M.DESCRIPCION as MARDE, C.id as CATE, C.CODIGO as CATECOD, C.DESCRIPCION AS CATEDE, PRECIOCOMPRA, GANANCIA, STOCK, STOCKMIN FROM PRODUCTO P, MARCAARTICULO M, CATEGORIAARTICULO C WHERE P.IDMARCAARTICULO = M.ID and P.IDCATEGORIAARTICULO = C.ID");
+                datos.setearConsulta("SELECT P.id as ART, P.CODIGO as COD, P.DESCRIPCION as DESCR, M.ID as MAR, M.CODIGO as MARCOD, M.DESCRIPCION as MARDE, C.id as CATE, C.CODIGO as CATECOD, C.DESCRIPCION AS CATEDE, PRECIOCOMPRA, GANANCIA, STOCK, STOCKMIN, P.estado as estado FROM PRODUCTO P, MARCAARTICULO M, CATEGORIAARTICULO C WHERE P.IDMARCAARTICULO = M.ID and P.IDCATEGORIAARTICULO = C.ID and p.estado = 'true'");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -34,6 +34,7 @@ namespace Negocio
                     aux.ganacia = (decimal)datos.Lector["GANANCIA"];
                     aux.stockActual = (decimal)datos.Lector["STOCK"];
                     aux.stockMinimo = (decimal)datos.Lector["STOCKMIN"];
+                    aux.estado = (bool)datos.Lector["estado"];
                     lista.Add(aux);
                 }
                 return lista;

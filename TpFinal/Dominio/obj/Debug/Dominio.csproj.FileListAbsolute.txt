@@ -9,3 +9,4 @@ C:\Users\figue\Desktop\TP cuatrimestral\TpFinal\Dominio\obj\Debug\Dominio.csproj
 C:\Users\figue\Desktop\TP cuatrimestral\TpFinal\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\figue\Desktop\TP cuatrimestral\TpFinal\Dominio\obj\Debug\Dominio.dll
 C:\Users\figue\Desktop\TP cuatrimestral\TpFinal\Dominio\obj\Debug\Dominio.pdb
+C:\proyectos\TpFinal2023\TpFinal\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache

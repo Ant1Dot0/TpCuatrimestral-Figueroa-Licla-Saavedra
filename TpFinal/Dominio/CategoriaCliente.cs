@@ -15,5 +15,7 @@ namespace Dominio
 
         public string descripcion { get; set; }
 
+        public bool estado { get; set; }
+
     }
 }

@@ -21,7 +21,7 @@ namespace Negocio
             try
             {
                 /*Corregir consulta*/
-                datos.setearConsulta("select B.id as id, B.codigo as codigo, B.razonSocial as razonSocial, B.cuit as cuit, B.idCategoriaProveedor as idCategoriaProveedor, B.telefono as telefono, B.email as email, B.direccion as direccion from Proveedor as B");
+                datos.setearConsulta("select B.id as id, B.codigo as codigo, B.razonSocial as razonSocial, B.cuit as cuit, B.idCategoriaProveedor as idCategoriaProveedor, B.telefono as telefono, B.email as email, B.direccion as direccion B.estado as estado from Proveedor as B where B.estado = 'true'");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -35,6 +35,7 @@ namespace Negocio
                     aux.telefono = (string)datos.Lector["telefono"];
                     aux.email = (string)datos.Lector["email"];
                     aux.direccion = (string)datos.Lector["direccion"];
+                    aux.estado = (bool)datos.Lector["estado"];
 
                     proveedores.Add(aux);
                 }
@@ -57,7 +58,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("insert into Proveedor ( codigo, razonSocial, cuit, idCategoriaProveedor, telefono, email, direccion) values ( @codigo, @razonSocial, @cuit, @idCategoriaProv, @tel, @email, @direcc)");
+                datos.setearConsulta("insert into Proveedor ( codigo, razonSocial, cuit, idCategoriaProveedor, telefono, email, direccion, estado) values ( @codigo, @razonSocial, @cuit, @idCategoriaProv, @tel, @email, @direcc, @est)");
                 datos.SetearPARAMETROS("@codigo", Proveedors.codigo);
                 datos.SetearPARAMETROS("@razonSocial", Proveedors.razonSocial);
                 datos.SetearPARAMETROS("@cuit", Proveedors.cuit);
@@ -65,6 +66,8 @@ namespace Negocio
                 datos.SetearPARAMETROS("@tel", Proveedors.telefono);
                 datos.SetearPARAMETROS("@email", Proveedors.email);
                 datos.SetearPARAMETROS("@direcc", Proveedors.direccion);
+                datos.SetearPARAMETROS("@est", true);
+                
                 datos.ejecutarEscritura();
 
 
@@ -85,7 +88,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("delete from Proveedor  where id =" + id);
+                datos.setearConsulta("update Proveedor set estado = 'true' where id =" + id);
                 datos.ejecutarEscritura();
             }
             catch (Exception ex)

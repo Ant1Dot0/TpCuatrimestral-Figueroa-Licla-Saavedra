@@ -25,7 +25,9 @@ namespace Dominio
         public decimal stockActual { get; set; }
 
         public decimal stockMinimo { get; set; }
-        
+
+        public bool estado { get; set; }
+
         public Producto()
         {
             this.marca = new MarcaArticulo();

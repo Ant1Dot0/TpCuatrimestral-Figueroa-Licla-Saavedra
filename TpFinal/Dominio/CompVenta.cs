@@ -30,6 +30,7 @@ namespace Dominio
 
         public decimal totalComprobante { get; set; }
 
+        public bool estado { get; set; }
         public CompVenta()
         {
             this.cliente = new Cliente();

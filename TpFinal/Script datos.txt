@@ -1,38 +1,38 @@
 use OrganizAR
 GO
-insert into Producto values ('CEMOE05','Motorola E5','1','1',50000.00,20.0,10,2)
+insert into Producto values ('CEMOE05','Motorola E5','1','1',50000.00,20.0,10,2,1)
 go
-insert into Producto values ('AUPH007','Auriculares Philips 007','2','2',6000.00,18.0,15,2)
+insert into Producto values ('AUPH007','Auriculares Philips 007','2','2',6000.00,18.0,15,2,1)
 go
-insert into Producto values ('MONG008','Mouse Noganet 008','3','3',3000.00,20.0,10,2)
+insert into Producto values ('MONG008','Mouse Noganet 008','3','3',3000.00,20.0,10,2,1)
 go
-insert into Producto values ('TEGE004','Teclado Genius 004','4','3',4000.00,20.0,10,2)
+insert into Producto values ('TEGE004','Teclado Genius 004','4','3',4000.00,20.0,10,2,1)
 go
-insert into MarcaArticulo values ('MO','MOTOROLA')
+insert into MarcaArticulo values ('MO','MOTOROLA',1)
 go
-insert into MarcaArticulo values ('PH','PHILIPS')
+insert into MarcaArticulo values ('PH','PHILIPS',1)
 go
-insert into MarcaArticulo values ('NG','NOGANET')
+insert into MarcaArticulo values ('NG','NOGANET',1)
 go
-insert into MarcaArticulo values ('GE','GENIUS')
+insert into MarcaArticulo values ('GE','GENIUS',1)
 go
-insert into CategoriaArticulo values ('CE','CELULARES')
+insert into CategoriaArticulo values ('CE','CELULARES',1)
 go
-insert into CategoriaArticulo values ('AU','AURICULARES')
+insert into CategoriaArticulo values ('AU','AURICULARES',1)
 go
-insert into CategoriaArticulo values ('IN','INFORMATICA')
+insert into CategoriaArticulo values ('IN','INFORMATICA',1)
 go
-insert into CategoriaProveedor values ('IN','INFORMATICA')
+insert into CategoriaProveedor values ('IN','INFORMATICA',1)
 go
-insert into CategoriaProveedor values ('CEL','CELULARES')
+insert into CategoriaProveedor values ('CEL','CELULARES',1)
 go
-insert into CategoriaProveedor values ('ACC','ACCESORIOS')
+insert into CategoriaProveedor values ('ACC','ACCESORIOS',1)
 go
-insert into Proveedor values ('CASA GAONA','GRUPO GAONA SA','30697132208',1,'1122222255','','gaona@mail.com','30760 Broad Beach Road, Malibú, California.')
+insert into Proveedor values ('CASA GAONA','GRUPO GAONA SA','30697132208',1,'1122222255','','gaona@mail.com','30760 Broad Beach Road, Malibú, California.',1)
 go
-insert into Proveedor values ('ELECTRONICS','ELECTRONICS SA','30708885602',3,'1122222255','','electronics@mail.com','750 Bel Air Road, Los Ángeles, California.')
+insert into Proveedor values ('ELECTRONICS','ELECTRONICS SA','30708885602',3,'1122222255','','electronics@mail.com','750 Bel Air Road, Los Ángeles, California.',1)
 go
-insert into Proveedor values ('CELULIN','CELULIN SA','20944287168',2,'1122222255','','celulin@mail.com','1675 E Altadena Dr, Altadena, California')
+insert into Proveedor values ('CELULIN','CELULIN SA','20944287168',2,'1122222255','','celulin@mail.com','1675 E Altadena Dr, Altadena, California',1)
 go
 
 insert into ProveedorxProducto values('CASA GAONA-CEMOE05','CASA GAONA','CEMOE05')
@@ -42,6 +42,8 @@ GO
 insert into ProveedorxProducto values('ELECTRONICS-CEMOE05','ELECTRONICS','CEMOE05')
 
 GO
-insert into CategoriaCliente values('IMPORTANTE', 'IMPORTANTE')
+insert into CategoriaCliente values('IMPORTANTE', 'IMPORTANTE',1)
 GO
-insert into CategoriaCliente values('PERSONAL', 'PERSONAL')
+insert into CategoriaCliente values('PERSONAL', 'PERSONAL',1)
+
+

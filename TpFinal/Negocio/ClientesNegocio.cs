@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select C.id as id, C.codigo as codigo, C.nombre as nombre, C.apellido as apellido, C.nDocumento as DNI, C.idCategoriaCliente as CategoriaCliente, CC.codigo as CodigoCat, CC.descripcion as DescripCat, C.telefono as telefono, C.email as email, C.direccion as direccion from Cliente as C, CategoriaCliente as CC where c.idCategoriaCliente = cc.id");
+                datos.setearConsulta("select C.id as id, C.codigo as codigo, C.nombre as nombre, C.apellido as apellido, C.nDocumento as DNI, C.idCategoriaCliente as CategoriaCliente, CC.codigo as CodigoCat, CC.descripcion as DescripCat, C.telefono as telefono, C.email as email, C.direccion as direccion, C.estado as estado from Cliente as C, CategoriaCliente as CC where c.idCategoriaCliente = cc.id and C.estado = 'true'");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -35,7 +35,7 @@ namespace Negocio
                     aux.telefono = (string)datos.Lector["telefono"];
                     aux.email = (string)datos.Lector["email"];
                     aux.direccion = (string)datos.Lector["direccion"];
-
+                    aux.estado = (bool)datos.Lector["estado"];
                     clientes.Add(aux);
                 }
 
@@ -57,7 +57,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("insert into Cliente (codigo, nombre, apellido, nDocumento, idCategoriaCliente, telefono, email, direccion) values (@codigo, @nombre, @apellido, @dni, @categoria, @tel, @email, @direcc)");
+                datos.setearConsulta("insert into Cliente (codigo, nombre, apellido, nDocumento, idCategoriaCliente, telefono, email, direccion, estado) values (@codigo, @nombre, @apellido, @dni, @categoria, @tel, @email, @direcc, @est)");
                 datos.SetearPARAMETROS("@codigo", Cliente.codigo);
                 datos.SetearPARAMETROS("@nombre", Cliente.nombre);
                 datos.SetearPARAMETROS("@apellido", Cliente.apellido);
@@ -66,6 +66,7 @@ namespace Negocio
                 datos.SetearPARAMETROS("@tel", Cliente.telefono);
                 datos.SetearPARAMETROS("@email", Cliente.email);
                 datos.SetearPARAMETROS("@direcc", Cliente.direccion);
+                datos.SetearPARAMETROS("@est", true);
                 datos.ejecutarEscritura();
 
 
@@ -86,7 +87,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("delete from Cliente  where id =" + id );
+                datos.setearConsulta("update Cliente set estado = 'true'  where id =" + id );
                 datos.ejecutarEscritura();
             }
             catch (Exception ex)

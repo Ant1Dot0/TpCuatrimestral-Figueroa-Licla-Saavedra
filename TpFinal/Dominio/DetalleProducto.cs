@@ -23,5 +23,7 @@ namespace Dominio
         public decimal montoDescuento { get; set; }
 
         public decimal monto { get; set; }
+
+        public bool estado { get; set; }
     }
 }

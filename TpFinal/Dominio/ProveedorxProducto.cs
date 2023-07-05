@@ -12,6 +12,8 @@ namespace Dominio
         public string codigo { get; set; }
         public string codigoProveedor { get; set; }
         public string codigoProducto { get; set; }
-        
+
+        public bool estado { get; set; }
+
     }
 }

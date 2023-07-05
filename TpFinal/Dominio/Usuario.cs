@@ -26,6 +26,8 @@ namespace Dominio
 
         public Rol rol { get; set; }
 
+        public bool estado { get; set; }
+
         public Usuario()
         {
             this.rol = new Rol();

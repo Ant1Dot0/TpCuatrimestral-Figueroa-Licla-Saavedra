@@ -21,6 +21,7 @@ movil [varchar](50)  NULL,
 telefono [varchar](50) NULL,
 email [varchar](100) NULL,
 direccion [varchar](300) NOT NULL,
+estado bit NOT NULL
 )
 GO
 
@@ -38,6 +39,7 @@ precioCompra [decimal] NOT NULL,
 ganancia [decimal] NOT NULL,
 stock [decimal] NOT NULL,
 stockMin [decimal] NOT NULL,
+estado bit NOT NULL
 )
 GO
 
@@ -56,6 +58,7 @@ movil [varchar](50),
 telefono [varchar](50),
 email [varchar](255),
 direccion [varchar](500),
+estado bit NOT NULL
 )
 GO
 
@@ -67,6 +70,7 @@ create table CategoriaProveedor
 id int primary key identity(1,1) NOT NULL,
 codigo [varchar](50) NOT NULL,
 descripcion [varchar](300) NOT NULL,
+estado bit NOT NULL
 )
 GO
 
@@ -77,6 +81,7 @@ create table TipoDoc
 id int  primary key identity(1,1)NOT NULL,
 codigo [varchar](50) NOT NULL,
 descripcion [varchar](300) NOT NULL,
+estado bit NOT NULL
 )
 GO
 /******************************************************/
@@ -86,6 +91,7 @@ create table CategoriaCliente
 id int primary key identity(1,1) NOT NULL,
 codigo [varchar](50) NOT NULL,
 descripcion [varchar](300) NOT NULL,
+estado bit NOT NULL
 )
 GO
 
@@ -96,6 +102,7 @@ create table Rol
 id int primary key identity(1,1) NOT NULL,
 codigo [varchar](50) NOT NULL,
 descripcion [varchar](300) NOT NULL,
+estado bit not null,
 )
 GO
 
@@ -106,6 +113,7 @@ create table CategoriaArticulo
 id int primary key identity(1,1) NOT NULL,
 codigo [varchar](50) NOT NULL,
 descripcion [varchar](300) NOT NULL,
+estado bit NOT NULL
 )
 GO
 
@@ -117,6 +125,7 @@ create table MarcaArticulo
 id int primary key identity(1,1) NOT NULL,
 codigo [varchar](50) NOT NULL,
 descripcion [varchar](300) NOT NULL,
+estado bit NOT NULL
 )
 GO
 
@@ -134,6 +143,7 @@ telefono [varchar](300) NOT NULL,
 movil [varchar](300) NOT NULL,
 direccion [varchar](500) NOT NULL,
 idRol int NOT NULL,
+estado bit NOT NULL
 )
 GO
 
@@ -151,6 +161,7 @@ subtotal [decimal] NOT NULL,
 totalDescuento [decimal] NOT NULL,
 descuentoCompra [decimal] NOT NULL,
 totalComprobante [decimal]NOT NULL ,
+estado bit NOT NULL
 )
 GO
 /******************************************************/
@@ -167,6 +178,7 @@ subtotal [decimal] NOT NULL,
 totalDescuento [decimal] NOT NULL,
 descuentoCompra [decimal] NOT NULL,
 totalComprobante [decimal]NOT NULL ,
+estado bit NOT NULL
 )
 GO
 
@@ -174,7 +186,6 @@ GO
 /* TABLA ProveedorxProducto*/
 create table ProveedorxProducto
 (
-
 codigo[varchar](33) primary key NOT NULL,
 codigoProveedor [varchar](16) NOT NULL,
 codigoProducto [varchar](16) NOT NULL,
@@ -192,5 +203,6 @@ cantidad [decimal] NOT NULL,
 precioVenta [decimal] NOT NULL,
 montoDescuento [decimal] NOT NULL,
 monto [decimal]NOT NULL,
+estado bit NOT NULL
 )
 GO

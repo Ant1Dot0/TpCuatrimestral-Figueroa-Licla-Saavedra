@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select id, codigo, descripcion from CategoriaCliente");
+                datos.setearConsulta("select id, codigo, descripcion, estado from CategoriaCliente");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -26,6 +26,7 @@ namespace Negocio
                     aux.id = (int)datos.Lector["id"];
                     aux.codigo = (string)datos.Lector["codigo"];
                     aux.descripcion = (string)datos.Lector["descripcion"];
+                    aux.estado = (bool)datos.Lector["estado"];
 
                     CategoriaxCliente.Add(aux);
 
@@ -49,10 +50,11 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("insert into CategoriaCliente (id, codigo, descripcion) values (@id, @cod, @desc)");
+                datos.setearConsulta("insert into CategoriaCliente (id, codigo, descripcion, estado) values (@id, @cod, @desc, @est)");
                 datos.SetearPARAMETROS("@id", aux.id);
                 datos.SetearPARAMETROS("@cod", aux.codigo);
                 datos.SetearPARAMETROS("@desc", aux.descripcion);
+                datos.SetearPARAMETROS("@est", true);
 
                 datos.ejecutarEscritura();
             }
@@ -73,7 +75,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("delete from CategoriaCliente where id=" + id);
+                datos.setearConsulta("update CategoriaCliente set estado = false where id=" + id);
                 datos.ejecutarEscritura();
             }
             catch (Exception ex)
