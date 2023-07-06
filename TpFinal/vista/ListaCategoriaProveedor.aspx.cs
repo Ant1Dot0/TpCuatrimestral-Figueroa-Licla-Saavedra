@@ -19,18 +19,6 @@ namespace vista
             DataBind();
         }
 
-        protected void BtnGuardar_Click(object sender, EventArgs e)
-        {
-            CategoriasProveedorNegocio negocio = new CategoriasProveedorNegocio();
-            CategoriaProveedor nuevaCatProveedor = new CategoriaProveedor();
-
-            nuevaCatProveedor.codigo = TxtCodigo.Text;
-            nuevaCatProveedor.descripcion = TxtDescripcion.Text;
-
-            negocio.Agregar(nuevaCatProveedor);
-            Response.Redirect("ListaCategoriaProveedor.aspx", false);
-        }
-
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {

@@ -13,6 +13,13 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CategoriasClienteNegocio categoriaCliente = new CategoriasClienteNegocio();
+            List<CategoriaCliente> Lista = categoriaCliente.Listar();
+
+            ddlCategoria.DataSource = Lista;
+            ddlCategoria.DataValueField = "id";
+            ddlCategoria.DataTextField = "descripcion";
+            DataBind();
 
         }
 
@@ -41,7 +48,12 @@ namespace vista
             int Aux = int.Parse(Request.QueryString["Id"].ToString());
 
             negocio.Eliminar(Aux);
-            Response.Redirect("ListaClientes.aspx",false);
+            Response.Redirect("ListaClientes.aspx", false);
+        }
+
+        protected void BtnCancelar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

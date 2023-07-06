@@ -21,7 +21,7 @@ namespace Negocio
             try
             {
                 /*Corregir consulta*/
-                datos.setearConsulta("select B.id as id, B.codigo as codigo, B.razonSocial as razonSocial, B.cuit as cuit, B.idCategoriaProveedor as idCategoriaProveedor, B.telefono as telefono, B.email as email, B.direccion as direccion B.estado as estado from Proveedor as B where B.estado = 'true'");
+                datos.setearConsulta("select B.id as id, B.codigo as codigo, B.razonSocial as razonSocial, B.cuit as cuit, B.idCategoriaProveedor as idCategoriaProveedor, B.telefono as telefono, B.email as email, B.direccion as direccion, B.estado as estado from Proveedor as B where B.estado = 'true'");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

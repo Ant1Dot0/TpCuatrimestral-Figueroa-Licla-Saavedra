@@ -41,5 +41,10 @@ namespace vista
             negocio.Eliminar(Aux);
             Response.Redirect("ListaCategoriaProveedor.aspx", false);
         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
