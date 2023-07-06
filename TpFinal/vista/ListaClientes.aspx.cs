@@ -12,13 +12,28 @@ namespace vista
 {
     public partial class ListaClientes : System.Web.UI.Page
     {
+        public List<Cliente> clientes = new List<Cliente>();
+        public Cliente clienteSelected = new Cliente();
         protected void Page_Load(object sender, EventArgs e)
         {
+            clienteSelected.codigo = "-1";
+            string pruval = "prueba2";
+            if (Session["PRUEBA"] != null)
+            {
+                clienteSelected.codigo = Session["PRUEBA"].ToString();
+            }
+            else
+            {
+                Session.Add("PRUEBA", pruval);
+               
+            }
+
+
+            cargaProducto();
+
             try
             {
                 ClientesNegocio negocio = new ClientesNegocio();
-                GridViewClientes.DataSource = negocio.Listar();
-                DataBind();
 
                 CategoriasClienteNegocio categoriaCliente = new CategoriasClienteNegocio();
                 List<CategoriaCliente> Lista = categoriaCliente.Listar();
@@ -28,7 +43,12 @@ namespace vista
                 ddlCategoria.DataTextField = "descripcion";
                 DataBind();
 
-               
+
+                clientes = negocio.Listar();
+
+
+                repClientes.DataSource = clientes;
+                repClientes.DataBind();
             }
             catch (Exception ex)
             {
@@ -74,10 +94,19 @@ namespace vista
             Response.Redirect("ListaClientes.aspx", false);
         }
 
-        protected void GridViewClientes_SelectedIndexChanged(object sender, EventArgs e)
+
+
+        protected void prueba_Click(object sender, EventArgs e)
         {
-            new ClientesNegocio().Eliminar((int)GridViewClientes.SelectedDataKey.Value);
+            string valor = ((LinkButton)sender).CommandArgument;
+            Session.Add("PRUEBA", valor);
             Response.Redirect("ListaClientes.aspx");
+
+        }
+
+        public void cargaProducto()
+        {
+            TxtCodigo.Text = clienteSelected.codigo;
         }
     }
 }

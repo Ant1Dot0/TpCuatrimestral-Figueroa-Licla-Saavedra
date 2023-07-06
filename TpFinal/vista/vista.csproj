@@ -78,6 +78,7 @@
     <Content Include="assets\estilos\estiloMaster.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Js\funciones.js" />
     <Content Include="ListaCategoriaCliente.aspx" />
     <Content Include="ListacategoriaProducto.aspx" />
     <Content Include="ListaCategoriaProveedor.aspx" />

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
 
 namespace vista
 {
@@ -12,6 +14,12 @@ namespace vista
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            CategoriaArticuloNegocio negocio = new CategoriaArticuloNegocio();
+            CategoriaArticulo nuevaCatProducto = new CategoriaArticulo();
         }
     }
 }

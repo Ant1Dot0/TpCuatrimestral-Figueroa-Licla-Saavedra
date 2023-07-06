@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div class="container mt-4" style="height: 198px">
         <div class="row justify-content-center">
             <div class="col-md-auto text-center">
@@ -11,11 +12,12 @@
         </div>
         <div class="row justify-content-end">
             <div class="col-md-4 text-end">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Nuevo Cliente</button>
+                <button type="button" id="new" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Nuevo Cliente</button>
             </div>
         </div>
         <!--------------------------- INICIO MODAL-------------------------------------->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  >
+
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -32,25 +34,25 @@
                                             <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblCodigo">Codigo</span>
-                                                    <asp:TextBox ID="TxtCodigo" CssClass="form-control"  runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtCodigo" CssClass="form-control" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblnDocumento">DNI</span>
-                                                    <asp:TextBox ID="TxtDNI" CssClass="form-control"  runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtDNI" CssClass="form-control" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblNombre">Nombre</span>
-                                                    <asp:TextBox ID="TxtNombre" CssClass="form-control"  runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtNombre" CssClass="form-control" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblApellido">Apellido</span>
-                                                    <asp:TextBox ID="TxtApellido" CssClass="form-control"  runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtApellido" CssClass="form-control" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
 
@@ -67,19 +69,19 @@
                                             <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblTelefono">Telefono</span>
-                                                    <asp:TextBox ID="TxtTelefono" CssClass="form-control"  runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtTelefono" CssClass="form-control" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblEmail">Email</span>
-                                                    <asp:TextBox ID="TxtEmail" CssClass="form-control"  runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtEmail" CssClass="form-control" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="lblDireccion">Dirección</span>
-                                                    <asp:TextBox ID="TxtDireccion" CssClass="form-control"  runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtDireccion" CssClass="form-control" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
@@ -92,8 +94,8 @@
                     <div class="modal-footer">
                         <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" OnClick="BtnGuardar_Click" CssClass="btn btn-success" />
                         <asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary" OnClick="BtnCancelar_Click" />
- 
-                        
+
+
                     </div>
                 </div>
             </div>
@@ -103,16 +105,36 @@
         <!-----------------------------------------INICIO LISTADO------------------------------>
         <div class="row justify-content-center mt-2">
             <div class="col-md-10">
-                <asp:GridView ID="GridViewClientes" CssClass="table table-dark" OnSelectedIndexChanged="GridViewClientes_SelectedIndexChanged" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
-                    <Columns>
-                        <asp:BoundField HeaderText="ID" DataField="id" />
-                        <asp:BoundField HeaderText="Codigo" DataField="codigo" />
-                        <asp:BoundField HeaderText="Nombre" DataField="nombre" />
-                        <asp:BoundField HeaderText="Apellido" DataField="apellido" />
-                        <asp:BoundField HeaderText="Telefono" DataField="telefono" />
-                        <asp:CommandField ShowSelectButton="true" SelectText="✔️" HeaderText=" " />
-                    </Columns>
-                </asp:GridView>
+                <div class="card mt-2">
+                    <table class="table">
+                        <thead class="">
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Telefono</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <asp:Repeater runat="server" ID="repClientes">
+                                <ItemTemplate>
+                                    <div>
+                                        <tr>
+                                            <td><%#Eval("codigo")%></td>
+                                            <td><%#Eval("nombre")%></td>
+                                            <td><%#Eval("apellido")%></td>
+                                            <td><%#Eval("telefono")%></td>
+                                            <td>
+                                                <asp:LinkButton runat="server" ID="prueba" OnClick="prueba_Click" OnClientClick="edit();" CommandArgument='<%#Eval("codigo")%>' CommandName="Pcodigo" ></asp:LinkButton></td>
+                                        </tr>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>

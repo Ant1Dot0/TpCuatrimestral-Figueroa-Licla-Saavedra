@@ -11,12 +11,7 @@
         </div>
         <div class="row justify-content-md-center ">
             <div class="card col-md-10">
-                <div class="card-header text-center">
-                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" CssClass="btn btn-primary mb-1" />
-                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CssClass="btn btn-danger mb-1" />
-                    <asp:Button ID="btnGuardarComo" runat="server" Text="Guardar Como" CssClass="btn btn-secondary mb-1" />
-                    <asp:Button ID="btnLista" runat="server" Text="Ver Lista" CssClass="btn btn-success mb-1" />
-                </div>
+
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
@@ -34,6 +29,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="card-footer text-end">
+                    <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success"/>
+                    <asp:Button runat="server" ID="btnCancelar" Text="Cancelar" CssClass="btn btn-danger"/>
                 </div>
             </div>
         </div>
