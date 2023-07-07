@@ -23,6 +23,7 @@
                 <a href="#" class="btn btn-dark" data-bs-toggle="dropdown">Usuario<i class="bi bi-file-person-fill"></i></a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Info</a></li>
+                    <li><a class="dropdown-item" href="Registro.aspx">Logueo</a></li>
                     <li><a class="dropdown-item" href="#">Contraseña</a></li>
                     <li><a class="dropdown-item" href="#">Desloguearse</a></li>
                 </ul>
