@@ -16,7 +16,8 @@ namespace vista
 
         protected void GridViewMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            var id = GridViewMarca.SelectedDataKey.Value.ToString();
+            Response.Redirect("AltaMarcaProducto.aspx" + id);
         }
     }
 }

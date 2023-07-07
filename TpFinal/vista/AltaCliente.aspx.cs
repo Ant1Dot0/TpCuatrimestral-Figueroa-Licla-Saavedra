@@ -13,33 +13,53 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             CategoriasClienteNegocio categoriaCliente = new CategoriasClienteNegocio();
             List<CategoriaCliente> Lista = categoriaCliente.Listar();
+
 
             ddlCategoria.DataSource = Lista;
             ddlCategoria.DataValueField = "id";
             ddlCategoria.DataTextField = "descripcion";
             DataBind();
+            
 
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Cliente nuevoCliente = new Cliente();
-            ClientesNegocio negocio = new ClientesNegocio();
 
-            nuevoCliente.nDocumento = TxtDNI.Text;
-            nuevoCliente.nombre = TxtNombre.Text;
-            nuevoCliente.apellido = TxtApellido.Text;
-            nuevoCliente.codigo = TxtCodigo.Text;
-            nuevoCliente.categoria = new CategoriaCliente();
-            nuevoCliente.categoria.id = int.Parse(ddlCategoria.SelectedValue);
-            nuevoCliente.telefono = TxtTelefono.Text;
-            nuevoCliente.email = TxtEmail.Text;
-            nuevoCliente.direccion = TxtDireccion.Text;
+            try
+            {
+                if (string.IsNullOrEmpty(TxtApellido.Text) || string.IsNullOrEmpty(TxtCodigo.Text) || string.IsNullOrEmpty(TxtDNI.Text) || string.IsNullOrEmpty(TxtNombre.Text) || string.IsNullOrEmpty(ddlCategoria.Text))
+                {                   
+                    return;
+                }
+                else
+                {
+                    Cliente nuevoCliente = new Cliente();
+                    ClientesNegocio negocio = new ClientesNegocio();
 
-            negocio.Agregar(nuevoCliente);
-            Response.Redirect("ListaClientes.aspx", false);
+                    nuevoCliente.nDocumento = TxtDNI.Text;
+                    nuevoCliente.nombre = TxtNombre.Text;
+                    nuevoCliente.apellido = TxtApellido.Text;
+                    nuevoCliente.codigo = TxtCodigo.Text;
+                    nuevoCliente.categoria = new CategoriaCliente();
+                    nuevoCliente.categoria.id = int.Parse(ddlCategoria.SelectedValue);
+                    nuevoCliente.telefono = TxtTelefono.Text;
+                    nuevoCliente.email = TxtEmail.Text;
+                    nuevoCliente.direccion = TxtDireccion.Text;
+
+                    negocio.Agregar(nuevoCliente);
+                    Response.Redirect("ListaClientes.aspx", false);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

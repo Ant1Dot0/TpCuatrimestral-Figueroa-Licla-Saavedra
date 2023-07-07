@@ -20,14 +20,30 @@ namespace vista
         /*-----------------------------------------------------------------*/
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            CategoriasProveedorNegocio negocio = new CategoriasProveedorNegocio();
-            CategoriaProveedor nuevaCatProveedor = new CategoriaProveedor();
+            try
+            {
+                if (string.IsNullOrEmpty(TxtCodigo.Text) || string.IsNullOrEmpty(TxtDescripcion.Text))
+                {
+                    return;
+                }
+                else
+                {
+                    CategoriasProveedorNegocio negocio = new CategoriasProveedorNegocio();
+                    CategoriaProveedor nuevaCatProveedor = new CategoriaProveedor();
 
-            nuevaCatProveedor.codigo = TxtCodigo.Text;
-            nuevaCatProveedor.descripcion = TxtDescripcion.Text;
+                    nuevaCatProveedor.codigo = TxtCodigo.Text;
+                    nuevaCatProveedor.descripcion = TxtDescripcion.Text;
 
-            negocio.Agregar(nuevaCatProveedor);
-            Response.Redirect("ListaCategoriaProveedor.aspx", false);
+                    negocio.Agregar(nuevaCatProveedor);
+                    Response.Redirect("ListaCategoriaProveedor.aspx", false);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
 
         }
 
