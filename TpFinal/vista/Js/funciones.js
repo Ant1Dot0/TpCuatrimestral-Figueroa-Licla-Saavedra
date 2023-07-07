@@ -1,12 +1,12 @@
-﻿let pruebamodal = $("#exampleModal");
-pruebamodal.modal(onpageshow);
-
-
-function edit() {
-    sessionStorage.setItem('contador', 1);
-    alert('g')
+﻿function guardarID(x) {
+    sessionStorage.setItem('idProducto', x);
 }
 
-var mymodal = new bootstrap.Modal(document.getElementById('exampleModal'), {
-    mymodal.show();
+function ConfirmaEliminar() {
+    window.alert("d");
+    alert('d');
+    var confirmar = sessionStorage.getItem('idProducto');
+    location.href = 'ListaProductos.aspx?id=' + confirmar;
+
 }
+

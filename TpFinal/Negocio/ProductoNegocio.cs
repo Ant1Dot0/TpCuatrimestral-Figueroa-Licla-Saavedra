@@ -48,6 +48,80 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void Agregar(Producto producto)
+        {
+            try
+            {
+                datos.setearConsulta("  insert into Producto (codigo, descripcion, idMarcaArticulo, idCategoriaArticulo, precioCompra, ganancia, stock, stockMin, estado) values (@codigo, @desc, @marca, @categoria, @precio, @ganancia, @stock, @stockmin, @estado)");
+
+                datos.SetearPARAMETROS("@codigo", producto.codigo);
+                datos.SetearPARAMETROS("@desc", producto.descripcion);
+                datos.SetearPARAMETROS("@marca", producto.marca.id);
+                datos.SetearPARAMETROS("@categoria", producto.categoria.id);
+                datos.SetearPARAMETROS("@precio", producto.precioCompra);
+                datos.SetearPARAMETROS("@ganancia", producto.ganacia);
+                datos.SetearPARAMETROS("@stock", producto.stockActual);
+                datos.SetearPARAMETROS("@stockmin", producto.stockMinimo);
+                datos.SetearPARAMETROS("@estado", true);
+                datos.ejecutarEscritura();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void Eliminar(int id)
+        {
+            try
+            {
+                datos.setearConsulta("update Producto set estado = 'true'  where id =" + id);
+                datos.ejecutarEscritura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void Editar(Producto producto)
+        {
+            try
+            {
+                datos.setearConsulta("update Producto set descripcion = @desc, idMarcaArticulo = @marca, idCategoriaArticulo = @categoria, precioCompra = @precio, ganancia = @ganancia, stock = @stock, stockMin = @stockmin where id = @id");
+                datos.SetearPARAMETROS("@desc",producto.descripcion);
+                datos.SetearPARAMETROS("@marca",producto.marca.id);
+                datos.SetearPARAMETROS("@categoria",producto.categoria.id);
+                datos.SetearPARAMETROS("@precio",producto.precioCompra);
+                datos.SetearPARAMETROS("@ganancia",producto.ganacia);
+                datos.SetearPARAMETROS("@stock",producto.stockActual);
+                datos.SetearPARAMETROS("@stockmin", producto.stockMinimo);
+                datos.SetearPARAMETROS("@id", producto.id);
+
+                datos.ejecutarEscritura();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 
 

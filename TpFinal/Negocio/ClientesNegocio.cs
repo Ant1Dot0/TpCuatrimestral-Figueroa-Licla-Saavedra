@@ -69,8 +69,6 @@ namespace Negocio
                 datos.SetearPARAMETROS("@est", true);
                 datos.ejecutarEscritura();
 
-
-
             }
             catch (Exception ex)
             {

@@ -26,14 +26,16 @@ namespace vista
                 }
                 else
                 {
-                    MarcaArticulo NewMarca = new MarcaArticulo();
+
                     MarcaArticuloNegocio negocio = new MarcaArticuloNegocio();
+                    MarcaArticulo nuevaMarProducto = new MarcaArticulo();
 
-                    NewMarca.codigo = TxtCodigo.Text;
-                    NewMarca.descripcion = TxtDescripcion.Text;
+                    nuevaMarProducto.codigo = TxtCodigo.Text;
+                    nuevaMarProducto.descripcion = TxtDescripcion.Text;
 
-                    negocio.Agregar(NewMarca);
-                    Response.Redirect("ListaMarcasProductos.aspx", false);
+                    negocio.Agregar(nuevaMarProducto);
+                    Response.Redirect("ListaMarcaProductos.aspx", false);
+
                 }
             }
             catch (Exception ex)

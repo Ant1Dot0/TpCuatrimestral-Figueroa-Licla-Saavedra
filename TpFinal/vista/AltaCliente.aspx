@@ -42,9 +42,6 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblCategoria">Categoría</span>
                                 <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="btn btn-outline-secondary">
-                                    <asp:ListItem Selected="True" Value="Importante"></asp:ListItem>
-                                    <asp:ListItem Value="Personal"></asp:ListItem>
-                                    <asp:ListItem Value="Común"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>

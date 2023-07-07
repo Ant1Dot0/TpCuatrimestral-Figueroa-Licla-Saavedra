@@ -11,80 +11,80 @@
         </div>
         <div class="row justify-content-md-center ">
             <div class="card col-md-10">
-                <div class="card-header text-center">
-                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary mb-1" />
-                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger mb-1" />
-                    <asp:Button ID="btnGuardarComo" runat="server" Text="Guardar Como" CssClass="btn btn-secondary mb-1" />
-                    <asp:Button ID="btnLista" runat="server" Text="Ver Lista" CssClass="btn btn-success mb-1" />
-                </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblCodigo">Codigo</span>
-                                <input type="text" class="form-control" placeholder="Código Producto" aria-label="CodigoArticulo" aria-describedby="basic-addon1">
+                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtCodigoProducto"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblDescripcion">Descripción</span>
-                                <input type="text" class="form-control" placeholder="Descripción" aria-label="DescripcionArticulo" aria-describedby="basic-addon1">
+                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtDescripcion"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblMarca">Marca</span>
                                 <asp:DropDownList ID="ddlMarca" runat="server" CssClass="btn btn-outline-secondary">
-                                    <asp:ListItem Selected="True" Value="Cuchuflito"></asp:ListItem>
-                                    <asp:ListItem Value="Pindonga"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblCategoria">Categoría</span>
                                 <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="btn btn-outline-secondary">
-                                    <asp:ListItem Selected="True" Value="Alimento"></asp:ListItem>
-                                    <asp:ListItem Value="Libros"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblPrecioCompra">Precio $</span>
-                                <input type="number" class="form-control" placeholder="$9999" aria-label="Precio" aria-describedby="basic-addon1">
+                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtPrecioCompra"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblGanancia">Ganancia %</span>
-                                <input type="number" class="form-control" placeholder="100%" aria-label="Ganancia" aria-describedby="basic-addon1">
+                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtGanancia"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblStockActual">Stock</span>
-                                <input type="number" class="form-control" placeholder="999" aria-label="Stock" aria-describedby="basic-addon1">
+                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtStock"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblStockMinimo">StockMinimo</span>
-                                <input type="number" class="form-control" placeholder="999" aria-label="StockMinimo" aria-describedby="basic-addon1">
+                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtStockMinimo"></asp:TextBox>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-10">
                             <h5>Proveedores
-                                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Modificar</button></h5>
+                                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Buscar</button></h5>
                             <div class="col-md-10">
-                                <%foreach (var x in auxProveedoresSeleccionados)
-                                    {%>
-                                <div class="btn btn-secondary mb-1"><%=x.codigoProveedor %></div>
-                                <%} %>
+                                <asp:Repeater runat="server" ID="repProveedores" Visible="true">
+                                    <ItemTemplate>
+                                        <div class="btn btn-secondary mb-1">
+                                            <%#Eval("codigoProveedor") %>
+                                            <asp:Button runat="server" ID="btnCloseTag" CssClass="btn-close" Font-Size="X-Small" OnClick="btnCloseTag_Click" CommandArgument='<%#Eval("codigo") %>' />
+                                        </div>
+                                    </ItemTemplate>
+
+                                </asp:Repeater>
+
                             </div>
+
+                        </div>
+                        <div class="card-footer text-end">
+                            <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" OnClick="BtnGuardar_Click" CssClass="btn btn-success" />
+                            <asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary" OnClick="BtnCancelar_Click" />
                         </div>
                     </div>
 
@@ -102,16 +102,13 @@
                                         <div class="row justify-content-md-center ">
                                             <div class="col-md-8">
                                                 <div class="row">
-                                                    <asp:GridView ID="gvProveedores" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
+                                                    <asp:GridView ID="gvProveedores" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="Codigo"
+                                                        OnSelectedIndexChanged="gvProveedores_SelectedIndexChanged" OnPageIndexChanging="gvProveedores_PageIndexChanging"
+                                                        AllowPaging="true">
                                                         <Columns>
-                                                            <asp:TemplateField>
-                                                                <ItemTemplate>
-                                                                    <asp:CheckBox runat="server" ID="chbCheck"/>
-                                                                </ItemTemplate>
-                                                            </asp:TemplateField>
-                                                            <asp:CheckBoxField HeaderText="Seleccionado" DataField="seleccionado" />
-                                                            <asp:BoundField HeaderText="Codigo" DataField="Codigo"  />
+                                                            <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
                                                             <asp:BoundField HeaderText="Descripcion" DataField="razonSocial" />
+                                                            <asp:CommandField ShowSelectButton="true" SelectText="+" HeaderText=" " />
                                                         </Columns>
                                                     </asp:GridView>
                                                 </div>
@@ -121,8 +118,6 @@
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-success">Guardar</button>
                                 </div>
                             </div>
                         </div>
