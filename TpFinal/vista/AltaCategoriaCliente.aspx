@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-end">
-                    <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success"/>
+                    <asp:Button runat="server" ID="btnGuardar" Text="Guardar" OnClick="btnGuardar_Click" CssClass="btn btn-success"/>
                     <asp:Button runat="server" ID="btnCancelar" Text="Cancelar" CssClass="btn btn-danger"/>
                 </div>
             </div>

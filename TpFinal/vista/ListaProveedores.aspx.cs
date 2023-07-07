@@ -86,7 +86,8 @@ namespace vista
 
         protected void GridViewProveedores_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            var id = GridViewProveedores.SelectedDataKey.Value.ToString();
+            Response.Redirect("AltaProveedor.aspx" + id, false);
         }
     }
 

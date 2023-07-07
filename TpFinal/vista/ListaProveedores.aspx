@@ -91,7 +91,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" OnClick="BtnGuardar_Click" CssClass="btn btn-success" />
+                        
                         <asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary" OnClick="BtnCancelar_Click" />
                     </div>
                 </div>

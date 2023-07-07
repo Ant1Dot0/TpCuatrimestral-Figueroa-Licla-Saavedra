@@ -43,6 +43,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -50,8 +51,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <asp:Button ID="BtnCancelar" runat="server" CssClass="btn btn-secondary" OnClick="BtnCancelar_Click" Text="Cancelar" />
-                        <asp:Button ID="BtnGuardar"  runat="server" CssClass="btn btn-secondary" OnClick="BtnGuardar_Click" Text="Guardar" />
+
                     </div>
                 </div>
             </div>

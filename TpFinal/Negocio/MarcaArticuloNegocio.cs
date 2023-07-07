@@ -5,34 +5,37 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio;
 
+
 namespace Negocio
 {
-    public class CategoriasClienteNegocio
+    public class MarcaArticuloNegocio
     {
         AccesoDatos datos = new AccesoDatos();
 
-        public List<CategoriaCliente> Listar() {
-            
-            List<CategoriaCliente> CategoriaxCliente = new List<CategoriaCliente>();
+
+        public List<MarcaArticulo> Listar()
+        {
+
+            List<MarcaArticulo> MarcaxArticulo = new List<MarcaArticulo>();
 
             try
             {
-                datos.setearConsulta("select id, codigo, descripcion, estado from CategoriaCliente");
+                datos.setearConsulta("select id, codigo, descripcion, estado from MarcaArticulo");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
-                    CategoriaCliente aux = new CategoriaCliente();
+                    MarcaArticulo aux = new MarcaArticulo();
                     aux.id = (int)datos.Lector["id"];
                     aux.codigo = (string)datos.Lector["codigo"];
                     aux.descripcion = (string)datos.Lector["descripcion"];
                     aux.estado = (bool)datos.Lector["estado"];
 
-                    CategoriaxCliente.Add(aux);
+                    MarcaxArticulo.Add(aux);
 
                 }
 
-                return CategoriaxCliente;
+                return MarcaxArticulo;
 
             }
             catch (Exception ex)
@@ -46,11 +49,13 @@ namespace Negocio
             }
         }
 
-        public void Agregar(CategoriaCliente aux)
+
+
+        public void Agregar(MarcaArticulo aux)
         {
             try
             {
-                datos.setearConsulta("insert into CategoriaCliente (codigo, descripcion, estado) values (@cod, @desc, @est)");
+                datos.setearConsulta("insert into MarcaArticulo (codigo, descripcion, estado) values (@cod, @desc, @est)");
                 datos.SetearPARAMETROS("@cod", aux.codigo);
                 datos.SetearPARAMETROS("@desc", aux.descripcion);
                 datos.SetearPARAMETROS("@est", true);
@@ -74,7 +79,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("update CategoriaCliente set estado = false where id=" + id);
+                datos.setearConsulta("update MarcaArticulo set estado = false where id=" + id);
                 datos.ejecutarEscritura();
             }
             catch (Exception ex)
@@ -87,8 +92,5 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-
-
-            
     }
 }

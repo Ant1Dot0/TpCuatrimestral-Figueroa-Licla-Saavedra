@@ -11,9 +11,8 @@
         <div class="row justify-content-md-center ">
             <div class="card col-md-10">
                 <div class="card-header text-center">
-                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary mb-1" />
+                    <asp:Button ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar" CssClass="btn btn-primary mb-1" />
                     <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger mb-1" />
-                    <asp:Button ID="btnGuardarComo" runat="server" Text="Guardar Como" CssClass="btn btn-secondary mb-1" />
                     <asp:Button ID="btnLista" runat="server" Text="Ver Lista" CssClass="btn btn-success mb-1" />
                 </div>
                 <div class="card-body">
@@ -21,13 +20,13 @@
                         <div class="col-md-4">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblCodigo">Codigo</span>
-                                <input type="text" class="form-control" placeholder="Código Marca" aria-label="CodigoMarca" aria-describedby="basic-addon1">
+                                <asp:TextBox ID="TxtCodigo" CssClass="form-control" runat="server"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblDescripcion">Descripción</span>
-                                <input type="text" class="form-control" placeholder="Descripción" aria-label="DescripcionMarca" aria-describedby="basic-addon1">
+                                <asp:TextBox ID="TxtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
                             </div>
                         </div>
                     </div>

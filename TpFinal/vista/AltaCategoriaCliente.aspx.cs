@@ -18,14 +18,34 @@ namespace vista
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            CategoriasClienteNegocio negocio = new CategoriasClienteNegocio();
-            CategoriaCliente nuevaCatCliente = new CategoriaCliente();
+            try
+            {
 
-            nuevaCatCliente.codigo = TxtCodigo.Text;
-            nuevaCatCliente.descripcion = TxtDescripcion.Text;
+                if (string.IsNullOrEmpty(TxtCodigo.Text) || string.IsNullOrEmpty(TxtDescripcion.Text))
+                {
+                    return;
+                }
+                else
+                {
 
-            negocio.Agregar(nuevaCatCliente);
-            Response.Redirect("ListaCategoriaCliente.aspx", false);
+                    CategoriasClienteNegocio negocio = new CategoriasClienteNegocio();
+                    CategoriaCliente nuevaCatCliente = new CategoriaCliente();
+
+                    nuevaCatCliente.codigo = TxtCodigo.Text;
+                    nuevaCatCliente.descripcion = TxtDescripcion.Text;
+
+                    negocio.Agregar(nuevaCatCliente);
+                    Response.Redirect("ListaCategoriaCliente.aspx", false);
+
+                }
+               
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
 
         }
 
