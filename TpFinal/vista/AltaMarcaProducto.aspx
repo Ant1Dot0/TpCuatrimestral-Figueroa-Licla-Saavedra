@@ -32,7 +32,7 @@
                 </div>
                 <div class="card-footer text-end">
                     <asp:Button runat="server" ID="btnGuardar" Text="Guardar" OnClick="btnGuardar_Click" CssClass="btn btn-success" />
-                    <asp:Button runat="server" ID="btnCancelar" Text="Cancelar" CssClass="btn btn-danger" />
+                    <a href="ListaMarcasProductos.aspx" class="btn btn-danger">Cancelar</a>
                 </div>
             </div>
         </div>

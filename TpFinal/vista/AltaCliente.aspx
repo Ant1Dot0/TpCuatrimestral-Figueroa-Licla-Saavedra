@@ -67,7 +67,7 @@
                 </div>
                 <div class="card-footer text-end">
                     <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" CssClass="btn btn-success" />
-                    <asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary" OnClick="BtnCancelar_Click" />
+                    <a href="ListaClientes.aspx" class="btn btn-danger">Cancelar</a>
                 </div>
             </div>
         </div>

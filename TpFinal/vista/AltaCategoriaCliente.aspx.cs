@@ -13,7 +13,19 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Request.QueryString["id"] != null)
+            {
+                List<CategoriaCliente> categorias = new List<CategoriaCliente>();
+                CategoriasClienteNegocio negocio = new CategoriasClienteNegocio();
 
+                categorias = negocio.Listar();
+                int id = int.Parse(Request.QueryString["id"]);
+
+                CategoriaCliente seleccionado = categorias.Find(x => x.id == id);
+
+                TxtCodigo.Text = seleccionado.codigo;
+                TxtDescripcion.Text = seleccionado.descripcion;
+            }
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)

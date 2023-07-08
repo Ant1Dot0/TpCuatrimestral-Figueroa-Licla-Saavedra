@@ -65,6 +65,7 @@
                     </asp:GridView>
                 </div>
             </div>
+               <a href="ListaVentas.aspx" class="btn btn-danger">Cancelar</a>
         </div>
     </div>
 </asp:Content>

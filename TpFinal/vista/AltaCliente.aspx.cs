@@ -22,7 +22,28 @@ namespace vista
             ddlCategoria.DataValueField = "id";
             ddlCategoria.DataTextField = "descripcion";
             DataBind();
-            
+
+            if (Request.QueryString["id"] != null)
+            {
+
+                List<Cliente> categorias = new List<Cliente>();
+                ClientesNegocio negocio = new ClientesNegocio();
+
+                categorias = negocio.Listar();
+                int id = int.Parse(Request.QueryString["id"]);
+
+                Cliente seleccionado = categorias.Find(x => x.id == id);
+
+                TxtApellido.Text = seleccionado.apellido;
+                TxtCodigo.Text = seleccionado.codigo;
+                TxtDireccion.Text = seleccionado.direccion;
+                TxtDNI.Text = seleccionado.nDocumento;
+                TxtEmail.Text = seleccionado.email;
+                TxtNombre.Text = seleccionado.nombre;
+                TxtTelefono.Text = seleccionado.telefono;
+
+            }
+
 
         }
 
