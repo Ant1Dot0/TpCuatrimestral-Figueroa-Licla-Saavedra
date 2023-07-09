@@ -28,12 +28,12 @@ namespace vista
 
             try
             {
-                Log.email = TxtEmail.ToString();
-                Log.password = TxtPass.ToString();
+                Log.email = TxtEmail.Text;
+                Log.password = TxtPass.Text;
                 if (negocio.Logueo(Log) == true)
                 {
                     Session.Add("User", Log);
-                    Response.Redirect("Default.aspx");
+                    Response.Redirect("Default.aspx", false);
                 }
                 else
                 {

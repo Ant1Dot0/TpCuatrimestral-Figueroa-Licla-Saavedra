@@ -18,14 +18,13 @@
     <nav class="navbar bg-dark border-bottom-dark sticky-top">
         <div class="container-fluid col-11">
                 <a class="btn btn-dark text-light" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Menú
-                </a>
-
+                </a>       
+           
             <div class="dropdown">
                 <a href="#" class="btn btn-dark" data-bs-toggle="dropdown">Usuario<i class="bi bi-file-person-fill"></i></a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Info</a></li>
-                    <li><a class="dropdown-item" href="Registro.aspx">Logueo</a></li>
-                    <li><a class="dropdown-item" href="#">Contraseña</a></li>
+                    <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
                     <li><a class="dropdown-item" href="#">Desloguearse</a></li>
                 </ul>
             </div>
