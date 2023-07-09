@@ -11,7 +11,7 @@ namespace vista
 {
 
 
-    public partial class Registro
+    public partial class InicioSesion
     {
 
         /// <summary>
