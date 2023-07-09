@@ -56,11 +56,6 @@ namespace Negocio
 
 
 
-    }
-
-
-
-
 
         public void Eliminar(int id)
         {
@@ -80,5 +75,16 @@ namespace Negocio
             }
         }
 
+
+
+
+
+
     }
+
+
+
+
+
+    
 }
