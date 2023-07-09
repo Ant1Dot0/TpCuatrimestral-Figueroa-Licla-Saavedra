@@ -19,7 +19,7 @@ namespace Negocio
             try
             {
 
-                datos.setearConsulta("Select ID, Nombre, Apellido, From Usuarios where email = @email AND pass = @pass");
+                datos.setearConsulta("Select U.id as id, R.codigo as Rcodigo, R.descripcion as Rdescripcion, From Usuarios as U, Rol as R where email = @email AND pass = @pass");
                 datos.SetearPARAMETROS("@email", usuarios.email);
                 datos.SetearPARAMETROS("@pass", usuarios.password);
 
@@ -28,10 +28,10 @@ namespace Negocio
                 while (datos.Lector.Read())
                 {
 
-                    usuarios.id = (int)datos.Lector["Id"];
-                   
-                    usuarios.nombre = (string)datos.Lector["Nombre"];
-                    usuarios.apellido = (string)datos.Lector["Apellido"];
+                    usuarios.id = (int)datos.Lector["id"];
+                    usuarios.rol = new Rol();
+                    usuarios.rol.codigo = (string)datos.Lector["Rcodigo"];
+                    usuarios.rol.descripcion = (string)datos.Lector["Rdescripcion"];
                                    
 
                     return true;
