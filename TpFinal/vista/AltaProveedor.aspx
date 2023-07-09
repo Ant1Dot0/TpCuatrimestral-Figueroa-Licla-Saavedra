@@ -69,6 +69,7 @@
                     </div>
                 </div>
             </div>
+                    <a href="ListaProveedores.aspx" class="btn btn-danger">Cancelar</a>
         </div>
     </div>
 </asp:Content>

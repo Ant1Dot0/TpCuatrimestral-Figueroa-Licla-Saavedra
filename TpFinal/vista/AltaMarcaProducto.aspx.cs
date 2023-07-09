@@ -13,7 +13,22 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["id"] != null)
+            {
+                List<MarcaArticulo> marcas = new List<MarcaArticulo>();
+                MarcaArticuloNegocio negocio = new MarcaArticuloNegocio();
 
+                marcas = negocio.Listar();
+                int id = int.Parse(Request.QueryString["id"]);
+
+                MarcaArticulo seleccionado = marcas.Find(x => x.id == id);
+
+
+                TxtCodigo.Text = seleccionado.codigo;
+                TxtDescripcion.Text = seleccionado.descripcion;
+               
+
+            }
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
