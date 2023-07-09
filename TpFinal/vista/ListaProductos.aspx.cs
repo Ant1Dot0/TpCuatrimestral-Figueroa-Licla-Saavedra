@@ -14,22 +14,47 @@ namespace vista
         public List<Producto> productos;
         protected void Page_Load(object sender, EventArgs e)
         {
+            int idProducto = 0;
+
+            if (Request.QueryString["id"] != null)
+            {
+                idProducto = int.Parse(Request.QueryString["id"].ToString());
+            }
+
+
+            if (idProducto >= 1)
+            {
+                new ProductoNegocio().Eliminar(idProducto);
+                Response.Redirect("ListaProductos.aspx");
+            }
+
             productos = new ProductoNegocio().listar();
-           /* Producto aux = new Producto();
-            Producto aux2 = new Producto();
-            aux.codigo = "S001";
-            aux.descripcion = "samsung S001";
-            aux.precioCompra = 1500;
-            aux.id = 1;
 
-            aux2.codigo = "S002";
-            aux2.descripcion = "samsung S002";
-            aux2.precioCompra = 1800;
-            aux2.id = 2;
-
-            productos.Add(aux);
-            productos.Add(aux2);*/
+            if(!IsPostBack)
+            {
+                repProductos.DataSource = productos;
+                DataBind();
+            }
             
+
+
+        }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            Session.Add("AccionProducto", 1); // 0 para alta, 1 para editar.
+            string valor = (((Button)sender).CommandArgument); // capturo código de articulo del btn que clickearon
+            Producto aux = productos.Find(a => a.codigo == valor); // busco por código de artículo en la lista productos, me devuelve un obj clase Producto
+            Session.Add("ProductoSelected",aux); // comparto el producto en la session para usarlo en la ventana AltaArticulo
+            Response.RedirectPermanent("AltaArticulo.aspx"); // me dirijo a Alta Articulo
+        }
+
+        protected void btnNuevo_Click(object sender, EventArgs e)
+        {
+            Session.Add("AccionProducto", 0); // 0 para alta, 1 para editar.
+            Session.Add("ProductoSelected", null);
+            Session.Add("ProveedoresSelected", null);
+            Response.RedirectPermanent("AltaArticulo.aspx", false);
         }
     }
 }

@@ -14,9 +14,14 @@ namespace vista
         public List<Proveedor> proveedores = new List<Proveedor>();
         public List<ProveedorxProducto> auxProveedoresSeleccionados = new List<ProveedorxProducto>();
         public Producto auxProductoSeleccionado = new Producto();
-
+        public int accion = 0; // 0 para alta, 1 para editar.
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if(Session["AccionProducto"] != null)
+            {
+                accion = int.Parse(Session["AccionProducto"].ToString());
+            }
 
             if (Session["ProductoSelected"] != null)
             {
@@ -98,7 +103,13 @@ namespace vista
 
         protected void cargarForm()
         {
+            
             TxtCodigoProducto.Text = auxProductoSeleccionado.codigo;
+            if (accion==1)
+            {
+                TxtCodigoProducto.Enabled = false;
+            }
+
             TxtDescripcion.Text = auxProductoSeleccionado.descripcion;
             ddlMarca.SelectedIndex = new MarcaArticuloNegocio().Listar().FindIndex(a => a.id == auxProductoSeleccionado.marca.id);
             ddlCategoria.SelectedIndex = new CategoriaArticuloNegocio().Listar().FindIndex(a => a.id == auxProductoSeleccionado.categoria.id);
@@ -148,6 +159,7 @@ namespace vista
         {
             Session.Add("ProveedoresSelected", null);
             Session.Add("ProductoSelected", null);
+            Session.Add("AccionProducto", null);
 
         }
 
@@ -155,7 +167,15 @@ namespace vista
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
             GrabarProducto();
-            new ProductoNegocio().Agregar(auxProductoSeleccionado);
+            if(accion == 1) // 1 para editar, 0 para guardar
+            {
+                new ProductoNegocio().Editar(auxProductoSeleccionado);
+            }
+            else
+            {
+                new ProductoNegocio().Agregar(auxProductoSeleccionado);
+            }
+            
 
             new ProveedorxProductoNegocio().EliminarxProducto(auxProductoSeleccionado.codigo);
 

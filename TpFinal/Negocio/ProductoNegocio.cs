@@ -83,7 +83,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("update Producto set estado = 'true'  where id =" + id);
+                datos.setearConsulta("update Producto set estado = 'false'  where id =" + id);
                 datos.ejecutarEscritura();
             }
             catch (Exception ex)

@@ -12,34 +12,38 @@
         </div>
         <div class="row justify-content-end">
             <div class="col-md-4 text-end">
-                <a href="AltaArticulo.aspx" class="btn btn-primary">Nuevo Producto</a>
+                <asp:Button runat="server" ID="btnNuevo" CssClass="btn btn-primary" OnClick="btnNuevo_Click" Text="Nuevo Producto"/>
             </div>
         </div>
-        <%foreach (var x in productos)
-            {%>
-        <div class="card  text-bg-info my-3">
-            <div class="row g-0">
-                <div class="col-md-2">
-                    <img src="https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-7">
-                    <div class="card-body">
-                        <h5 class="card-title"><%=x.descripcion %> (<%=x.codigo%>)</h5>
-                        <p class="card-text">Marca: <%=x.marca.descripcion %></p>
-                        <p class="card-text">Categoría: <%=x.categoria.descripcion %></p>
-                        <p class="card-text">Precio de compra: <%=x.precioCompra %></p>
+
+        <asp:Repeater runat="server" ID="repProductos" Visible="true">
+            <ItemTemplate>
+                <div class="card  text-bg-info my-3">
+                    <div class="row g-0">
+                        <div class="col-md-2">
+                            <img src="https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title"><%#Eval("descripcion") %> (<%#Eval("codigo")%>)</h5>
+                                <p class="card-text">Marca: <%#Eval("marca") %></p>
+                                <p class="card-text">Categoría: <%#Eval("categoria") %></p>
+                                <p class="card-text">Precio de compra: <%#Eval("precioCompra") %></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mt-3">
+                            <p class="card-text">Stock Actual: <%#Eval("stockActual") %></p>
+                            <p class="card-text">stock mínimo: <%#Eval("stockMinimo") %></p>
+                            <p class="card-text">Ganancia: <%#Eval("ganacia") %></p>
+                            <p>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick='guardarID(<%#Eval("id") %>)'>Eliminar</button>
+                                <asp:Button runat="server" ID="btnEditar" CssClass="btn btn-primary" OnClick="btnEditar_Click" Text="Editar" CommandArgument='<%#Eval("codigo") %>' />
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3 mt-3">
-                    <p class="card-text">Stock Actual: <%=x.stockActual %></p>
-                    <p class="card-text">stock mínimo: <%=x.stockMinimo %></p>
-                    <p class="card-text">Ganancia: <%=x.ganacia %></p>
-                    <p>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick='guardarID(<%=x.id %>)'>Eliminar</button></p>
-                </div>
-            </div>
-        </div>
-        <%} %>
+            </ItemTemplate>
+        </asp:Repeater>
         <!--------------------------------------INICIO MODAL------------------------------------------>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">

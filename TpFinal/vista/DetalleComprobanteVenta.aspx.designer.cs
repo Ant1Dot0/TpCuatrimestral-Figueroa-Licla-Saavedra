@@ -11,7 +11,7 @@ namespace vista
 {
 
 
-    public partial class AltaVenta
+    public partial class DetalleComprobanteVenta
     {
     }
 }

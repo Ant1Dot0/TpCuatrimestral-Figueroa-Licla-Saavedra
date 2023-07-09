@@ -6,7 +6,7 @@
     <div class="container mt-5">
         <div class="row justify-content-md-center">
             <div class="col-lg-4 text-center">
-                <h1>Producto nuevo</h1>
+                <h1><%=  accion == 0 ? "Producto Nuevo": "Producto " + auxProductoSeleccionado.codigo %></h1>
             </div>
         </div>
         <div class="row justify-content-md-center ">
