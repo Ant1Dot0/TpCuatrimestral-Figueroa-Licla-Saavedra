@@ -15,7 +15,7 @@ namespace Negocio
         AccesoDatos datos = new AccesoDatos();
 
 
-        List<DetalleProducto> Listar()
+        public List<DetalleProducto> Listar()
         {
             List<DetalleProducto> detalleProductos = new List<DetalleProducto>();
 
