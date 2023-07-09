@@ -29,7 +29,7 @@ namespace Negocio
                 {
 
                     usuarios.id = (int)datos.Lector["id"];
-                    usuarios.rol = new Rol();
+                    
                     usuarios.rol.codigo = (string)datos.Lector["Rcodigo"];
                     usuarios.rol.descripcion = (string)datos.Lector["Rdescripcion"];
                                    

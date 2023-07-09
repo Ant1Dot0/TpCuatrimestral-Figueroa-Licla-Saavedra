@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
+    public enum TipoRol
+    {
+
+        ADMIN = 1,
+        VISTA = 2
+
+    }
+
+
     public class Rol
     {
         public int id { get; set; }
