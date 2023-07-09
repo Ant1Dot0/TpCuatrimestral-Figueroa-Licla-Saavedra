@@ -10,7 +10,7 @@
         </div>
         <div class="row justify-content-end">
             <div class="col-md-4 text-center">
-                <a href="AltaVenta.aspx" class="btn btn-primary">Nueva Venta</a>
+                <asp:Button runat="server" CssClass="btn btn-primary" ID="btnNuevaVenta" OnClick="btnNuevaVenta_Click" Text="Nueva Venta"/>
             </div>
         </div>
         <div class="row justify-content-center mt-2">

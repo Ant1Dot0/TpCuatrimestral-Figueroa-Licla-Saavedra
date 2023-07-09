@@ -78,6 +78,7 @@
     <Content Include="assets\estilos\estiloMaster.css" />
     <Content Include="Default.aspx" />
     <Content Include="DetalleComprobanteVenta.aspx" />
+    <Content Include="DetalleProductosVenta.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Js\fjs.js" />
     <Content Include="Js\funciones.js" />
@@ -163,6 +164,13 @@
     </Compile>
     <Compile Include="DetalleComprobanteVenta.aspx.designer.cs">
       <DependentUpon>DetalleComprobanteVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleProductosVenta.aspx.cs">
+      <DependentUpon>DetalleProductosVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleProductosVenta.aspx.designer.cs">
+      <DependentUpon>DetalleProductosVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

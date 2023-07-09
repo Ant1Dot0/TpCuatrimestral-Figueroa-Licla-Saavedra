@@ -16,12 +16,12 @@
                         <div class="col-md-10">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblCliente">Cliente</span>
-                                <input type="text" class="form-control" disabled="disabled" placeholder="CF- Consumdor Final" aria-label="CodigoCliente" aria-describedby="basic-addon1">
+                                <asp:TextBox runat="server" CssClass="form-control" ID="txtCodigo" Enabled="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="input-group mb-3">
-                               <asp:Button runat="server" CssClass="btn btn-primary" text="Nuevo Cliente" />
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Nuevo Cliente</button>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -39,12 +39,113 @@
                     </div>
                 </div>
                 <div class="card-footer text-end">
-                    <asp:Button runat="server" CssClass="btn btn-success"  Text="Guardar"/>
-                    <asp:Button runat="server" CssClass="btn btn-secondary"  Text="Cancelar"/>
+                    <asp:Button runat="server" ID="BtnGuardar" CssClass="btn btn-success" Text="Guardar" OnClick="BtnGuardar_Click" />
+                    <asp:Button runat="server" ID="BtnCancelar" CssClass="btn btn-secondary" Text="Cancelar" OnClick="BtnCancelar_Click" />
                 </div>
             </div>
 
-            <div class="card col-md-10"></div>
+            <div class="card col-md-10">
+                <div class="input-group my-2">
+                    <span class="input-group-text" id="lblFiltro">Filtro</span>
+                    <asp:TextBox runat="server" ID="TxtFiltro" CssClass="form-control  border border-secondary" AutoPostBack="true" OnTextChanged="TxtFiltro_TextChanged"></asp:TextBox>
+                </div>
+
+                <asp:GridView ID="gvClientes" runat="server" DataKeyNames="codigo" CssClass="table table-dark" AutoGenerateColumns="false"
+                    OnSelectedIndexChanged="gvClientes_SelectedIndexChanged" OnPageIndexChanging="gvClientes_PageIndexChanging"
+                    AllowPaging="true">
+                    <Columns>
+                        <asp:BoundField HeaderText="Codigo" DataField="codigo" />
+                        <asp:BoundField HeaderText="Nombre" DataField="nombre" />
+                        <asp:BoundField HeaderText="Apellido" DataField="apellido" />
+                        <asp:BoundField HeaderText="DNI" DataField="nDocumento" />
+                        <asp:BoundField HeaderText="Categoría" DataField="categoria" />
+                        <asp:CommandField ShowSelectButton="true" SelectText="+" HeaderText=" " />
+                    </Columns>
+                </asp:GridView>
+            </div>
         </div>
+
+         <!--------------------------- INICIO MODAL-------------------------------------->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Nuevo Cliente</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="container">
+                            <div class="row justify-content-md-center ">
+                                <div class="card col-md-10">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="lblCodigo">Codigo</span>
+                                <asp:TextBox ID="TxtCodigoNuevoCliente" CssClass="form-control" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="lblnDocumento">DNI</span>
+                                <asp:TextBox ID="TxtDNI" CssClass="form-control" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="lblNombre">Nombre</span>
+                                <asp:TextBox ID="TxtNombre" CssClass="form-control" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="lblApellido">Apellido</span>
+                                <asp:TextBox ID="TxtApellido" CssClass="form-control" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="lblCategoria">Categoría</span>
+                                <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="btn btn-outline-secondary">
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="lblTelefono">Telefono</span>
+                                <asp:TextBox ID="TxtTelefono" CssClass="form-control" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="lblEmail">Email</span>
+                                <asp:TextBox ID="TxtEmail" CssClass="form-control" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="lblDireccion">Dirección</span>
+                                <asp:TextBox ID="TxtDireccion" CssClass="form-control" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="btnAltaCliente" runat="server" Text="Guardar" OnClick="btnAltaCliente_Click" CssClass="btn btn-success" />
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+ 
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----------------------------------------- FIN MODAL---------------------------------->
     </div>
 </asp:Content>

@@ -194,6 +194,5 @@ namespace vista
             Response.Redirect("ListaProductos.aspx");
         }
 
-
     }
 }

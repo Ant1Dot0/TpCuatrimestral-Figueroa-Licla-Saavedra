@@ -101,7 +101,6 @@
                                     <div class="container">
                                         <div class="row justify-content-md-center ">
                                             <div class="col-md-8">
-                                                <div class="row">
                                                     <asp:GridView ID="gvProveedores" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="Codigo"
                                                         OnSelectedIndexChanged="gvProveedores_SelectedIndexChanged" OnPageIndexChanging="gvProveedores_PageIndexChanging"
                                                         AllowPaging="true">
@@ -111,7 +110,6 @@
                                                             <asp:CommandField ShowSelectButton="true" SelectText="+" HeaderText=" " />
                                                         </Columns>
                                                     </asp:GridView>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -18,7 +18,7 @@
                             <h4 class="text-info">Datos del Comprobante</h4>
                         </div>
                         <div class="col-md-6 text-end">
-                            <a href="#">
+                            <a href="DetalleComprobanteVenta.aspx">
                                 <h4 class="text-info"><i class="bi bi-gear"></i></h4>
                             </a>
                         </div>
@@ -26,21 +26,21 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-9">
                             <div class="input-group mb-3">
                                 <span class="input-group-text text-secondary" id="lblCliente">Cliente</span>
-                                <input type="text" class="form-control" disabled="disabled" placeholder="CF - Consumidor Final" aria-label="CodigoCliente" aria-describedby="basic-addon1">
+                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtCliente" Enabled="false"></asp:TextBox>         
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="input-group mb-3">
                                 <span class="input-group-text text-secondary" id="lblVendedor">Vendedor</span>
-                                <input type="text" class="form-control" disabled="disabled" placeholder="Ariel Valenzuela" aria-label="CodigoVendedor" aria-describedby="basic-addon1">
+                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtVendedor" Enabled="false">Ariel Valenzuela</asp:TextBox>  
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="input-group mb-3">
-                                <span class="input-group-text text-secondary" id="lblFecha">Fecha</span>
+                                <span class="input-group-text text-secondary" id="lblFecha">Fecha</span> 
                                 <input type="datetime" class="form-control" disabled="disabled" value="<%=hoy.ToString("d") %>" aria-label="Fecha" aria-describedby="basic-addon1">
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                             <h4 class="text-info">Detalle de Productos</h4>
                         </div>
                         <div class="col-md-6 text-end">
-                            <a href="#">
+                            <a href="DetalleProductosVenta.aspx">
                                 <h4 class="text-info"><i class="bi bi-gear"></i></h4>
                             </a>
                         </div>
