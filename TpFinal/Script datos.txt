@@ -46,4 +46,12 @@ insert into CategoriaCliente values('IMPORTANTE', 'IMPORTANTE',1)
 GO
 insert into CategoriaCliente values('PERSONAL', 'PERSONAL',1)
 
+insert into Rol(codigo, descripcion, estado) values ('AAA','ADMIN', 1)
+
+insert into Rol(codigo, descripcion, estado) values ('AAB','PERMISO SIN ALTA', 1)
+
+insert into Usuario(apellido, nombre, direccion, email, passwordd, telefono, movil, idRol, estado) values ('Alvarez', 'Matias', 'Acevedo 5888', 'matiasAlv@gmail.com', 'AAA', '1158764532', '1158764532', 1, 1)
+
+insert into Usuario(apellido, nombre, direccion, email, passwordd, telefono, movil, idRol, estado) values ('Gutierrez', 'Monica', 'Paz 578', 'moniGu@gmail.com', 'BBB', '1122745632', '1122745632', 1, 1)
+
 

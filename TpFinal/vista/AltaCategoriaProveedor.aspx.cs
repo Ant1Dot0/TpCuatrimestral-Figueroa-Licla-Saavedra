@@ -13,8 +13,22 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] != null && ((Usuario)Session["User"]).rol.descripcion == TipoRol.ADMIN.ToString() && Request.QueryString["id"] != null)
+            {
+                TxtCodigo.Enabled = true;
+                TxtDescripcion.Enabled = true;
+            }
+            else
+            {
+                TxtCodigo.Enabled = false;
+                TxtDescripcion.Enabled = false;
+            }
 
-  
+
+
+
+
+
         }
 
 

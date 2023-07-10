@@ -12,7 +12,13 @@
         </div>
         <div class="row justify-content-end">
             <div class="col-md-4 text-end">
-                <asp:Button runat="server" ID="btnNuevo" CssClass="btn btn-primary" OnClick="btnNuevo_Click" Text="Nuevo Producto"/>
+                <%if (Session["User"] != null && ((Dominio.Usuario)Session["User"]).rol.descripcion == Dominio.TipoRol.ADMIN.ToString())
+                    {%>
+
+                         <a href="AltaArticulo.aspx" class="btn btn-primary">Nuevo Producto</a>
+
+                <%} %>
+
             </div>
         </div>
 

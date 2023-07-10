@@ -11,7 +11,12 @@
         </div>
         <div class="row justify-content-end">
             <div class="col-md-4 text-end">
-                <a href="AltaCategoriaProveedor.aspx" class="btn btn-primary">Nueva Categoría</a>
+                <%if (Session["User"] != null && ((Dominio.Usuario)Session["User"]).rol.descripcion == Dominio.TipoRol.ADMIN.ToString())
+                    {%>
+
+                        <a href="AltaCategoriaProveedor.aspx" class="btn btn-primary">Nueva Categoría</a>
+
+                <%} %>
             </div>
         </div>
 
