@@ -14,16 +14,6 @@ namespace vista
 
         }
 
-        protected void GridViewClientes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnNuevaVenta_Click(object sender, EventArgs e)
-        {
-            Session.Add("ClienteCompVenta", null);
-            Session.Add("ClienteTemp", null);
-            Response.Redirect("AltaVenta.aspx");
-        }
+  
     }
 }
