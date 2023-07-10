@@ -92,5 +92,34 @@ namespace Negocio
         }
 
 
+        public void Update(CategoriaProveedor aux)
+        {
+            {
+                try
+                {
+                    datos.setearConsulta("update CategoriaProveedor set codigo = @cod, descripcion = @desc where Id = @ID ");
+                    datos.SetearPARAMETROS("@ID", aux.id);
+                    datos.SetearPARAMETROS("@cod", aux.codigo);
+                    datos.SetearPARAMETROS("@desc", aux.descripcion);
+                    datos.SetearPARAMETROS("@est", true);
+
+                    datos.ejecutarEscritura();
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+                finally
+                {
+                    datos.cerrarConexion();
+                }
+
+
+            }
+        }
+
+
+
     }
 }
