@@ -29,18 +29,18 @@
                         <div class="col-md-9">
                             <div class="input-group mb-3">
                                 <span class="input-group-text text-secondary" id="lblCliente">Cliente</span>
-                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtCliente" Enabled="false"></asp:TextBox>         
+                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtCliente" Enabled="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="input-group mb-3">
                                 <span class="input-group-text text-secondary" id="lblVendedor">Vendedor</span>
-                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtVendedor" Enabled="false">Ariel Valenzuela</asp:TextBox>  
+                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtVendedor" Enabled="false">Ariel Valenzuela</asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="input-group mb-3">
-                                <span class="input-group-text text-secondary" id="lblFecha">Fecha</span> 
+                                <span class="input-group-text text-secondary" id="lblFecha">Fecha</span>
                                 <input type="datetime" class="form-control" disabled="disabled" value="<%=hoy.ToString("d") %>" aria-label="Fecha" aria-describedby="basic-addon1">
                             </div>
                         </div>
@@ -63,13 +63,50 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="card-body text-center">
+                    <%if (detProductosVenta.Count == 0)
+                        { %>
                     <h5 class="card-title">Aún no has añadido Productos</h5>
-                    <a href="#" class="btn btn-primary">Agregar productos</a>
+                    <a href="DetalleProductosVenta.aspx" class="btn btn-primary">Agregar productos</a>
+                    <%}
+                        else
+                        { %>
+
+                    <div class="row justify-content-around">
+                        <div class="col-md-4">
+                            <span class="form-control text-black" id="lblTotalCantidad">Cantidad</span>
+                            <asp:TextBox runat="server" CssClass="form-control text-center" ID="txtTotalCantidad" Enabled="false"></asp:TextBox>
+                        </div>
+
+                        <div class="col-md-4">
+                            <span class="form-control text-black" id="lblTotalItems">Items</span>
+                            <asp:TextBox runat="server" CssClass="form-control text-center" ID="TxtTotalItems" Enabled="false"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-body bg-primary-subtle border border-info border-bottom">
+                                <h2>TOTAL: <%=total %></h2>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <%} %>
+                </div>
+                <div class="card-footer text-end">
+                    <%if (totalCantidad > 0)
+                        { %>
+                    <button class="btn btn-primary">Ver Detalle</button>
+                    <asp:Button runat="server" ID="btnAceptar" CssClass="btn btn-success" Text="Aceptar"/>
+                    <%} %>
+                    <asp:Button runat="server" ID="btnCancelar" CssClass="btn btn-danger" Text="Cancelar"/>
+                    
                 </div>
             </div>
 
             <!-------------------------------------------- FIN CARD DETALLE PRODUCTOS----------------------------------->
+
         </div>
     </div>
 </asp:Content>

@@ -11,7 +11,12 @@ namespace vista
 {
     public partial class AltaVenta : System.Web.UI.Page
     {
-        Cliente ClienteCompVenta = new Cliente();
+        public Cliente ClienteCompVenta = new Cliente();
+        public List<DetalleProducto> detProductosVenta = new List<DetalleProducto>();
+        public int totalCantidad = 0;
+        public decimal total = 0;
+        public int totalItems = 0;
+
 
         public DateTime hoy = DateTime.Today;
         protected void Page_Load(object sender, EventArgs e)
@@ -25,8 +30,29 @@ namespace vista
             {
                 cargarForm();
             }
-        }
 
+            if(Session["DetProductosVenta"] != null)
+            {
+                detProductosVenta = (List<DetalleProducto>)Session["DetProductosVenta"];
+            }
+
+            totalCantidad = 0;
+            total = 0;
+            totalItems = 0;
+
+            foreach (DetalleProducto x in detProductosVenta)
+            {
+                totalCantidad += x.cantidad;
+                total += x.monto;
+                totalItems++;
+            }
+
+            txtTotalCantidad.Text = ""+totalCantidad;
+            TxtTotalItems.Text = "" + totalItems;
+            
+            
+
+        }
 
         protected void cargarForm()
         {

@@ -20,7 +20,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <asp:TextBox ID="TxtPass" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TxtPass" CssClass="form-control" runat="server" TextMode="Password" ></asp:TextBox>
                         </div>
 
                     </div>
