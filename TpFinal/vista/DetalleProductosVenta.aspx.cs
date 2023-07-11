@@ -19,13 +19,13 @@ namespace vista
         {
             lista = new ProductoNegocio().listar();
 
-            if(Session["ProductosSeleccionados"] != null)
+            if (Session["ProductosSeleccionados"] != null)
             {
-                productosSeleccionados = (List<DetalleProducto>)Session["ProductosSeleccionados"];
+                productosSeleccionados = recListDet("ProductosSeleccionados");
             }
-            else if(Session["DetProductosVenta"] != null)
+            else if (Session["DetProductosVenta"] != null)
             {
-                productosSeleccionados = (List<DetalleProducto>)Session["DetProductosVenta"];
+                productosSeleccionados = recListDet("DetProductosVenta");
 
             }
             prueba();
@@ -46,7 +46,7 @@ namespace vista
 
             gvProductosSeleccionados.DataSource = productosSeleccionados;
 
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 DataBind();
             }
@@ -68,14 +68,26 @@ namespace vista
                 prueba2++;
             }
 
-            
+
+        }
+
+        protected List<DetalleProducto> recListDet(string s)
+        {
+            List<DetalleProducto> aux = new List<DetalleProducto>();
+            List<DetalleProducto> aux2 = new List<DetalleProducto>();
+
+            aux2 = (List<DetalleProducto>)Session[s];
+
+            foreach(DetalleProducto x in aux2)
+            {
+                aux.Add(x);
+            }
+            return aux;
         }
 
         protected void guardarForm()
         {
             DetalleProducto auxDet = new DetalleProducto();
-            
-
         }
 
         protected void guardarSession()
@@ -113,7 +125,7 @@ namespace vista
 
             guardarSession();
             Response.Redirect("DetalleProductosVenta.aspx");
-                
+
         }
 
         protected void TxtFiltro_TextChanged(object sender, EventArgs e)
@@ -127,7 +139,7 @@ namespace vista
         {
             int cantidad = gvProductosSeleccionados.Rows.Count;
             TextBox txt = new TextBox();
-            
+
 
             for (int x = 0; x < cantidad; x++)
             {
@@ -160,8 +172,8 @@ namespace vista
 
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
-            
-            
+
+
 
             Session.Add("DetProductosVenta", productosSeleccionados);
 
@@ -171,9 +183,6 @@ namespace vista
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
             borrarSession();
-
-
-
             Response.Redirect("AltaVenta.aspx");
         }
 
