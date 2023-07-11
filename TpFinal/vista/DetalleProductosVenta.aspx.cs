@@ -28,7 +28,6 @@ namespace vista
                 productosSeleccionados = recListDet("DetProductosVenta");
 
             }
-            prueba();
 
             gvProductos.DataSource = lista;
             DetTotal = 0;
@@ -54,22 +53,6 @@ namespace vista
 
         }
 
-        protected void prueba()
-        {
-            if (Session["DetProductosVenta"] != null)
-            {
-                List<DetalleProducto> prueba = new List<DetalleProducto>();
-                prueba = (List<DetalleProducto>)(Session["DetProductosVenta"]);
-                decimal prueba2 = 0;
-                foreach (DetalleProducto x in prueba)
-                {
-                    prueba2 += x.monto;
-                }
-                prueba2++;
-            }
-
-
-        }
 
         protected List<DetalleProducto> recListDet(string s)
         {
@@ -78,10 +61,41 @@ namespace vista
 
             aux2 = (List<DetalleProducto>)Session[s];
 
-            foreach(DetalleProducto x in aux2)
+            int cont = 0;
+
+            for(int x = 0; x < aux2.Count; x++)
             {
-                aux.Add(x);
+                DetalleProducto aux3 = new DetalleProducto();
+                aux3.codComprobante =  aux2[cont].codComprobante;
+                aux3.codProducto = aux2[cont].codProducto;
+                aux3.cantidad = (int)aux2[cont].cantidad;
+                aux3.estado = aux2[cont].estado;
+                aux3.montoDescuento = (decimal)aux2[cont].montoDescuento;
+                aux3.monto = (decimal)aux2[cont].monto;
+                aux3.id = (int)aux2[cont].id;
+                aux3.descripcion = aux2[cont].descripcion;
+                aux3.precioVenta = (decimal) aux2[cont].precioVenta;
+
+                aux.Add(aux3);
+                cont++;
             }
+
+        /*    foreach (DetalleProducto x in aux2)
+            {
+
+
+                aux3.codComprobante = x.codComprobante;
+                aux3.codProducto = x.codProducto;
+                aux3.cantidad = x.cantidad;
+                aux3.estado = x.estado;
+                aux3.montoDescuento = x.montoDescuento;
+                aux3.monto = x.monto;
+                aux3.id = x.id;
+                aux3.descripcion = x.descripcion;
+                aux3.precioVenta = x.precioVenta;
+
+                aux.Add(aux3);
+            }*/
             return aux;
         }
 
@@ -172,8 +186,6 @@ namespace vista
 
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
-
-
 
             Session.Add("DetProductosVenta", productosSeleccionados);
 
