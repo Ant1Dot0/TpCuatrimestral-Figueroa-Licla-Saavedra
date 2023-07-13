@@ -98,9 +98,9 @@
                     <%if (totalCantidad > 0)
                         { %>
                     <button class="btn btn-primary">Ver Detalle</button>
-                    <asp:Button runat="server" ID="btnAceptar" CssClass="btn btn-success" Text="Aceptar"/>
+                    <asp:Button runat="server" ID="btnAceptar" CssClass="btn btn-success" Text="Aceptar" OnClick="btnAceptar_Click"/>
                     <%} %>
-                    <asp:Button runat="server" ID="btnCancelar" CssClass="btn btn-danger" Text="Cancelar"/>
+                    <asp:Button runat="server" ID="btnCancelar" CssClass="btn btn-danger" Text="Cancelar" OnClick="btnCancelar_Click"/>
                     
                 </div>
             </div>

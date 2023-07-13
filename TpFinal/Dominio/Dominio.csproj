@@ -54,6 +54,7 @@
     <Compile Include="Proveedor.cs" />
     <Compile Include="ProveedorxProducto.cs" />
     <Compile Include="Rol.cs" />
+    <Compile Include="Talonario.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

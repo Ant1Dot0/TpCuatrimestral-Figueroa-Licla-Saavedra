@@ -169,14 +169,14 @@ GO
 create table CompVenta
 (
 id int primary key identity(1,1) NOT NULL,
-puntoVenta [varchar](50) NOT NULL,
-numero [varchar](300) NOT NULL,
+codigo varchar(14) NOT NULL,
+puntoVenta int  NOT NULL,
+numero int NOT NULL,
 idCliente int NOT NULL,
 fechaComp [datetime] NOT NULL,
 idUsuario int NOT NULL,
 subtotal [decimal] NOT NULL,
 totalDescuento [decimal] NOT NULL,
-descuentoCompra [decimal] NOT NULL,
 totalComprobante [decimal]NOT NULL ,
 estado bit NOT NULL
 )
@@ -206,3 +206,13 @@ monto [decimal]NOT NULL,
 estado bit NOT NULL
 )
 GO
+
+create table TALONARIOS(
+id int primary key identity(1,1),
+tipoComprobante int NOT NULL,
+cod varchar(10) not null,
+descripcion varchar (50) not null,
+PDV int not null,
+ultNumero int not null,
+estado bit NOT NULL
+)

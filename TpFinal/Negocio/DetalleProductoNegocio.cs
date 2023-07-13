@@ -75,7 +75,34 @@ namespace Negocio
             }
         }
 
+        public void Agregar(DetalleProducto aux)
+        {
+            try
+            {
+                datos.setearConsulta("insert into DetalleProducto (codProducto, codComprobante, descripcion, cantidad, precioVenta, montoDescuento, monto, estado) values (@cod, @codComprobante, @desc, @cantidad, @precioVenta, @montoDescuento, @monto, @est)");
+                datos.SetearPARAMETROS("@cod", aux.codProducto);
+                datos.SetearPARAMETROS("@codComprobante", aux.codComprobante);
+                datos.SetearPARAMETROS("@desc", aux.descripcion);
+                datos.SetearPARAMETROS("@cantidad", aux.cantidad);
+                datos.SetearPARAMETROS("@precioVenta", aux.precioVenta);
+                datos.SetearPARAMETROS("@montoDescuento", aux.montoDescuento);
+                datos.SetearPARAMETROS("@monto", aux.monto);
+                datos.SetearPARAMETROS("@est", true);
 
+                datos.ejecutarEscritura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+
+        }
 
 
 

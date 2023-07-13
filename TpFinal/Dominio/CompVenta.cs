@@ -12,9 +12,9 @@ namespace Dominio
 
         public string codigo { get; set; }
 
-        public string puntoVenta { get; set; }
+        public int puntoVenta { get; set; }
 
-        public string numero { get; set; }
+        public int numero { get; set; }
 
         public Cliente cliente { get; set; }
 
