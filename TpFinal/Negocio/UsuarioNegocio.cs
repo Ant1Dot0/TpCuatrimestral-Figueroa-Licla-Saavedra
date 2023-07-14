@@ -53,7 +53,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select U.id, U.idLogin, U.passwordd, U.email, U.nombre, U.apellido, U.telefono, U.movil, U.direccion, R.id as idRol, R.descripcion as descRol, R.codigo as codRol, U.estado as estUsuario from Usuario as U, Rol as R where U.estado = 1 And R.id = U.id");
+                datos.setearConsulta("select U.id as id, U.idLogin as idLogin, U.passwordd as passwordd , U.email as email, U.nombre as nombre, U.apellido as apellido, U.telefono as telefono, U.movil as movil, U.direccion as direccion, R.id as idRol, R.descripcion as descRol, R.codigo as codRol, U.estado as estUsuario from Usuario as U, Rol as R where U.estado = 1 And R.id = U.id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

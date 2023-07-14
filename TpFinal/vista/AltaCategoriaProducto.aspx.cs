@@ -79,5 +79,10 @@ namespace vista
             negocio.Eliminar(Aux);
             Response.Redirect("ListaCategoriaProducto.aspx", false);
         }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
