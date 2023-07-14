@@ -72,12 +72,15 @@
     <Content Include="AltaCategoriaProducto.aspx" />
     <Content Include="AltaCategoriaProveedor.aspx" />
     <Content Include="AltaCliente.aspx" />
+    <Content Include="AltaCompra.aspx" />
     <Content Include="AltaMarcaProducto.aspx" />
     <Content Include="AltaProveedor.aspx" />
     <Content Include="AltaVenta.aspx" />
     <Content Include="assets\estilos\estiloMaster.css" />
     <Content Include="Default.aspx" />
+    <Content Include="DetalleComprobanteCompra.aspx" />
     <Content Include="DetalleComprobanteVenta.aspx" />
+    <Content Include="DetalleProductosCompra.aspx" />
     <Content Include="DetalleProductosVenta.aspx" />
     <Content Include="error.aspx" />
     <Content Include="Global.asax" />
@@ -88,6 +91,7 @@
     <Content Include="ListacategoriaProducto.aspx" />
     <Content Include="ListaCategoriaProveedor.aspx" />
     <Content Include="ListaClientes.aspx" />
+    <Content Include="ListaCompra.aspx" />
     <Content Include="ListaMarcasProductos.aspx" />
     <Content Include="ListaProductos.aspx" />
     <Content Include="ListaProveedores.aspx" />
@@ -131,6 +135,13 @@
     <Compile Include="AltaCliente.aspx.designer.cs">
       <DependentUpon>AltaCliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AltaCompra.aspx.cs">
+      <DependentUpon>AltaCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaCompra.aspx.designer.cs">
+      <DependentUpon>AltaCompra.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AltaMarcaProducto.aspx.cs">
       <DependentUpon>AltaMarcaProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -159,12 +170,26 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DetalleComprobanteCompra.aspx.cs">
+      <DependentUpon>DetalleComprobanteCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleComprobanteCompra.aspx.designer.cs">
+      <DependentUpon>DetalleComprobanteCompra.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DetalleComprobanteVenta.aspx.cs">
       <DependentUpon>DetalleComprobanteVenta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DetalleComprobanteVenta.aspx.designer.cs">
       <DependentUpon>DetalleComprobanteVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleProductosCompra.aspx.cs">
+      <DependentUpon>DetalleProductosCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleProductosCompra.aspx.designer.cs">
+      <DependentUpon>DetalleProductosCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="DetalleProductosVenta.aspx.cs">
       <DependentUpon>DetalleProductosVenta.aspx</DependentUpon>
@@ -217,6 +242,13 @@
     </Compile>
     <Compile Include="ListaClientes.aspx.designer.cs">
       <DependentUpon>ListaClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaCompra.aspx.cs">
+      <DependentUpon>ListaCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaCompra.aspx.designer.cs">
+      <DependentUpon>ListaCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListaMarcasProductos.aspx.cs">
       <DependentUpon>ListaMarcasProductos.aspx</DependentUpon>

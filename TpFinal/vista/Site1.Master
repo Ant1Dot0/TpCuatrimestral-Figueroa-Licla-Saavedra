@@ -50,7 +50,7 @@
                     <li><a class="dropdown-item" href="ListaMarcasProductos.aspx">Marcas Productos</a></li>
                 </ul>
                 <a href="ListaVentas.aspx" class="d-block text-light p-3">Ventas</a>
-                <a href="#" class="d-block text-light p-3">Compras</a>
+                <a href="ListaCompra.aspx" class="d-block text-light p-3">Compras</a>
                 <a href="#" class="d-block text-light p-3">Consultas</a>
                 <a href="#" class="d-block text-light p-3">Herramientas</a>
             </div>
