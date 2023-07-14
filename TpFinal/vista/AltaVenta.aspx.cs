@@ -13,6 +13,7 @@ namespace vista
     {
         public Cliente ClienteCompVenta = new Cliente();
         public List<DetalleProducto> detProductosVenta = new List<DetalleProducto>();
+        public Usuario vendedor = new Usuario();
         public int totalCantidad = 0;
         public decimal total = 0;
         public int totalItems = 0;
@@ -21,20 +22,27 @@ namespace vista
         public DateTime hoy = DateTime.Today;
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (Session["ClienteCompVenta"] != null)
             {
                 ClienteCompVenta = (Cliente)Session["ClienteCompVenta"];
-            }
-
-            if (!IsPostBack)
-            {
-                cargarForm();
             }
 
             if (Session["DetProductosVenta"] != null)
             {
                 detProductosVenta = (List<DetalleProducto>)Session["DetProductosVenta"];
             }
+            if (Session["User"] != null)
+            {
+                vendedor = (Usuario)Session["User"];
+            }
+            else
+            {
+                Session.Add("error", "CREDENCIALES INCORRECTAS");
+                Response.Redirect("error.aspx", false);
+            }
+
+            TxtVendedor.Text = vendedor.ToString();
 
             totalCantidad = 0;
             total = 0;
@@ -50,11 +58,17 @@ namespace vista
             txtTotalCantidad.Text = "" + totalCantidad;
             TxtTotalItems.Text = "" + totalItems;
 
+            if (!IsPostBack)
+            {
+                cargarForm();
+            }
+
         }
 
         protected void cargarForm()
         {
             TxtCliente.Text = ClienteCompVenta.codigo + " - " + ClienteCompVenta.nombre + " " + ClienteCompVenta.apellido;
+            TxtVendedor.Text = vendedor.ToString();
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -105,13 +119,13 @@ namespace vista
             new TalonarioNegocio().Editar(auxTalonario);
 
             borrarSession();
-            Response.Redirect("ListaVentas");
+            Response.Redirect("ListaVentas.aspx");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             borrarSession();
-            Response.Redirect("ListaVentas");
+            Response.Redirect("ListaVentas.aspx");
         }
 
         protected void borrarSession()

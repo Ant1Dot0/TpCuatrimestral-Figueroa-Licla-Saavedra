@@ -22,7 +22,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select CC.id as id, CC.codigo as codigo, CC.puntoVenta as puntoVenta, CC.numero as numero, CC.idCliente as idCliente, CC.fechaComp as fechaComp, CC.idUsuario as idUsuario, CC.subtotal as subtotal, CC.totalDescuento as totalDesc, CC.descuentoComp as descuentoComp, CC.totalComprobante as totalComprobante, CC.estado as estado, Ct.id as Clienteid, Ct.nombre, ct.apellido, Ct.codigo, Ct.direccion, Ct.email, Ct.estado as estadoCliente, ct.idCategoriaCliente, Ct.movil, Ct.nDocumento, Ct.telefono  from CompVenta as CC, Cliente as Ct where CC.id = Ct.id");
+                datos.setearConsulta("select CC.id as id, CC.codigo as codigo, CC.puntoVenta as puntoVenta, CC.numero as numero, CC.idCliente as idCliente, CC.fechaComp as fechaComp, CC.idUsuario as idUsuario, CC.subtotal as subtotal, CC.totalDescuento as totalDesc, CC.descuentoComp as descuentoComp, CC.totalComprobante as totalComprobante, CC.estado as estado, Ct.id as Clienteid, Ct.nombre, ct.apellido, Ct.codigo, Ct.direccion, Ct.email, Ct.estado as estadoCliente, ct.idCategoriaCliente, Ct.movil, Ct.nDocumento, Ct.telefono  from CompVenta as CC, Cliente as Ct where CC.idCliente = Ct.id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

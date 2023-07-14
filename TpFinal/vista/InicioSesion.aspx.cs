@@ -32,6 +32,8 @@ namespace vista
                 Log.password = TxtPass.Text;
                 if (negocio.Logueo(Log) == true)
                 {
+                    Log = new UsuarioNegocio().Listar().Find(x => x.id == Log.id);
+
                     Session.Add("User", Log);
                     Response.Redirect("Default.aspx", false);
                 }

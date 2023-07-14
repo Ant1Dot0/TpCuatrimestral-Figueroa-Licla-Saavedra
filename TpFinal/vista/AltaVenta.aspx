@@ -35,7 +35,7 @@
                         <div class="col-md-4">
                             <div class="input-group mb-3">
                                 <span class="input-group-text text-secondary" id="lblVendedor">Vendedor</span>
-                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtVendedor" Enabled="false">Ariel Valenzuela</asp:TextBox>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="TxtVendedor" Enabled="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-3">

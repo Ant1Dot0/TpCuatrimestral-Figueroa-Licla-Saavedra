@@ -24,6 +24,8 @@ namespace Dominio
 
         public string direccion { get; set; }
 
+        public string movil { get; set; }
+
         public Rol rol { get; set; }
 
         public bool estado { get; set; }
