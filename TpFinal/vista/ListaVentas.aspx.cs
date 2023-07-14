@@ -23,7 +23,17 @@ namespace vista
             }
 
         }
+        protected void borrarSession()
+        {
+            Session.Add("ClienteCompVenta", null);
+            Session.Add("DetProductosVenta", null);
+            Session.Add("ProductosSeleccionados", null);
+        }
 
-  
+        protected void btnNuevaVenta_Click(object sender, EventArgs e)
+        {
+            borrarSession();
+            Response.Redirect("AltaVenta.aspx");
+        }
     }
 }

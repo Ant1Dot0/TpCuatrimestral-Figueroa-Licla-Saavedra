@@ -24,6 +24,24 @@ namespace vista
         protected global::System.Web.UI.WebControls.TextBox txtCodigo;
 
         /// <summary>
+        /// Control ReqClienteNuevo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqClienteNuevo;
+
+        /// <summary>
+        /// Control TxtVendedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtVendedor;
+
+        /// <summary>
         /// Control BtnGuardar.
         /// </summary>
         /// <remarks>
@@ -60,6 +78,15 @@ namespace vista
         protected global::System.Web.UI.WebControls.GridView gvClientes;
 
         /// <summary>
+        /// Control lblCodCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCodCliente;
+
+        /// <summary>
         /// Control TxtCodigoNuevoCliente.
         /// </summary>
         /// <remarks>
@@ -67,6 +94,15 @@ namespace vista
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtCodigoNuevoCliente;
+
+        /// <summary>
+        /// Control ReqCampoCodigo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqCampoCodigo;
 
         /// <summary>
         /// Control TxtDNI.
@@ -78,6 +114,15 @@ namespace vista
         protected global::System.Web.UI.WebControls.TextBox TxtDNI;
 
         /// <summary>
+        /// Control ReqCampoDNI.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqCampoDNI;
+
+        /// <summary>
         /// Control TxtNombre.
         /// </summary>
         /// <remarks>
@@ -87,6 +132,15 @@ namespace vista
         protected global::System.Web.UI.WebControls.TextBox TxtNombre;
 
         /// <summary>
+        /// Control ReqCampoNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqCampoNombre;
+
+        /// <summary>
         /// Control TxtApellido.
         /// </summary>
         /// <remarks>
@@ -94,6 +148,15 @@ namespace vista
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtApellido;
+
+        /// <summary>
+        /// Control ReqCampoApellido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqCampoApellido;
 
         /// <summary>
         /// Control ddlCategoria.

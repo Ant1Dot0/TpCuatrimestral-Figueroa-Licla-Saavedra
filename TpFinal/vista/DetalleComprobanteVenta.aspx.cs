@@ -14,7 +14,7 @@ namespace vista
         public DateTime hoy = DateTime.Today;
         public Cliente ClienteTemp = new Cliente();
         public List<Cliente> clientes = new List<Cliente>();
-
+        public Usuario vendedor = new Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(Session["ClienteTemp"] != null)
@@ -26,9 +26,16 @@ namespace vista
             {
                 ClienteTemp = (Cliente)Session["ClienteCompVenta"];
             }
+            if(Session["User"] != null)
+            {
+                vendedor = (Usuario)Session["User"];
+            }
+
 
             clientes = new ClientesNegocio().Listar();
             gvClientes.DataSource = clientes;
+
+
 
             ddlCategoria.DataSource = new CategoriasClienteNegocio().Listar();
             ddlCategoria.DataValueField = "id";
@@ -43,8 +50,9 @@ namespace vista
 
         protected void cargarForm()
         {
-
+            if(ClienteTemp.id > 0)
             txtCodigo.Text = ClienteTemp.codigo + " - " + ClienteTemp.nombre + " " + ClienteTemp.apellido;
+            TxtVendedor.Text = vendedor.ToString();
         }
         protected void guardarSession()
         {
@@ -114,6 +122,8 @@ namespace vista
                     nuevoCliente.direccion = TxtDireccion.Text;
 
                     negocio.Agregar(nuevoCliente);
+
+                    nuevoCliente = negocio.Listar().Find(x => x.codigo == nuevoCliente.codigo);
 
                     Session.Add("ClienteTemp", nuevoCliente);
 

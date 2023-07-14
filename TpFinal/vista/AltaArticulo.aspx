@@ -76,7 +76,6 @@
                                             <asp:Button runat="server" ID="btnCloseTag" CssClass="btn-close" Font-Size="X-Small" OnClick="btnCloseTag_Click" CommandArgument='<%#Eval("codigo") %>' />
                                         </div>
                                     </ItemTemplate>
-
                                 </asp:Repeater>
 
                             </div>

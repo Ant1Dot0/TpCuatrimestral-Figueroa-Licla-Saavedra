@@ -36,11 +36,8 @@ namespace vista
             {
                 vendedor = (Usuario)Session["User"];
             }
-            else
-            {
-                Session.Add("error", "CREDENCIALES INCORRECTAS");
-                Response.Redirect("error.aspx", false);
-            }
+
+            gvProductos.DataSource = detProductosVenta;
 
             TxtVendedor.Text = vendedor.ToString();
 
@@ -61,12 +58,14 @@ namespace vista
             if (!IsPostBack)
             {
                 cargarForm();
+                DataBind();
             }
 
         }
 
         protected void cargarForm()
         {
+            if(ClienteCompVenta.id > 0)
             TxtCliente.Text = ClienteCompVenta.codigo + " - " + ClienteCompVenta.nombre + " " + ClienteCompVenta.apellido;
             TxtVendedor.Text = vendedor.ToString();
         }
@@ -132,6 +131,8 @@ namespace vista
         {
             Session.Add("ClienteCompVenta", null);
             Session.Add("DetProductosVenta", null);
+            Session.Add("ProductosSeleccionados", null);
+            Session.Add("ClienteTemp", null);
         }
         protected string obtCodNumero(int numero)
         {
@@ -195,5 +196,6 @@ namespace vista
 
             return codigo;
         }
+
     }
 }

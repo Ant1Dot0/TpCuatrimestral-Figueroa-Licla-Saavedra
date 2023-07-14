@@ -45,10 +45,10 @@
                         else
                         { %>
                     <div class="card-body text-center mt-1">
-                        <asp:GridView runat="server" ID="gvProductosSeleccionados" CssClass="table table-dark" AutoGenerateColumns="false" DataKeyNames="codProducto"
+                        <asp:GridView runat="server" ID="gvProductosSeleccionados" CssClass="table table-primary border border-primary-subtle" AutoGenerateColumns="false" DataKeyNames="codProducto"
                             OnSelectedIndexChanged="gvProductosSeleccionados_SelectedIndexChanged" OnPageIndexChanged="gvProductosSeleccionados_SelectedIndexChanged">
                             <Columns>
-                                <asp:CommandField ShowSelectButton="true" SelectText="X" HeaderText=" " ItemStyle-Width="1" />
+                                <asp:CommandField ShowSelectButton="true" ControlStyle-CssClass="text-bg-dark" SelectText='<i title=Quitar class="bi bi-x-square"></i>' HeaderText="Acciones" ItemStyle-Width="1" />
                                 <asp:BoundField HeaderText="Codigo" DataField="codProducto" />
                                 <asp:BoundField HeaderText="Descripcion" DataField="descripcion" />
                                 <asp:TemplateField>
@@ -88,7 +88,7 @@
                     <div class="card-header text-center my-1">
                         <h4>Buscador</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <div class="input-group mb-2">
                             <span class="input-group-text" id="lblFiltro">Filtro</span>
                             <asp:TextBox runat="server" ID="TxtFiltro" CssClass="form-control  border border-secondary" AutoPostBack="true" OnTextChanged="TxtFiltro_TextChanged"></asp:TextBox>
@@ -102,7 +102,7 @@
                                     <asp:BoundField HeaderText="Descripcion" DataField="descripcion" />
                                     <asp:BoundField HeaderText="Stock" DataField="stockActual" />
                                     <asp:BoundField HeaderText="precio" DataField="precioCompra" />
-                                    <asp:CommandField ShowSelectButton="true" SelectText="+" HeaderText=" " />
+                                    <asp:CommandField ShowSelectButton="true" SelectText='<i title=Agregar class=" text-bg-dark bi bi-plus-square"></i>' HeaderText="Acciones" />
                                 </Columns>
 
                             </asp:GridView>
