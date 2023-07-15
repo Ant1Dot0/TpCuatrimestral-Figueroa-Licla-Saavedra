@@ -11,7 +11,7 @@
         <div class="row justify-content-md-center ">
             <div class="card col-md-10">
                 <div class="card-header text-center">
-                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" CssClass="btn btn-primary mb-1" />
+                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" CssClass="btn btn-primary" />
 
                     <%if (Session["User"] != null && ((Dominio.Usuario)Session["User"]).rol.descripcion == Dominio.TipoRol.ADMIN.ToString() && TxtCodigo.Text != null)
                         {%>
@@ -21,7 +21,8 @@
                     <%} %>
 
                     
-                    <asp:Button ID="btnLista" runat="server" Text="Ver Lista" CssClass="btn btn-success mb-1" />
+                    <asp:Button ID="btnLista" runat="server" Text="Ver Lista" CssClass="btn btn-success" />
+                    <a href="ListaProveedores.aspx" class="btn btn-danger">Cancelar</a>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -77,7 +78,6 @@
                     </div>
                 </div>
             </div>
-                    <a href="ListaProveedores.aspx" class="btn btn-danger">Cancelar</a>
         </div>
     </div>
 </asp:Content>

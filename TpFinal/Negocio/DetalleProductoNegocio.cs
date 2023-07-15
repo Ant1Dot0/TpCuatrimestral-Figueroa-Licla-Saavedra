@@ -31,9 +31,9 @@ namespace Negocio
                     aux.cantidad = (int)datos.Lector["cantidad"];
                     aux.codProducto = (string)datos.Lector["codProducto"];
                     aux.descripcion = (string)datos.Lector["descripcion"];
-                    aux.monto = (int)datos.Lector["monto"];
-                    aux.montoDescuento = (int)datos.Lector["montoDesc"];
-                    aux.precioVenta = (int)datos.Lector["precioVenta"];
+                    aux.monto = (decimal)datos.Lector["monto"];
+                    aux.montoDescuento = (decimal)datos.Lector["montoDesc"];
+                    aux.precioVenta = (decimal)datos.Lector["precioVenta"];
                     aux.estado = (bool)datos.Lector["estado"];
 
                     detalleProductos.Add(aux);
@@ -79,7 +79,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("insert into DetalleProductoVenta (codProducto, codComprobante, descripcion, cantidad, precioVenta, montoDescuento, monto, estado) values (@cod, @codComprobante, @desc, @cantidad, @precioVenta, @montoDescuento, @monto, @est)");
+                datos.setearConsulta("insert into DetalleProducto (codProducto, codComprobante, descripcion, cantidad, precioVenta, montoDescuento, monto, estado) values (@cod, @codComprobante, @desc, @cantidad, @precioVenta, @montoDescuento, @monto, @est)");
                 datos.SetearPARAMETROS("@cod", aux.codProducto);
                 datos.SetearPARAMETROS("@codComprobante", aux.codComprobante);
                 datos.SetearPARAMETROS("@desc", aux.descripcion);

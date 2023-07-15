@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container mt-5">
         <div class="row justify-content-md-center">
-            <div class="col-lg-4 text-center">
+            <div class="col-lg-8 text-center">
                 <h1>Nueva Marca de Producto</h1>
             </div>
         </div>
@@ -16,14 +16,14 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="input-group mb-3">
-                                <asp:Label ID="LblCodigo" runat="server" Text="Codigo"></asp:Label>
+                                <asp:Label ID="LblCodigo" runat="server" Text="Codigo" CssClass="input-group-text"></asp:Label>
                                 <asp:TextBox ID="TxtCodigo" CssClass="form-control" runat="server"></asp:TextBox>
 
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="input-group mb-3">
-                                <asp:Label ID="LblDescripcion" runat="server" Text="Descripcion"></asp:Label>
+                                <asp:Label ID="LblDescripcion" runat="server" Text="Descripcion" CssClass="input-group-text"></asp:Label>
                                 <asp:TextBox ID="TxtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
 
                             </div>

@@ -16,7 +16,16 @@ namespace vista
         {
             List<CompCompra> compras = new CompraNegocio().Listar();
 
+            List<Proveedor> proveedores = new ProveedorNegocio().ListarProveedor();
+
+            foreach(CompCompra x in compras)
+            {
+                x.proveedor = proveedores.Find(a => a.id == x.proveedor.id);
+            }
+
             gvCompras.DataSource = compras;
+
+            
 
             if (!IsPostBack)
             {

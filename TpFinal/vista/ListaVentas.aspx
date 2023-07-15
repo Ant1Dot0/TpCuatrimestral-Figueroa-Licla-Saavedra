@@ -23,7 +23,7 @@
                 <asp:GridView ID="gvVentas" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
                     <Columns>
                         <asp:BoundField HeaderText="numero" DataField="codigo" />
-                        <asp:BoundField HeaderText="Cliente" DataField="cliente" />
+                        <asp:BoundField HeaderText="Cliente" DataField="cliente.nombre" />
                         <asp:BoundField HeaderText="Total" DataField="TotalComprobante" />
                         <asp:CommandField ShowSelectButton="true" SelectText="✔️" HeaderText=" " />
                     </Columns>

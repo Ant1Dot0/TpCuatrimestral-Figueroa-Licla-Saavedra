@@ -30,6 +30,11 @@ namespace Dominio
         {
             this.categoria = new CategoriaProveedor();
         }
+
+        public override string ToString()
+        {
+            return this.razonSocial;
+        }
     }
 
 

@@ -122,6 +122,26 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void modificarStock(Producto producto)
+        {
+            try
+            {
+                datos.setearConsulta("update Producto set stockActual = @stock where id = @id");
+                datos.SetearPARAMETROS("@stock", producto.stockActual);
+                datos.SetearPARAMETROS("@id", producto.id);
+
+                datos.ejecutarEscritura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 
 
