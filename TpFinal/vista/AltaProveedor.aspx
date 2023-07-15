@@ -12,7 +12,15 @@
             <div class="card col-md-10">
                 <div class="card-header text-center">
                     <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" CssClass="btn btn-primary mb-1" />
-                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CssClass="btn btn-danger mb-1" />
+
+                    <%if (Session["User"] != null && ((Dominio.Usuario)Session["User"]).rol.descripcion == Dominio.TipoRol.ADMIN.ToString() && TxtCodigo.Text != null)
+                        {%>
+
+                        <asp:Button runat="server" ID="Button1" OnClick="btnEliminar_Click" Text="Eliminar" CssClass="btn btn-dark"/>
+
+                    <%} %>
+
+                    
                     <asp:Button ID="btnLista" runat="server" Text="Ver Lista" CssClass="btn btn-success mb-1" />
                 </div>
                 <div class="card-body">
