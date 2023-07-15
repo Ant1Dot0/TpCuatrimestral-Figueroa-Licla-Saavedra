@@ -69,8 +69,8 @@
                     <asp:TextBox runat="server" ID="TxtFiltro" CssClass="form-control  border border-secondary" AutoPostBack="true" OnTextChanged="TxtFiltro_TextChanged"></asp:TextBox>
                 </div>
 
-                <asp:GridView ID="gvProveedor" runat="server" DataKeyNames="codigo" CssClass="table table-info border border-info-subtle" AutoGenerateColumns="false"
-                    OnSelectedIndexChanged="gvProveedor_SelectedIndexChanged1" OnPageIndexChanging="gvProveedor_PageIndexChanging"
+                <asp:GridView ID="gvProveedores" runat="server" DataKeyNames="codigo" CssClass="table table-info border border-info-subtle" AutoGenerateColumns="false"
+                    OnSelectedIndexChanged="gvProveedor_SelectedIndexChanged" OnPageIndexChanging="gvProveedor_PageIndexChanging"
                     AllowPaging="true">
                     <Columns>
                         <asp:BoundField HeaderText="Codigo" DataField="codigo" />
@@ -111,20 +111,46 @@
                                                         ValidationGroup="ProveedorInfGroup" runat="server"><h4 class="ms-2 text-danger"><i title="Campo obligatorio" class=" bi bi-exclamation-circle"></i></h4></asp:RequiredFieldValidator>
                                                 </div>
                                             </div>
+
                                             <div class="col-md-4">
                                                 <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="lblnDocumento">DNI</span>
-                                                    <asp:TextBox ID="TxtDNI" CssClass="form-control" runat="server"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="ReqCampoDNI" ControlToValidate="TxtDNI"
-                                                        ValidationGroup="ClienteInfGroup" runat="server"><h4 class="ms-2 text-danger"><i title="Campo obligatorio" class="bi bi-exclamation-circle"></i></h4></asp:RequiredFieldValidator>
+                                                    <span class="input-group-text" id="lblCuit">CUIT</span>
+                                                    <asp:TextBox ID="TxtCuit" CssClass="form-control" runat="server"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="ReqCuit" ControlToValidate="TxtCuit"
+                                                        ValidationGroup="ProveedorInfGroup" runat="server"><h4 class="ms-2 text-danger"><i title="Campo obligatorio" class=" bi bi-exclamation-circle"></i></h4></asp:RequiredFieldValidator>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="lblRazonSocial">Razón Social</span>
+                                                    <asp:TextBox ID="TxtRazonSocial" CssClass="form-control" runat="server"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="ReqRazonSocial" ControlToValidate="TxtRazonSocial"
+                                                        ValidationGroup="ProveedorInfGroup" runat="server"><h4 class="ms-2 text-danger"><i title="Campo obligatorio" class=" bi bi-exclamation-circle"></i></h4></asp:RequiredFieldValidator>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="lblCategoria">Categoría</span>
+                                                    <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="btn btn-outline-secondary"></asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="lblTelefono">Telefono</span>
+                                                    <asp:TextBox ID="TxtTelefono" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="lblNombre">Nombre</span>
-                                                    <asp:TextBox ID="TxtRazonSocial" CssClass="form-control" runat="server"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="ReqCampoNombre" ControlToValidate="TxtRazonSocial"
-                                                        ValidationGroup="ProveedorInfGroup" runat="server"><h4 class="ms-2 text-danger"><i title="Campo obligatorio" class="bi bi-exclamation-circle"></i></h4></asp:RequiredFieldValidator>
+                                                    <span class="input-group-text" id="lblEmail">Email</span>
+                                                    <asp:TextBox ID="TxtEmail" CssClass="form-control" runat="server"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="lblDireccion">Dirección</span>
+                                                    <asp:TextBox ID="TxtDireccion" CssClass="form-control" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
 
@@ -142,7 +168,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <asp:Button ID="btnAltaProveedor" runat="server" Text="Guardar" OnClick="btnAltaProveedor_Click" CssClass="btn btn-success" CausesValidation="true" ValidationGroup="proveedorInfGroup" />
+                        <asp:Button ID="btnAltaProveedor" runat="server" Text="Guardar" OnClick="btnAltaProveedor_Click" CssClass="btn btn-success" CausesValidation="true" ValidationGroup="ProveedorInfGroup" />
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>

@@ -153,6 +153,7 @@ create table CompCompra
 (
 id int primary key identity(1,1) NOT NULL,
 puntoVenta [varchar](50) NOT NULL,
+codigo [varchar](50) NOT NULL,
 numero [varchar](300) NOT NULL,
 idProveedor int NOT NULL,
 fechaComp [datetime] NOT NULL,
@@ -176,7 +177,7 @@ idCliente int NOT NULL,
 fechaComp [datetime] NOT NULL,
 idUsuario int NOT NULL,
 subtotal [decimal] NOT NULL,
-descuentoComp [decimal] NOT NUL,
+descuentoComp [decimal] NOT NULL,
 totalDescuento [decimal] NOT NULL,
 totalComprobante [decimal]NOT NULL ,
 estado bit NOT NULL
@@ -200,6 +201,22 @@ create table DetalleProducto
 id int primary key identity(1,1) NOT NULL,
 codProducto [varchar](50) NOT NULL,
 codComprobante [varchar](14) NOT NULL,
+descripcion [varchar](300) NOT NULL,
+cantidad [decimal] NOT NULL,
+precioVenta [decimal] NOT NULL,
+montoDescuento [decimal] NOT NULL,
+monto [decimal]NOT NULL,
+estado bit NOT NULL
+)
+GO
+
+/******************************************************/
+/* TABLA DETALLEPRODUCTOCOMPRA*/
+create table DetalleProductoCompra
+(
+id int primary key identity(1,1) NOT NULL,
+codProducto [varchar](50) NOT NULL,
+codComprobante [varchar](50) NOT NULL,
 descripcion [varchar](300) NOT NULL,
 cantidad [decimal] NOT NULL,
 precioVenta [decimal] NOT NULL,

@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 using Dominio;
 using Negocio;
 
-
 namespace Negocio
 {
-    public class DetalleProductoNegocio
+    public class DetalleProductosCompraNegocio
     {
-
         AccesoDatos datos = new AccesoDatos();
 
 
@@ -21,7 +19,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select D.id as id, D.cantidad as cantidad, D.codProducto as codProducto, D.descripcion as descripcion, D.monto as monto, D.montoDescuento as montoDesc, D.precioVenta as precioVenta, D.estado as estado from DetalleProducto as D");
+                datos.setearConsulta("select D.id as id, D.cantidad as cantidad, D.codProducto as codProducto, D.descripcion as descripcion, D.monto as monto, D.montoDescuento as montoDesc, D.precioVenta as precioVenta, D.estado as estado from DetalleProductoCompra as D");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -61,7 +59,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("update DetalleProducto set estado = false where id=" + id);
+                datos.setearConsulta("update DetalleProductoCompra set estado = false where id=" + id);
                 datos.ejecutarEscritura();
             }
             catch (Exception ex)
@@ -79,7 +77,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("insert into DetalleProductoVenta (codProducto, codComprobante, descripcion, cantidad, precioVenta, montoDescuento, monto, estado) values (@cod, @codComprobante, @desc, @cantidad, @precioVenta, @montoDescuento, @monto, @est)");
+                datos.setearConsulta("insert into DetalleProductoCompra (codProducto, codComprobante, descripcion, cantidad, precioVenta, montoDescuento, monto, estado) values (@cod, @codComprobante, @desc, @cantidad, @precioVenta, @montoDescuento, @monto, @est)");
                 datos.SetearPARAMETROS("@cod", aux.codProducto);
                 datos.SetearPARAMETROS("@codComprobante", aux.codComprobante);
                 datos.SetearPARAMETROS("@desc", aux.descripcion);
@@ -103,15 +101,5 @@ namespace Negocio
 
 
         }
-
-
-
-
     }
-
-
-
-
-
-    
 }

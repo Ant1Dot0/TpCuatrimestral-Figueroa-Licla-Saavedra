@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
-using Negocio; 
+using Negocio;
 
 namespace vista
 {
@@ -18,21 +18,196 @@ namespace vista
         public decimal total = 0;
         public int totalItems = 0;
 
+        public string numero;
+        public string pdv;
 
         public DateTime hoy = DateTime.Today;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["ProveedorCompCompra"] != null)
+            {
+                ProveedorCompCompra = (Proveedor)Session["ProveedorCompCompra"];
+            }
 
+            if (Session["DetProductosCompra"] != null)
+            {
+                detProductosCompra = (List<DetalleProducto>)Session["DetProductosCompra"];
+            }
+
+            if (Session["User"] != null)
+            {
+                vendedor = (Usuario)Session["User"];
+            }
+
+            if (Session["Numero"] != null)
+            {
+                numero = (string)Session["Numero"];
+            }
+
+            if (Session["pdv"] != null)
+            {
+                pdv = (string)Session["pdv"];
+            }
+
+            gvProductos.DataSource = detProductosCompra;
+
+            total = 0;
+            totalCantidad = 0;
+            totalItems = 0;
+
+            foreach (DetalleProducto x in detProductosCompra)
+            {
+                totalCantidad += x.cantidad;
+                total += x.monto;
+                totalItems++;
+            }
+
+            txtTotalCantidad.Text = "" + totalCantidad;
+            TxtTotalItems.Text = "" + totalItems;
+
+            if(!IsPostBack)
+            {
+                cargarForm();
+                DataBind();
+            }
+
+            
+        }
+
+        protected void cargarForm()
+        {
+            if (ProveedorCompCompra.id > 0)
+                TxtProveedor.Text = ProveedorCompCompra.codigo + " - " + ProveedorCompCompra.razonSocial;
+            TxtVendedor.Text = vendedor.ToString();
+            TxtNumero.Text = numero;
+            TxtPdv.Text = pdv;
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            total = 0;
 
+            string codComprobante = obtCodPdv(int.Parse(pdv)) + "-" + obtCodNumero(int.Parse(numero)) + " - " + ProveedorCompCompra.codigo;
+
+            foreach (DetalleProducto x in detProductosCompra)
+            {
+                x.codComprobante = codComprobante;
+            }
+
+            CompCompra nueva = new CompCompra();
+
+            nueva.codigo = codComprobante;
+            nueva.puntoVenta = pdv;
+            nueva.numero = numero;
+            nueva.proveedor = ProveedorCompCompra;
+            nueva.fechaComp = hoy;
+
+            if (Session["User"] != null)
+            {
+                nueva.vendedor = (Usuario)Session["User"];
+            }
+            else
+            {
+                Session.Add("error", "CREDENCIALES INCORRECTAS");
+                Response.Redirect("error.aspx", false);
+            }
+
+            foreach (DetalleProducto x in detProductosCompra)
+            {
+                new DetalleProductosCompraNegocio().Agregar(x);
+                total += x.monto;
+            }
+
+            nueva.subtotal = total;
+            nueva.totalDescuento = 0;
+            nueva.descuentoComp = 0;
+            nueva.totalComprobante = total;
+
+            new CompraNegocio().Agregar(nueva);
+
+            borrarSession();
+            Response.Redirect("ListaCompra.aspx");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
+            borrarSession();
+            Response.Redirect("Listacompra.aspx");
+        }
 
+        protected void borrarSession()
+        {
+            Session.Add("ProveedorCompCompra", null);
+            Session.Add("DetProductosCompra", null);
+            Session.Add("ProductosSeleccionadosC", null);
+            Session.Add("proveedorTemp", null);
+            Session.Add("pdvTemp", null);
+            Session.Add("pdv", null);
+            Session.Add("NumeroTemp", null);
+            Session.Add("Numero", null);
+        }
+
+        protected string obtCodNumero(int numero)
+        {
+            string codigo = "";
+            if (numero < 10)
+            {
+                codigo = "0000000" + numero;
+            }
+            else if (numero < 100)
+            {
+                codigo = "000000" + numero;
+            }
+            else if (numero < 1000)
+            {
+                codigo = "00000" + numero;
+            }
+            else if (numero < 10000)
+            {
+                codigo = "0000" + numero;
+            }
+            else if (numero < 100000)
+            {
+                codigo = "000" + numero;
+            }
+            else if (numero < 1000000)
+            {
+                codigo = "00" + numero;
+            }
+            else if (numero < 10000000)
+            {
+                codigo = "0" + numero;
+            }
+            else if (numero < 100000000)
+            {
+                codigo = "" + numero;
+            }
+
+            return codigo;
+        }
+
+        protected string obtCodPdv(int n)
+        {
+            string codigo = "";
+
+            if (n < 10)
+            {
+                codigo = "000" + n;
+            }
+            else if (n < 100)
+            {
+                codigo = "00" + n;
+            }
+            else if (n < 1000)
+            {
+                codigo = "0" + n;
+            }
+            else if (n < 10000)
+            {
+                codigo = "" + n;
+            }
+
+            return codigo;
         }
     }
 }

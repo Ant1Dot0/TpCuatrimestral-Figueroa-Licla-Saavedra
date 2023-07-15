@@ -105,13 +105,13 @@ namespace vista
         protected global::System.Web.UI.WebControls.TextBox TxtFiltro;
 
         /// <summary>
-        /// Control gvProveedor.
+        /// Control gvProveedores.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvProveedor;
+        protected global::System.Web.UI.WebControls.GridView gvProveedores;
 
         /// <summary>
         /// Control lblProveedorNuevo.
@@ -141,22 +141,22 @@ namespace vista
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqCampoCodigo;
 
         /// <summary>
-        /// Control TxtDNI.
+        /// Control TxtCuit.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDNI;
+        protected global::System.Web.UI.WebControls.TextBox TxtCuit;
 
         /// <summary>
-        /// Control ReqCampoDNI.
+        /// Control ReqCuit.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqCampoDNI;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqCuit;
 
         /// <summary>
         /// Control TxtRazonSocial.
@@ -168,13 +168,49 @@ namespace vista
         protected global::System.Web.UI.WebControls.TextBox TxtRazonSocial;
 
         /// <summary>
-        /// Control ReqCampoNombre.
+        /// Control ReqRazonSocial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqCampoNombre;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqRazonSocial;
+
+        /// <summary>
+        /// Control ddlCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategoria;
+
+        /// <summary>
+        /// Control TxtTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtTelefono;
+
+        /// <summary>
+        /// Control TxtEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtEmail;
+
+        /// <summary>
+        /// Control TxtDireccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtDireccion;
 
         /// <summary>
         /// Control btnAltaProveedor.
