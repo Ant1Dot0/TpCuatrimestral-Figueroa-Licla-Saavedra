@@ -12,7 +12,8 @@
             <div class="col-md-4 text-end">
                 <%if (Session["User"] != null && ((Dominio.Usuario)Session["User"]).rol.descripcion == Dominio.TipoRol.ADMIN.ToString())
                     {%>
-                <asp:Button ID="btnNuevaCompra" runat="server" CssClass="btn btn-primary" Text="Nueva Compra" OnClick="btnNuevaCompra_Click" />
+
+                     <asp:Button ID="btnNuevaCompra" runat="server" CssClass="btn btn-primary" Text="Nueva Compra" OnClick="btnNuevaCompra_Click" />
 
                 <%} %>
             </div>

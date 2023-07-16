@@ -14,6 +14,12 @@ namespace vista
         public List<Producto> productos;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
+
+
             int idProducto = 0;
 
             if (Request.QueryString["id"] != null)

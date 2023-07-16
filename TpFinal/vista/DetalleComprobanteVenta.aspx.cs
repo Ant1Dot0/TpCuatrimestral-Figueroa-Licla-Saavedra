@@ -17,7 +17,12 @@ namespace vista
         public Usuario vendedor = new Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["ClienteTemp"] != null)
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
+
+            if (Session["ClienteTemp"] != null)
             {
                 ClienteTemp = (Cliente)Session["ClienteTemp"];
                 

@@ -11,13 +11,17 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
 
         }
 
         protected void GridViewMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             var id = GridViewMarca.SelectedDataKey.Value.ToString();
-            Response.Redirect("AltaMarcaProducto.aspx" + id);
+            Response.Redirect("AltaMarcaProducto.aspx?id=" + id);
         }
     }
 }

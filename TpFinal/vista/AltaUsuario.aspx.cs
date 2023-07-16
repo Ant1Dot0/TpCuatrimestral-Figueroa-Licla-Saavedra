@@ -7,15 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace vista
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class AltaUsuario : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
-            {
-                Response.Redirect("InicioSesion.aspx", false);
-            }
-            
+
         }
     }
 }

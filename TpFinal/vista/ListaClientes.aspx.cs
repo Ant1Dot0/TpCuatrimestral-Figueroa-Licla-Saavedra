@@ -19,6 +19,11 @@ namespace vista
 
             try
             {
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
                 ClientesNegocio negocio = new ClientesNegocio();
                 clientes = negocio.Listar();
 
@@ -29,7 +34,7 @@ namespace vista
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("error.aspx", ex.Message);
             }
 
 

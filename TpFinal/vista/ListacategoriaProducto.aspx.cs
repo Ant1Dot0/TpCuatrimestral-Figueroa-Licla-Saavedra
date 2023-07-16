@@ -13,6 +13,11 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
+
             GridViewCategoria.DataSource = new CategoriaArticuloNegocio().Listar();
 
             if(!IsPostBack)
@@ -24,7 +29,7 @@ namespace vista
         protected void GridViewCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             var id = GridViewCategoria.SelectedDataKey.Value.ToString();
-            Response.Redirect("AltaCategoriaProducto.aspx" + id);
+            Response.Redirect("AltaCategoriaProducto.aspx?id=" + id);
         }
     }
 }

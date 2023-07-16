@@ -13,8 +13,11 @@
             <div class="col-md-4 text-end">
                 <%if (Session["User"] != null && ((Dominio.Usuario)Session["User"]).rol.descripcion == Dominio.TipoRol.ADMIN.ToString())
                     {%>
+
+
                              <a href="AltaMarcaProducto.aspx" class="btn btn-primary">Nueva Marca</a>
                
+
                 <%} %>
             </div>
         </div>

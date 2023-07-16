@@ -24,6 +24,12 @@ namespace vista
         public DateTime hoy = DateTime.Today;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
+
+
             if (Session["ProveedorCompCompra"] != null)
             {
                 ProveedorCompCompra = (Proveedor)Session["ProveedorCompCompra"];
