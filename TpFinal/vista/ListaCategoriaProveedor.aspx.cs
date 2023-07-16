@@ -37,7 +37,7 @@ namespace vista
         protected void GridViewCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             var id = GridViewCategoria.SelectedDataKey.Value.ToString();
-            Response.Redirect("AltaCategoriaProveedor?id=", false);
+            Response.Redirect("AltaCategoriaProveedor?id=" + id, false);
         }
 
 

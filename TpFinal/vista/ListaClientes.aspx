@@ -20,40 +20,19 @@
         </div>
 
         <!-----------------------------------------INICIO LISTADO------------------------------>
-        <div class="row justify-content-center mt-2">
+               <div class="row justify-content-center mt-2">
             <div class="col-md-10">
-                <div class="card mt-2">
-                    <table class="table">
-                        <thead class="">
-                            <tr>
-                                <th>Codigo</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Telefono</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <asp:Repeater runat="server" ID="repClientes">
-                                <ItemTemplate>
-                                    <div>
-                                        <tr>
-                                            <td><%#Eval("codigo")%></td>
-                                            <td><%#Eval("nombre")%></td>
-                                            <td><%#Eval("apellido")%></td>
-                                            <td><%#Eval("telefono")%></td>
-                                            <td>
-                                        </tr>
-                                    </div>
-                                </ItemTemplate>
-                            </asp:Repeater>
-                        </tbody>
-                    </table>
-                </div>
-
+                <asp:GridView ID="GridViewClientes" CssClass="table table-dark" runat="server" OnSelectedIndexChanged="GridViewClientes_SelectedIndexChanged" AutoGenerateColumns="false" DataKeyNames="ID">
+                    <Columns>
+                        <asp:BoundField HeaderText="ID" DataField="ID" />
+                        <asp:BoundField HeaderText="Nombre" DataField="nombre" />
+                        <asp:BoundField HeaderText="NºDocumento" DataField="DNI" />
+                        <asp:BoundField HeaderText="Email" DataField="email" />
+                        <asp:CommandField ShowSelectButton="true" SelectText="✔️" HeaderText=" " />
+                    </Columns>
+                </asp:GridView>
             </div>
         </div>
-    </div>
     <!---------------------------------------FIN LISTADO--------------------------------->
 
 

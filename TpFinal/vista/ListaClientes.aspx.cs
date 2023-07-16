@@ -12,33 +12,23 @@ namespace vista
 {
     public partial class ListaClientes : System.Web.UI.Page
     {
-        public List<Cliente> clientes = new List<Cliente>();
-        public Cliente clienteSelected = new Cliente();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            try
+            if (Session["User"] == null)
             {
-                if (Session["User"] == null)
-                {
-                    Response.Redirect("InicioSesion.aspx", false);
-                }
-
-                ClientesNegocio negocio = new ClientesNegocio();
-                clientes = negocio.Listar();
-
-
-                repClientes.DataSource = clientes;
-                repClientes.DataBind();
-            }
-            catch (Exception ex)
-            {
-
-                Session.Add("error.aspx", ex.Message);
+                Response.Redirect("InicioSesion.aspx", false);
             }
 
+            ClientesNegocio negocio = new ClientesNegocio();
+            GridViewClientes.DataSource = negocio.Listar();
+            DataBind();
 
         }
 
+        protected void GridViewClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = GridViewClientes.SelectedDataKey.Value.ToString();
+            Response.Redirect("AltaCategoriaProveedor?id=" + id, false);
+        }
     }
 }

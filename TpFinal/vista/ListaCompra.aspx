@@ -20,7 +20,7 @@
         </div>
         <div class="row justify-content-center mt-2">
             <div class="col-md-10">
-                <asp:GridView ID="gvCompras" CssClass="table table-dark" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
+                <asp:GridView ID="gvCompras" CssClass="table table-dark" OnSelectedIndexChanged="gvCompras_SelectedIndexChanged" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
                     <Columns>
                         <asp:BoundField HeaderText="numero" DataField="codigo" />
                         <asp:BoundField HeaderText="Proveedor" DataField="proveedor" />

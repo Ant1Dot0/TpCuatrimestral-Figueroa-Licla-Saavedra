@@ -55,5 +55,10 @@ namespace vista
             borrarSession();
             Response.Redirect("AltaCompra.aspx");
         }
+
+        protected void gvCompras_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
