@@ -42,8 +42,8 @@
                             <p class="card-text">stock mínimo: <%#Eval("stockMinimo") %></p>
                             <p class="card-text">Ganancia: <%#Eval("ganacia") %></p>
                             <p>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick='guardarID(<%#Eval("id") %>)'>Eliminar</button>
-                                <asp:Button runat="server" ID="btnEditar" CssClass="btn btn-primary" OnClick="btnEditar_Click" Text="Editar" CommandArgument='<%#Eval("codigo") %>' />
+                                <button type="button" class="btn btn-danger" hidden='<%=prueba %>'  data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick='guardarID(<%#Eval("id") %>)'>Eliminar</button>
+                                <asp:Button Visible='<%#prueba%>' runat="server" ID="btnEditar" CssClass="btn btn-primary" OnClick="btnEditar_Click" Text="Editar" CommandArgument='<%#Eval("codigo") %>' />
                             </p>
                         </div>
                     </div>

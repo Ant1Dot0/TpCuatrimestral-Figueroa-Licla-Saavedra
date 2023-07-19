@@ -12,6 +12,7 @@ namespace vista
     public partial class ListaProductos : System.Web.UI.Page
     {
         public List<Producto> productos;
+        public bool prueba = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             int idProducto = 0;
