@@ -26,11 +26,16 @@
                                 
                             </div>
 
+                                 <div class="input-group mb-3">
+                                <span class="input-group-text" id="lblTelefono">Telefono</span>
+                                <asp:TextBox ID="TxtTelefono" CssClass="form-control" runat="server"></asp:TextBox>
+                                
+                            </div>
          
                             
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="lblTelefono">Telefono</span>
-                                <asp:TextBox ID="TxtTelefono" CssClass="form-control" runat="server"></asp:TextBox>
+                                <span class="input-group-text" id="lblMovil">Movil</span>
+                                <asp:TextBox ID="TxtMovil" CssClass="form-control" runat="server"></asp:TextBox>
                                 
                             </div>
 
@@ -54,9 +59,12 @@
                                 
                             </div>
                                 <div class="input-group mb-3">
-                                <span class="input-group-text" id="lblContraseña">Contraseña</span>
-                                <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                                <span class="input-group-text" id="lblPassword">Contraseña</span>
+                                <asp:TextBox ID="TxtPassword" CssClass="form-control" runat="server"></asp:TextBox>
                             </div>
+
+                               
+
 
                     <asp:Button ID="btnLista" runat="server" Text="Aceptar" CssClass="btn btn-success" />
                     <a href="ListaProveedores.aspx" class="btn btn-danger">Cancelar</a>

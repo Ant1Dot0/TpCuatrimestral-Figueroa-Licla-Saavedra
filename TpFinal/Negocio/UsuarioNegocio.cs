@@ -89,5 +89,57 @@ namespace Negocio
             
         }
 
+
+        public void Agregar(Usuario usuario)
+        {
+            try
+            {
+                datos.setearConsulta("insert into Usuario ( idLogin, password, email, nombre, apellido, telefono, movil, direccion, idRol, estado) values ( @idLogin, @password, @email, @nombre, @apellido, @telefono, @movil, @direccion, @idRol, @est)");
+                datos.SetearPARAMETROS("@idLogin", usuario.idLogin);
+                datos.SetearPARAMETROS("@password", usuario.password);
+                datos.SetearPARAMETROS("@email", usuario.email);
+                datos.SetearPARAMETROS("@nombre", usuario.nombre);
+                datos.SetearPARAMETROS("@apellido", usuario.apellido);
+                datos.SetearPARAMETROS("@telefono", usuario.telefono);
+                datos.SetearPARAMETROS("@movil", usuario.movil);
+                datos.SetearPARAMETROS("@direccion", usuario.direccion);
+                datos.SetearPARAMETROS("@idRol", usuario.rol);
+                datos.SetearPARAMETROS("@est", true);
+
+                datos.ejecutarEscritura();
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public void Eliminar(int id)
+        {
+            try
+            {
+                datos.setearConsulta("update Usuario set estado = 'true' where id =" + id);
+                datos.ejecutarEscritura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }
