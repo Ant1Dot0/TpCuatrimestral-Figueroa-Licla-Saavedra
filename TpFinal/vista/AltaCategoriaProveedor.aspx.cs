@@ -13,21 +13,30 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+                if (Session["User"] != null && ((Usuario)Session["User"]).rol.descripcion == TipoRol.ADMIN.ToString() && Request.QueryString["id"] != null)
+                {
+                    TxtCodigo.Enabled = true;
+                    TxtDescripcion.Enabled = true;
+                }
+                else
+                {
+                    TxtCodigo.Enabled = false;
+                    TxtDescripcion.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-            if (Session["User"] != null && ((Usuario)Session["User"]).rol.descripcion == TipoRol.ADMIN.ToString() && Request.QueryString["id"] != null)
-            {
-                TxtCodigo.Enabled = true;
-                TxtDescripcion.Enabled = true;
-            }
-            else
-            {
-                TxtCodigo.Enabled = false;
-                TxtDescripcion.Enabled = false;
-            }
 
 
 
@@ -62,7 +71,7 @@ namespace vista
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("Error.aspx", ex.Message);
             }
 
         }
@@ -71,11 +80,20 @@ namespace vista
         /*------------------------------------------------------------------*/
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            CategoriasProveedorNegocio negocio = new CategoriasProveedorNegocio();
-            int Aux = int.Parse(Request.QueryString["Id"].ToString());
+            try
+            {
+                CategoriasProveedorNegocio negocio = new CategoriasProveedorNegocio();
+                int Aux = int.Parse(Request.QueryString["Id"].ToString());
 
-            negocio.Eliminar(Aux);
-            Response.Redirect("ListaCategoriaProveedor.aspx", false);
+                negocio.Eliminar(Aux);
+                Response.Redirect("ListaCategoriaProveedor.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
+            }
+
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

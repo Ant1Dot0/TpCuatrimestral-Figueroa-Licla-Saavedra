@@ -13,28 +13,37 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+
+                if (Request.QueryString["id"] != null)
+                {
+                    List<MarcaArticulo> marcas = new List<MarcaArticulo>();
+                    MarcaArticuloNegocio negocio = new MarcaArticuloNegocio();
+
+                    marcas = negocio.Listar();
+                    int id = int.Parse(Request.QueryString["id"]);
+
+                    MarcaArticulo seleccionado = marcas.Find(x => x.id == id);
+
+
+                    TxtCodigo.Text = seleccionado.codigo;
+                    TxtDescripcion.Text = seleccionado.descripcion;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-
-            if (Request.QueryString["id"] != null)
-            {
-                List<MarcaArticulo> marcas = new List<MarcaArticulo>();
-                MarcaArticuloNegocio negocio = new MarcaArticuloNegocio();
-
-                marcas = negocio.Listar();
-                int id = int.Parse(Request.QueryString["id"]);
-
-                MarcaArticulo seleccionado = marcas.Find(x => x.id == id);
-
-
-                TxtCodigo.Text = seleccionado.codigo;
-                TxtDescripcion.Text = seleccionado.descripcion;
-               
-
-            }
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -62,7 +71,7 @@ namespace vista
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("Error.aspx", ex.Message);
             }
         }
 

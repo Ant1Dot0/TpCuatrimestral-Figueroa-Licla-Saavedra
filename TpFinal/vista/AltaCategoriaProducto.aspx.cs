@@ -13,26 +13,35 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+                if (Request.QueryString["id"] != null)
+                {
+                    List<CategoriaArticulo> categorias = new List<CategoriaArticulo>();
+                    CategoriaArticuloNegocio negocio = new CategoriaArticuloNegocio();
+
+                    categorias = negocio.Listar();
+                    int id = int.Parse(Request.QueryString["id"]);
+
+                    CategoriaArticulo seleccionado = categorias.Find(x => x.id == id);
+
+                    TxtCodigo.Text = seleccionado.codigo;
+                    TxtDescripcion.Text = seleccionado.descripcion;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-            if (Request.QueryString["id"] != null)
-            {
-                List<CategoriaArticulo> categorias = new List<CategoriaArticulo>();
-                CategoriaArticuloNegocio negocio = new CategoriaArticuloNegocio();
-
-                categorias = negocio.Listar();
-                int id = int.Parse(Request.QueryString["id"]);
-
-                CategoriaArticulo seleccionado = categorias.Find(x => x.id == id);
-
-                TxtCodigo.Text = seleccionado.codigo;
-                TxtDescripcion.Text = seleccionado.descripcion;
-
-                
-            }
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -60,17 +69,26 @@ namespace vista
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("Error.aspx", ex.Message);
             }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            CategoriaArticuloNegocio negocio = new CategoriaArticuloNegocio();
-            int Aux = int.Parse(Request.QueryString["Id"].ToString());
+            try
+            {
+                CategoriaArticuloNegocio negocio = new CategoriaArticuloNegocio();
+                int Aux = int.Parse(Request.QueryString["Id"].ToString());
 
-            negocio.Eliminar(Aux);
-            Response.Redirect("ListaCategoriaProducto.aspx", false);
+                negocio.Eliminar(Aux);
+                Response.Redirect("ListaCategoriaProducto.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
+            }
+
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

@@ -11,10 +11,19 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
             }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
+            }
+
             
         }
     }

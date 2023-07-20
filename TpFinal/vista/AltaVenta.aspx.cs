@@ -22,103 +22,129 @@ namespace vista
         public DateTime hoy = DateTime.Today;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (Session["ClienteCompVenta"] != null)
+            try
             {
-                ClienteCompVenta = (Cliente)Session["ClienteCompVenta"];
+                if (Session["ClienteCompVenta"] != null)
+                {
+                    ClienteCompVenta = (Cliente)Session["ClienteCompVenta"];
+                }
+
+                if (Session["DetProductosVenta"] != null)
+                {
+                    detProductosVenta = (List<DetalleProducto>)Session["DetProductosVenta"];
+                }
+                if (Session["User"] != null)
+                {
+                    vendedor = (Usuario)Session["User"];
+                }
+
+                gvProductos.DataSource = detProductosVenta;
+
+                TxtVendedor.Text = vendedor.ToString();
+
+                totalCantidad = 0;
+                total = 0;
+                totalItems = 0;
+
+                foreach (DetalleProducto x in detProductosVenta)
+                {
+                    totalCantidad += x.cantidad;
+                    total += x.monto;
+                    totalItems++;
+                }
+
+                txtTotalCantidad.Text = "" + totalCantidad;
+                TxtTotalItems.Text = "" + totalItems;
+
+                if (!IsPostBack)
+                {
+                    cargarForm();
+                    DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
 
-            if (Session["DetProductosVenta"] != null)
-            {
-                detProductosVenta = (List<DetalleProducto>)Session["DetProductosVenta"];
-            }
-            if (Session["User"] != null)
-            {
-                vendedor = (Usuario)Session["User"];
-            }
-
-            gvProductos.DataSource = detProductosVenta;
-
-            TxtVendedor.Text = vendedor.ToString();
-
-            totalCantidad = 0;
-            total = 0;
-            totalItems = 0;
-
-            foreach (DetalleProducto x in detProductosVenta)
-            {
-                totalCantidad += x.cantidad;
-                total += x.monto;
-                totalItems++;
-            }
-
-            txtTotalCantidad.Text = "" + totalCantidad;
-            TxtTotalItems.Text = "" + totalItems;
-
-            if (!IsPostBack)
-            {
-                cargarForm();
-                DataBind();
-            }
 
         }
 
         protected void cargarForm()
         {
-            if(ClienteCompVenta.id > 0)
-            TxtCliente.Text = ClienteCompVenta.codigo + " - " + ClienteCompVenta.nombre + " " + ClienteCompVenta.apellido;
-            TxtVendedor.Text = vendedor.ToString();
+            try
+            {
+                if (ClienteCompVenta.id > 0)
+                TxtCliente.Text = ClienteCompVenta.codigo + " - " + ClienteCompVenta.nombre + " " + ClienteCompVenta.apellido;
+                TxtVendedor.Text = vendedor.ToString();
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
+            }
+
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            Talonario auxTalonario = new TalonarioNegocio().Listar().Find(x => x.pdv == 1 && x.tipoComprobante == 1);
-            auxTalonario.ultNumero++;
-            int numero = auxTalonario.ultNumero;
-            int pdv = 1;
-            total = 0;
-
-            string codComprobante = obtCodPdv(pdv) + "-" + obtCodNumero(numero);
-
-            foreach (DetalleProducto x in detProductosVenta)
+            try
             {
-                x.codComprobante = codComprobante;
+                Talonario auxTalonario = new TalonarioNegocio().Listar().Find(x => x.pdv == 1 && x.tipoComprobante == 1);
+                auxTalonario.ultNumero++;
+                int numero = auxTalonario.ultNumero;
+                int pdv = 1;
+                total = 0;
+
+                string codComprobante = obtCodPdv(pdv) + "-" + obtCodNumero(numero);
+
+                foreach (DetalleProducto x in detProductosVenta)
+                {
+                    x.codComprobante = codComprobante;
+                }
+
+                CompVenta nueva = new CompVenta();
+
+                nueva.codigo = codComprobante;
+                nueva.puntoVenta = pdv;
+                nueva.numero = numero;
+                nueva.cliente = ClienteCompVenta;
+                nueva.fechaComp = hoy;
+
+                if (Session["User"] != null)
+                {
+                    nueva.vendedor = (Usuario)Session["User"];
+                }
+                else
+                {
+                    Session.Add("error", "CREDENCIALES INCORRECTAS");
+                    Response.Redirect("error.aspx", false);
+                }
+
+                foreach (DetalleProducto x in detProductosVenta)
+                {
+                    new DetalleProductoNegocio().Agregar(x);
+                    total += x.monto;
+                }
+
+                nueva.subtotal = total;
+                nueva.totalDescuento = 0;
+                nueva.descuentoComp = 0;
+                nueva.totalComprobante = total;
+
+                new VentaNegocio().Agregar(nueva);
+                new TalonarioNegocio().Editar(auxTalonario);
+
+                borrarSession();
+                Response.Redirect("ListaVentas.aspx");
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-            CompVenta nueva = new CompVenta();
-
-            nueva.codigo = codComprobante;
-            nueva.puntoVenta = pdv;
-            nueva.numero = numero;
-            nueva.cliente = ClienteCompVenta;
-            nueva.fechaComp = hoy;
-
-            if (Session["User"] != null)
-            {
-                nueva.vendedor = (Usuario)Session["User"];
-            }
-            else
-            {
-                Session.Add("error", "CREDENCIALES INCORRECTAS");
-                Response.Redirect("error.aspx", false);
-            }
-
-            foreach (DetalleProducto x in detProductosVenta)
-            {
-                new DetalleProductoNegocio().Agregar(x);
-                total += x.monto;
-            }
-
-            nueva.subtotal = total;
-            nueva.totalDescuento = 0;
-            nueva.descuentoComp = 0;
-            nueva.totalComprobante = total;
-
-            new VentaNegocio().Agregar(nueva);
-            new TalonarioNegocio().Editar(auxTalonario);
-
-            borrarSession();
-            Response.Redirect("ListaVentas.aspx");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -129,10 +155,19 @@ namespace vista
 
         protected void borrarSession()
         {
-            Session.Add("ClienteCompVenta", null);
-            Session.Add("DetProductosVenta", null);
-            Session.Add("ProductosSeleccionados", null);
-            Session.Add("ClienteTemp", null);
+            try
+            {
+                Session.Add("ClienteCompVenta", null);
+                Session.Add("DetProductosVenta", null);
+                Session.Add("ProductosSeleccionados", null);
+                Session.Add("ClienteTemp", null);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
+            }
+
         }
         protected string obtCodNumero(int numero)
         {

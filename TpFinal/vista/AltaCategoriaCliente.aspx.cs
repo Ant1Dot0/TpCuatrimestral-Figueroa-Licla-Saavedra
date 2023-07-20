@@ -13,24 +13,34 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+                if (Request.QueryString["id"] != null)
+                {
+                    List<CategoriaCliente> categorias = new List<CategoriaCliente>();
+                    CategoriasClienteNegocio negocio = new CategoriasClienteNegocio();
+
+                    categorias = negocio.Listar();
+                    int id = int.Parse(Request.QueryString["id"]);
+
+                    CategoriaCliente seleccionado = categorias.Find(x => x.id == id);
+
+                    TxtCodigo.Text = seleccionado.codigo;
+                    TxtDescripcion.Text = seleccionado.descripcion;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-            if (Request.QueryString["id"] != null)
-            {
-                List<CategoriaCliente> categorias = new List<CategoriaCliente>();
-                CategoriasClienteNegocio negocio = new CategoriasClienteNegocio();
 
-                categorias = negocio.Listar();
-                int id = int.Parse(Request.QueryString["id"]);
-
-                CategoriaCliente seleccionado = categorias.Find(x => x.id == id);
-
-                TxtCodigo.Text = seleccionado.codigo;
-                TxtDescripcion.Text = seleccionado.descripcion;
-            }
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -61,18 +71,27 @@ namespace vista
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("Error.aspx", ex.Message);
             }
 
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            CategoriasClienteNegocio negocio = new CategoriasClienteNegocio();
-            int Aux = int.Parse(Request.QueryString["Id"].ToString());
+            try
+            {
+                CategoriasClienteNegocio negocio = new CategoriasClienteNegocio();
+                int Aux = int.Parse(Request.QueryString["Id"].ToString());
 
-            negocio.Eliminar(Aux);
-            Response.Redirect("ListaCategoriaCliente.aspx", false);
+                negocio.Eliminar(Aux);
+                Response.Redirect("ListaCategoriaCliente.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
+            }
+
         }
     }
 }
