@@ -15,6 +15,8 @@ namespace vista
         public List<Producto> lista = new List<Producto>();
         public decimal DetTotal = 0;
         public decimal DetTotalCantidad = 0;
+
+        public bool AlertAltaVenta1 = false; // sin stock suficiente
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -35,6 +37,18 @@ namespace vista
                     productosSeleccionados = recListDet("DetProductosVenta");
 
                 }
+
+                foreach(Producto x in lista)
+                {
+                   foreach(DetalleProducto y in productosSeleccionados)
+                    {
+                        if(x.codigo == y.codProducto)
+                        {
+                            x.stockActual -= y.cantidad; 
+                        }
+                    }
+                }
+
 
                 gvProductos.DataSource = lista;
                 DetTotal = 0;
@@ -135,23 +149,32 @@ namespace vista
             DetalleProducto auxDet = new DetalleProducto();
 
             int indx = productosSeleccionados.FindIndex(x => x.codProducto == codigo);
-
-            if (indx != -1)
+            if(auxProducto.stockActual > 0)
             {
-                productosSeleccionados[indx].cantidad++;
-                productosSeleccionados[indx].monto = productosSeleccionados[indx].precioVenta * productosSeleccionados[indx].cantidad;
+                if (indx != -1)
+                {
+                    productosSeleccionados[indx].cantidad++;
+                    productosSeleccionados[indx].monto = productosSeleccionados[indx].precioVenta * productosSeleccionados[indx].cantidad;
+                }
+                else
+                {
+                    auxDet.codProducto = auxProducto.codigo;
+                    auxDet.cantidad = 1;
+                    auxDet.descripcion = auxProducto.descripcion;
+                    auxDet.precioVenta = auxProducto.precioCompra * ((100 + auxProducto.ganacia) / 100);
+                    auxDet.monto = auxDet.precioVenta;
+                    productosSeleccionados.Add(auxDet);
+                }
+                guardarSession();
             }
             else
             {
-                auxDet.codProducto = auxProducto.codigo;
-                auxDet.cantidad = 1;
-                auxDet.descripcion = auxProducto.descripcion;
-                auxDet.precioVenta = auxProducto.precioCompra * ((100 + auxProducto.ganacia) / 100);
-                auxDet.monto = auxDet.precioVenta;
-                productosSeleccionados.Add(auxDet);
+                AlertAltaVenta1 = true;
+                Session.Add("AlertAltaVenta1", AlertAltaVenta1);
             }
+            
 
-            guardarSession();
+            
             Response.Redirect("DetalleProductosVenta.aspx");
 
         }
@@ -171,9 +194,19 @@ namespace vista
 
             for (int x = 0; x < cantidad; x++)
             {
+                string aux = gvProductosSeleccionados.Rows[x].Cells[1].Text;
                 txt = (TextBox)(gvProductosSeleccionados.Rows[x].FindControl("TxtCantidad"));
-                productosSeleccionados[x].cantidad = int.Parse(txt.Text);
-                productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                Producto auxP = lista.Find(a => a.codigo == aux);
+                if( auxP.stockActual - int.Parse(txt.Text) + productosSeleccionados[x].cantidad>= 0)
+                {
+                    productosSeleccionados[x].cantidad = int.Parse(txt.Text);
+                    productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                }
+                else
+                {
+                    AlertAltaVenta1 = true;
+                }
+
             }
 
             guardarSession();
