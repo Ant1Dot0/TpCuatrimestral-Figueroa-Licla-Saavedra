@@ -17,42 +17,51 @@ namespace vista
         public decimal DetTotalCantidad = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+                lista = new ProductoNegocio().listar();
+
+                if (Session["ProductosSeleccionadosC"] != null)
+                {
+                    productosSeleccionados = recListDet("ProductosSeleccionadosC");
+                }
+                else if (Session["DetProductosCompra"] != null)
+                {
+                    productosSeleccionados = recListDet("DetProductosCompra");
+
+                }
+
+                gvProductos.DataSource = lista;
+                DetTotal = 0;
+                DetTotalCantidad = 0;
+                foreach (DetalleProducto aux in productosSeleccionados)
+                {
+                    DetTotal += aux.monto;
+                    DetTotalCantidad += aux.cantidad;
+
+                }
+
+                txtTotal.Text = "$ " + DetTotal;
+                TxtTotCantidad.Text = "" + DetTotalCantidad;
+
+
+                gvProductosSeleccionados.DataSource = productosSeleccionados;
+
+                if (!IsPostBack)
+                {
+                    DataBind();
+                }
+
             }
-
-            lista = new ProductoNegocio().listar();
-
-            if (Session["ProductosSeleccionadosC"] != null)
+            catch (Exception ex)
             {
-                productosSeleccionados = recListDet("ProductosSeleccionadosC");
-            }
-            else if (Session["DetProductosCompra"] != null)
-            {
-                productosSeleccionados = recListDet("DetProductosCompra");
+                Session.Add("Error.aspx", ex.Message);
 
-            }
-
-            gvProductos.DataSource = lista;
-            DetTotal = 0;
-            DetTotalCantidad = 0;
-            foreach (DetalleProducto aux in productosSeleccionados)
-            {
-                DetTotal += aux.monto;
-                DetTotalCantidad += aux.cantidad;
-
-            }
-
-            txtTotal.Text = "$ " + DetTotal;
-            TxtTotCantidad.Text = "" + DetTotalCantidad;
-
-
-            gvProductosSeleccionados.DataSource = productosSeleccionados;
-
-            if (!IsPostBack)
-            {
-                DataBind();
             }
 
 
@@ -121,29 +130,38 @@ namespace vista
 
         protected void gvProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string codigo = gvProductos.SelectedDataKey.Value.ToString();
-            Producto auxProducto = (lista.Find(x => x.codigo == codigo));
-            DetalleProducto auxDet = new DetalleProducto();
-
-            int indx = productosSeleccionados.FindIndex(x => x.codProducto == codigo);
-
-            if (indx != -1)
+            try
             {
-                productosSeleccionados[indx].cantidad++;
-                productosSeleccionados[indx].monto = productosSeleccionados[indx].precioVenta * productosSeleccionados[indx].cantidad;
+                string codigo = gvProductos.SelectedDataKey.Value.ToString();
+                Producto auxProducto = (lista.Find(x => x.codigo == codigo));
+                DetalleProducto auxDet = new DetalleProducto();
+
+                int indx = productosSeleccionados.FindIndex(x => x.codProducto == codigo);
+
+                if (indx != -1)
+                {
+                    productosSeleccionados[indx].cantidad++;
+                    productosSeleccionados[indx].monto = productosSeleccionados[indx].precioVenta * productosSeleccionados[indx].cantidad;
+                }
+                else
+                {
+                    auxDet.codProducto = auxProducto.codigo;
+                    auxDet.cantidad = 1;
+                    auxDet.descripcion = auxProducto.descripcion;
+                    auxDet.precioVenta = auxProducto.precioCompra;
+                    auxDet.monto = auxDet.precioVenta;
+                    productosSeleccionados.Add(auxDet);
+                }
+
+                guardarSession();
+                Response.Redirect("DetalleProductosCompra.aspx");
             }
-            else
+            catch (Exception ex)
             {
-                auxDet.codProducto = auxProducto.codigo;
-                auxDet.cantidad = 1;
-                auxDet.descripcion = auxProducto.descripcion;
-                auxDet.precioVenta = auxProducto.precioCompra;
-                auxDet.monto = auxDet.precioVenta;
-                productosSeleccionados.Add(auxDet);
+
+                throw ex;
             }
 
-            guardarSession();
-            Response.Redirect("DetalleProductosCompra.aspx");
 
         }
 
@@ -156,37 +174,54 @@ namespace vista
 
         protected void TxtCantidad_TextChanged(object sender, EventArgs e)
         {
-            int cantidad = gvProductosSeleccionados.Rows.Count;
-            TextBox txt = new TextBox();
-
-
-            for (int x = 0; x < cantidad; x++)
+            try
             {
-                txt = (TextBox)(gvProductosSeleccionados.Rows[x].FindControl("TxtCantidad"));
-                productosSeleccionados[x].cantidad = int.Parse(txt.Text);
-                productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                int cantidad = gvProductosSeleccionados.Rows.Count;
+                TextBox txt = new TextBox();
+
+
+                for (int x = 0; x < cantidad; x++)
+                {
+                    txt = (TextBox)(gvProductosSeleccionados.Rows[x].FindControl("TxtCantidad"));
+                    productosSeleccionados[x].cantidad = int.Parse(txt.Text);
+                    productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                }
+
+                guardarSession();
+                Response.Redirect("DetalleProductosCompra.aspx");
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-            guardarSession();
-            Response.Redirect("DetalleProductosCompra.aspx");
 
         }
 
         protected void TxtPrecio_TextChanged(object sender, EventArgs e)
         {
-
-            int cantidad = gvProductosSeleccionados.Rows.Count;
-            TextBox txt = new TextBox();
-
-            for (int x = 0; x < cantidad; x++)
+            try
             {
-                txt = (TextBox)(gvProductosSeleccionados.Rows[x].FindControl("TxtPrecio"));
-                productosSeleccionados[x].precioVenta = decimal.Parse(txt.Text);
-                productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                int cantidad = gvProductosSeleccionados.Rows.Count;
+                TextBox txt = new TextBox();
+
+                for (int x = 0; x < cantidad; x++)
+                {
+                    txt = (TextBox)(gvProductosSeleccionados.Rows[x].FindControl("TxtPrecio"));
+                    productosSeleccionados[x].precioVenta = decimal.Parse(txt.Text);
+                    productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                }
+
+                guardarSession();
+                Response.Redirect("DetalleProductosCompra.aspx");
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-            guardarSession();
-            Response.Redirect("DetalleProductosCompra.aspx");
         }
 
         protected void BtnGuardar_Click(object sender, EventArgs e)
@@ -205,13 +240,22 @@ namespace vista
 
         protected void gvProductosSeleccionados_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string codigo = gvProductosSeleccionados.SelectedDataKey.Value.ToString();
-            int indx = productosSeleccionados.FindIndex(x => x.codProducto == codigo);
+            try
+            {
+                string codigo = gvProductosSeleccionados.SelectedDataKey.Value.ToString();
+                int indx = productosSeleccionados.FindIndex(x => x.codProducto == codigo);
 
-            productosSeleccionados.RemoveAt(indx);
+                productosSeleccionados.RemoveAt(indx);
 
-            guardarSession();
-            Response.Redirect("DetalleProductosCompra.aspx");
+                guardarSession();
+                Response.Redirect("DetalleProductosCompra.aspx");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         protected void gvProductosSeleccionados_SelectedIndexChanged1(object sender, EventArgs e)

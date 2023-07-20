@@ -17,42 +17,51 @@ namespace vista
         public decimal DetTotalCantidad = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+                lista = new ProductoNegocio().listar();
+
+                if (Session["ProductosSeleccionados"] != null)
+                {
+                    productosSeleccionados = recListDet("ProductosSeleccionados");
+                }
+                else if (Session["DetProductosVenta"] != null)
+                {
+                    productosSeleccionados = recListDet("DetProductosVenta");
+
+                }
+
+                gvProductos.DataSource = lista;
+                DetTotal = 0;
+                DetTotalCantidad = 0;
+                foreach (DetalleProducto aux in productosSeleccionados)
+                {
+                    DetTotal += aux.monto;
+                    DetTotalCantidad += aux.cantidad;
+
+                }
+
+                txtTotal.Text = "$ " + DetTotal;
+                TxtTotCantidad.Text = "" + DetTotalCantidad;
+
+
+                gvProductosSeleccionados.DataSource = productosSeleccionados;
+
+                if (!IsPostBack)
+                {
+                    DataBind();
+                }
+
             }
-
-            lista = new ProductoNegocio().listar();
-
-            if (Session["ProductosSeleccionados"] != null)
+            catch (Exception ex)
             {
-                productosSeleccionados = recListDet("ProductosSeleccionados");
-            }
-            else if (Session["DetProductosVenta"] != null)
-            {
-                productosSeleccionados = recListDet("DetProductosVenta");
 
-            }
-
-            gvProductos.DataSource = lista;
-            DetTotal = 0;
-            DetTotalCantidad = 0;
-            foreach (DetalleProducto aux in productosSeleccionados)
-            {
-                DetTotal += aux.monto;
-                DetTotalCantidad += aux.cantidad;
-
-            }
-
-            txtTotal.Text = "$ " + DetTotal;
-            TxtTotCantidad.Text = "" + DetTotalCantidad;
-
-
-            gvProductosSeleccionados.DataSource = productosSeleccionados;
-
-            if (!IsPostBack)
-            {
-                DataBind();
+                Session.Add("Error.aspx", ex.Message);
             }
 
 

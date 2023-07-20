@@ -17,40 +17,49 @@ namespace vista
         public Usuario vendedor = new Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+                if (Session["ClienteTemp"] != null)
+                {
+                    ClienteTemp = (Cliente)Session["ClienteTemp"];
+
+                }
+                else if (Session["ClienteCompVenta"] != null)
+                {
+                    ClienteTemp = (Cliente)Session["ClienteCompVenta"];
+                }
+                if (Session["User"] != null)
+                {
+                    vendedor = (Usuario)Session["User"];
+                }
+
+
+                clientes = new ClientesNegocio().Listar();
+                gvClientes.DataSource = clientes;
+
+
+
+                ddlCategoria.DataSource = new CategoriasClienteNegocio().Listar();
+                ddlCategoria.DataValueField = "id";
+                ddlCategoria.DataTextField = "descripcion";
+
+                if (!IsPostBack)
+                {
+                    cargarForm();
+                    DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-            if (Session["ClienteTemp"] != null)
-            {
-                ClienteTemp = (Cliente)Session["ClienteTemp"];
-                
-            }
-            else if (Session["ClienteCompVenta"] != null)
-            {
-                ClienteTemp = (Cliente)Session["ClienteCompVenta"];
-            }
-            if(Session["User"] != null)
-            {
-                vendedor = (Usuario)Session["User"];
-            }
-
-
-            clientes = new ClientesNegocio().Listar();
-            gvClientes.DataSource = clientes;
-
-
-
-            ddlCategoria.DataSource = new CategoriasClienteNegocio().Listar();
-            ddlCategoria.DataValueField = "id";
-            ddlCategoria.DataTextField = "descripcion";
-
-            if (!IsPostBack)
-            {
-                cargarForm();
-                DataBind();
-            }
         }
 
         protected void cargarForm()
