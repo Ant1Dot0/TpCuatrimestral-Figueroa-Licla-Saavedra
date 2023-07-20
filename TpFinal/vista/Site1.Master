@@ -26,7 +26,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Info</a></li>
                     <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
-                    <li><a class="dropdown-item" href="InicioSesion.aspx">Desloguearse</a></li>
+                    <li><a class="dropdown-item" onclick=" <%Session.Add("User", null); %> " href="InicioSesion.aspx">Desloguearse</a></li>
                 </ul>
             </div>
         </div>
@@ -52,7 +52,14 @@
                 <a href="ListaVentas.aspx" class="d-block text-light p-3">Ventas</a>
                 <a href="ListaCompra.aspx" class="d-block text-light p-3">Compras</a>
                 <a href="#" class="d-block text-light p-3">Consultas</a>
-                <a href="#" class="d-block text-light p-3">Herramientas</a>
+                    <%if( Session["User"] != null && ((Dominio.Usuario)Session["User"]).rol.descripcion == Dominio.TipoRol.ADMIN.ToString())
+                    {%>
+
+
+                                 <a href="#" class="d-block text-light p-3">Herramientas</a>
+                       
+
+                   <% } %>
             </div>
         </div>
     </div>

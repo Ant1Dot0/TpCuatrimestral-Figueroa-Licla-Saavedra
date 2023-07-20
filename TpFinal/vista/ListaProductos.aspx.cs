@@ -15,6 +15,12 @@ namespace vista
         public bool prueba = false;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
+
+
             int idProducto = 0;
 
             if (Request.QueryString["id"] != null)

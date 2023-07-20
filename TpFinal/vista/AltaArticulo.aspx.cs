@@ -17,8 +17,12 @@ namespace vista
         public int accion = 0; // 0 para alta, 1 para editar.
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
 
-            if(Session["AccionProducto"] != null)
+            if (Session["AccionProducto"] != null)
             {
                 accion = int.Parse(Session["AccionProducto"].ToString());
             }

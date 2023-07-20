@@ -33,8 +33,13 @@
                 <div class="card-footer text-end">
                     <%if (Session["User"] != null && ((Dominio.Usuario)Session["User"]).rol.descripcion == Dominio.TipoRol.ADMIN.ToString() && TxtCodigo.Text != null)
                         {%>
+
+
                         <asp:Button runat="server" ID="btnEliminar" OnClick="btnEliminar_Click" Text="Eliminar" CssClass="btn btn-dark"/>
+
+
                     <%} %>
+
                     <asp:Button runat="server" ID="btnGuardar" Text="Guardar" OnClick="btnGuardar_Click" CssClass="btn btn-success"/>
 
                      <a href="ListaCategoriaCliente.aspx" class="btn btn-danger">Cancelar</a>

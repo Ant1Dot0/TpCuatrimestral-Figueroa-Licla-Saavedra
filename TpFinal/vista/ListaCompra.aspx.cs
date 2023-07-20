@@ -14,6 +14,11 @@ namespace vista
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
+
             List<CompCompra> compras = new CompraNegocio().Listar();
 
             List<Proveedor> proveedores = new ProveedorNegocio().ListarProveedor();
@@ -49,6 +54,11 @@ namespace vista
         {
             borrarSession();
             Response.Redirect("AltaCompra.aspx");
+        }
+
+        protected void gvCompras_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

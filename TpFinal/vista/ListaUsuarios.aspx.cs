@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
 
 namespace vista
 {
-    public partial class ListaMarcasProductos : System.Web.UI.Page
+    public partial class ListaUsuarios : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,12 +18,16 @@ namespace vista
                 Response.Redirect("InicioSesion.aspx", false);
             }
 
+
+            UsuarioNegocio negocio = new UsuarioNegocio();
+            GridViewUsuarios.DataSource = negocio.Listar();
+            DataBind();
+            
         }
 
-        protected void GridViewMarca_SelectedIndexChanged(object sender, EventArgs e)
+        protected void GridViewUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var id = GridViewMarca.SelectedDataKey.Value.ToString();
-            Response.Redirect("AltaMarcaProducto.aspx?id=" + id, false);
+
         }
     }
 }

@@ -19,6 +19,13 @@ namespace vista
         public string pdv;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
+
+
             if (Session["ProveedorTemp"] != null)
             {
                 proveedorTemp = (Proveedor)Session["ProveedorTemp"];

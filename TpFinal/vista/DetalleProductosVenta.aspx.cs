@@ -17,6 +17,11 @@ namespace vista
         public decimal DetTotalCantidad = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
+
             lista = new ProductoNegocio().listar();
 
             if (Session["ProductosSeleccionados"] != null)

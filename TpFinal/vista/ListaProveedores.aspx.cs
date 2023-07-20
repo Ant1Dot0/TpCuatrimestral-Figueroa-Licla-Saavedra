@@ -15,6 +15,11 @@ namespace vista
         {
             try
             {
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
 
                 ProveedorNegocio negocio = new ProveedorNegocio();
                 GridViewProveedores.DataSource = negocio.ListarProveedor();

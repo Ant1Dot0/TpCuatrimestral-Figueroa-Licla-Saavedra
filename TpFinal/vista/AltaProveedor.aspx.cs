@@ -13,6 +13,12 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
+
+
             CategoriasProveedorNegocio categoriaProveedor = new CategoriasProveedorNegocio();
             List<CategoriaProveedor> Lista = categoriaProveedor.Listar();
 

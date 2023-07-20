@@ -13,6 +13,12 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
+
+
             if (Request.QueryString["id"] != null)
             {
                 List<MarcaArticulo> marcas = new List<MarcaArticulo>();

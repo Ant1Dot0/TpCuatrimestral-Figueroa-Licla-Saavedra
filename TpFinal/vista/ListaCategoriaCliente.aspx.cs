@@ -13,6 +13,11 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx", false);
+            }
+
             CategoriasClienteNegocio negocio = new CategoriasClienteNegocio();
             GridViewCategoria.DataSource = negocio.Listar();
             DataBind();
