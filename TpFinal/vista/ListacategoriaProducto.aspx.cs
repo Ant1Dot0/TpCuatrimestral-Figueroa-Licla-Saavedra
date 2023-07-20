@@ -13,17 +13,26 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+                GridViewCategoria.DataSource = new CategoriaArticuloNegocio().Listar();
+
+                if (!IsPostBack)
+                {
+                    DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
 
-            GridViewCategoria.DataSource = new CategoriaArticuloNegocio().Listar();
-
-            if(!IsPostBack)
-            {
-                DataBind();
-            }
         }
 
         protected void GridViewCategoria_SelectedIndexChanged(object sender, EventArgs e)

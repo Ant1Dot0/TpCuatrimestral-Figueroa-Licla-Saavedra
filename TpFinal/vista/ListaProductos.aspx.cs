@@ -15,34 +15,43 @@ namespace vista
         public bool prueba = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+
+                int idProducto = 0;
+
+                if (Request.QueryString["id"] != null)
+                {
+                    idProducto = int.Parse(Request.QueryString["id"].ToString());
+                }
+
+
+                if (idProducto >= 1)
+                {
+                    new ProductoNegocio().Eliminar(idProducto);
+                    Response.Redirect("ListaProductos.aspx");
+                }
+
+                productos = new ProductoNegocio().listar();
+
+                if (!IsPostBack)
+                {
+                    repProductos.DataSource = productos;
+                    DataBind();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-
-            int idProducto = 0;
-
-            if (Request.QueryString["id"] != null)
-            {
-                idProducto = int.Parse(Request.QueryString["id"].ToString());
-            }
-
-
-            if (idProducto >= 1)
-            {
-                new ProductoNegocio().Eliminar(idProducto);
-                Response.Redirect("ListaProductos.aspx");
-            }
-
-            productos = new ProductoNegocio().listar();
-
-            if(!IsPostBack)
-            {
-                repProductos.DataSource = productos;
-                DataBind();
-            }
-            
 
 
         }

@@ -14,28 +14,37 @@ namespace vista
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+                List<CompCompra> compras = new CompraNegocio().Listar();
+
+                List<Proveedor> proveedores = new ProveedorNegocio().ListarProveedor();
+
+                foreach (CompCompra x in compras)
+                {
+                    x.proveedor = proveedores.Find(a => a.id == x.proveedor.id);
+                }
+
+                gvCompras.DataSource = compras;
+
+
+
+                if (!IsPostBack)
+                {
+                    DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-            List<CompCompra> compras = new CompraNegocio().Listar();
-
-            List<Proveedor> proveedores = new ProveedorNegocio().ListarProveedor();
-
-            foreach(CompCompra x in compras)
-            {
-                x.proveedor = proveedores.Find(a => a.id == x.proveedor.id);
-            }
-
-            gvCompras.DataSource = compras;
-
-            
-
-            if (!IsPostBack)
-            {
-                DataBind();
-            }
         }
 
         protected void borrarSession()
