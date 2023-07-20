@@ -22,6 +22,7 @@ namespace vista
                 return;
             }
 
+            Session.Add("User",null);
 
             UsuarioNegocio negocio = new UsuarioNegocio();
             Usuario Log = new Usuario();

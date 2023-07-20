@@ -26,7 +26,7 @@
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="ID" />
                         <asp:BoundField HeaderText="Nombre" DataField="nombre" />
-                        <asp:BoundField HeaderText="NºDocumento" DataField="DNI" />
+                        <asp:BoundField HeaderText="NºDocumento" DataField="nDocumento" />
                         <asp:BoundField HeaderText="Email" DataField="email" />
                         <asp:CommandField ShowSelectButton="true" SelectText="✔️" HeaderText=" " />
                     </Columns>
