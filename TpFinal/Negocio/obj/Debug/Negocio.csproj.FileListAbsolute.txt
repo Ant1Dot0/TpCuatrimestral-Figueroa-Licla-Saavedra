@@ -16,3 +16,6 @@ C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Sa
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\obj\Debug\Negocio.dll
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\obj\Debug\Negocio.pdb
+C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\itextsharp.dll
+C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\itextsharp.xml

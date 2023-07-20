@@ -6,6 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
 using Negocio;
+using System.IO;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html;
+using iTextSharp.text.html.simpleparser;
 
 namespace vista
 {
@@ -41,14 +49,32 @@ namespace vista
                 throw ex;
             }
 
+            /****************************************************************************/
+            /*ALTERNATIVA*/
+            /*
+            string strQuery = "SELECT [codigo],[razonSocial][cuit] from Proveedor";
+            SqlCommand cmd = new SqlCommand(strQuery);
+            DataTable dt;
+            dt = GetData(cmd);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
 
 
+            /****************************************************************************/
+        }
+        /*
+        private DataTable GetData(SqlCommand cmd)
+        {
+            DataTable dt = new DataTable();
+            string strconn
 
         }
+        */
 
-        
+
+
         /*CONFIGURAR BOTON AGREGAR PROVEEDOR*/
-        
+
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
             ProveedorNegocio Negocio = new ProveedorNegocio();
@@ -95,8 +121,34 @@ namespace vista
             Response.Redirect("AltaProveedor.aspx?id=" + id, false);
         }
 
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+
+        }
+
+
         protected void btnExportarExcel_Click(object sender, EventArgs e)
         {
+           
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.AddHeader("content-disposition","attachment;filename=GridViewExport.xls");
+            Response.ContentType = "application/ms-excel";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter hw = new HtmlTextWriter(sw);
+            GridViewProveedores.AllowPaging = false;
+            GridViewProveedores.DataBind();
+            
+            GridViewProveedores.RenderControl(hw);
+            Response.Output.Write(sw.ToString());
+            Response.Flush();
+            Response.End();
+
+
+
 
         }
     }

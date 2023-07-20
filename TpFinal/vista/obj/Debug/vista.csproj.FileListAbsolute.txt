@@ -187,3 +187,6 @@ C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Sa
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\vista\obj\Debug\vista.csproj.CopyComplete
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\vista\obj\Debug\vista.dll
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\vista\obj\Debug\vista.pdb
+C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\vista\bin\BouncyCastle.Crypto.dll
+C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\vista\bin\itextsharp.dll
+C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\vista\bin\itextsharp.xml

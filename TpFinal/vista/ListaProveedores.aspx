@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ListaProveedores.aspx.cs" Inherits="vista.ListaProveedores" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ListaProveedores.aspx.cs" enableEventValidation ="false" Inherits="vista.ListaProveedores" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -19,6 +19,7 @@
                 <%} %>
             </div>
         </div>
+
 
         <!--------------------------- INICIO MODAL-------------------------------------->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -105,6 +106,8 @@
         </div>
         <!----------------------------------------- FIN MODAL---------------------------------->
 
+
+
         <!-----------------------------------------INICIO LISTADO------------------------------>
         <div class="row justify-content-center mt-2">
             <div class="col-md-10">
@@ -123,6 +126,8 @@
             &nbsp;
             <asp:Button ID="btnExportarPdf" runat="server" Text="Exportar a Pdf" />
                    
+
+           
         </div>
         <!---------------------------------------FIN LISTADO---------------------------------->
     </div>
