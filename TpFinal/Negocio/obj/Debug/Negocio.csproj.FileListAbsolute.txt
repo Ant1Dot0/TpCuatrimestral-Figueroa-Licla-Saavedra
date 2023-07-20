@@ -1,3 +1,12 @@
+C:\proyectos\TpFinal2023\TpFinal\Negocio\bin\Debug\Negocio.dll
+C:\proyectos\TpFinal2023\TpFinal\Negocio\bin\Debug\Negocio.pdb
+C:\proyectos\TpFinal2023\TpFinal\Negocio\bin\Debug\Dominio.dll
+C:\proyectos\TpFinal2023\TpFinal\Negocio\bin\Debug\Dominio.pdb
+C:\proyectos\TpFinal2023\TpFinal\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\proyectos\TpFinal2023\TpFinal\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\proyectos\TpFinal2023\TpFinal\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\proyectos\TpFinal2023\TpFinal\Negocio\obj\Debug\Negocio.dll
+C:\proyectos\TpFinal2023\TpFinal\Negocio\obj\Debug\Negocio.pdb
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\Negocio.dll
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\Negocio.pdb
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\Dominio.dll
@@ -10,15 +19,15 @@ C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Sa
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\itextsharp.dll
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\itextsharp.xml
-C:\proyectos\TpFinal2023\TpFinal\Negocio\bin\Debug\Negocio.dll
-C:\proyectos\TpFinal2023\TpFinal\Negocio\bin\Debug\Negocio.pdb
-C:\proyectos\TpFinal2023\TpFinal\Negocio\bin\Debug\BouncyCastle.Crypto.dll
-C:\proyectos\TpFinal2023\TpFinal\Negocio\bin\Debug\Dominio.dll
-C:\proyectos\TpFinal2023\TpFinal\Negocio\bin\Debug\itextsharp.dll
-C:\proyectos\TpFinal2023\TpFinal\Negocio\bin\Debug\Dominio.pdb
-C:\proyectos\TpFinal2023\TpFinal\Negocio\bin\Debug\itextsharp.xml
-C:\proyectos\TpFinal2023\TpFinal\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
-C:\proyectos\TpFinal2023\TpFinal\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
-C:\proyectos\TpFinal2023\TpFinal\Negocio\obj\Debug\Negocio.csproj.CopyComplete
-C:\proyectos\TpFinal2023\TpFinal\Negocio\obj\Debug\Negocio.dll
-C:\proyectos\TpFinal2023\TpFinal\Negocio\obj\Debug\Negocio.pdb
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\Negocio.dll
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\Negocio.pdb
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\Dominio.dll
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\itextsharp.dll
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\Dominio.pdb
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\bin\Debug\itextsharp.xml
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\obj\Debug\Negocio.dll
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Negocio\obj\Debug\Negocio.pdb
