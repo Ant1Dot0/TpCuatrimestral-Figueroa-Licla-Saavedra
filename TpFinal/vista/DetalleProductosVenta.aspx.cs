@@ -17,6 +17,8 @@ namespace vista
         public decimal DetTotalCantidad = 0;
 
         public bool AlertAltaVenta1 = false; // sin stock suficiente
+        public bool AlertAltaVenta2 = false; // coloca cantidad negativa o decimal
+        public bool AlertAltaVenta3 = false; // coloca precios negativos
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -197,15 +199,24 @@ namespace vista
                 string aux = gvProductosSeleccionados.Rows[x].Cells[1].Text;
                 txt = (TextBox)(gvProductosSeleccionados.Rows[x].FindControl("TxtCantidad"));
                 Producto auxP = lista.Find(a => a.codigo == aux);
-                if( auxP.stockActual - int.Parse(txt.Text) + productosSeleccionados[x].cantidad>= 0)
+
+                if(decimal.Parse(txt.Text) > 0  && decimal.Parse(txt.Text) % 1 == 0)
                 {
-                    productosSeleccionados[x].cantidad = int.Parse(txt.Text);
-                    productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                    if (auxP.stockActual - int.Parse(txt.Text) + productosSeleccionados[x].cantidad >= 0)
+                    {
+                        productosSeleccionados[x].cantidad = int.Parse(txt.Text);
+                        productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                    }
+                    else
+                    {
+                        AlertAltaVenta1 = true;
+                    }
                 }
                 else
                 {
-                    AlertAltaVenta1 = true;
+                    AlertAltaVenta2 = true;
                 }
+                
 
             }
 
@@ -222,9 +233,18 @@ namespace vista
 
             for (int x = 0; x < cantidad; x++)
             {
+
                 txt = (TextBox)(gvProductosSeleccionados.Rows[x].FindControl("TxtPrecio"));
-                productosSeleccionados[x].precioVenta = decimal.Parse(txt.Text);
-                productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+
+                if(decimal.Parse(txt.Text) >= 0)
+                {
+                    productosSeleccionados[x].precioVenta = decimal.Parse(txt.Text);
+                    productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                }
+                else
+                {
+                    AlertAltaVenta3 = true;
+                }
             }
 
             guardarSession();

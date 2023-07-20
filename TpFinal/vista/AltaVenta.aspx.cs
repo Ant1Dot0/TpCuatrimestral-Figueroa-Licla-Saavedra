@@ -96,6 +96,7 @@ namespace vista
                 int numero = auxTalonario.ultNumero;
                 int pdv = 1;
                 total = 0;
+                List<Producto> productos = new ProductoNegocio().listar();
 
                 string codComprobante = obtCodPdv(pdv) + "-" + obtCodNumero(numero);
 
@@ -126,7 +127,14 @@ namespace vista
                 {
                     new DetalleProductoNegocio().Agregar(x);
                     total += x.monto;
+                    Producto auxP = productos.Find(a => a.codigo == x.codProducto);
+
+                    auxP.stockActual -= x.cantidad;
+
+                    new ProductoNegocio().Editar(auxP);
                 }
+
+                
 
                 nueva.subtotal = total;
                 nueva.totalDescuento = 0;

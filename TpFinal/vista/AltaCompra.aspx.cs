@@ -112,6 +112,7 @@ namespace vista
             try
             {
                 total = 0;
+                List<Producto> productos = new ProductoNegocio().listar();
 
                 string codComprobante = obtCodPdv(int.Parse(pdv)) + "-" + obtCodNumero(int.Parse(numero)) + " - " + ProveedorCompCompra.codigo;
 
@@ -142,6 +143,12 @@ namespace vista
                 {
                     new DetalleProductosCompraNegocio().Agregar(x);
                     total += x.monto;
+
+                    Producto auxP = productos.Find(a => a.codigo == x.codProducto);
+
+                    auxP.stockActual += x.cantidad;
+
+                    new ProductoNegocio().Editar(auxP);
                 }
 
                 nueva.subtotal = total;

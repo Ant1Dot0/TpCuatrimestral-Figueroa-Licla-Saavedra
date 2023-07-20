@@ -15,6 +15,10 @@ namespace vista
         public List<Producto> lista = new List<Producto>();
         public decimal DetTotal = 0;
         public decimal DetTotalCantidad = 0;
+
+
+        public bool AlertAltaCompra2 = false; // coloca cantidad negativa o decimal
+        public bool AlertAltaCompra3 = false; // coloca precios negativos
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -34,6 +38,17 @@ namespace vista
                 {
                     productosSeleccionados = recListDet("DetProductosCompra");
 
+                }
+
+                foreach (Producto x in lista)
+                {
+                    foreach (DetalleProducto y in productosSeleccionados)
+                    {
+                        if (x.codigo == y.codProducto)
+                        {
+                            x.stockActual += y.cantidad;
+                        }
+                    }
                 }
 
                 gvProductos.DataSource = lista;
@@ -179,12 +194,20 @@ namespace vista
                 int cantidad = gvProductosSeleccionados.Rows.Count;
                 TextBox txt = new TextBox();
 
-
                 for (int x = 0; x < cantidad; x++)
                 {
+
+                    string aux = gvProductosSeleccionados.Rows[x].Cells[1].Text;
                     txt = (TextBox)(gvProductosSeleccionados.Rows[x].FindControl("TxtCantidad"));
-                    productosSeleccionados[x].cantidad = int.Parse(txt.Text);
-                    productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                    Producto auxP = lista.Find(a => a.codigo == aux);
+
+                    if (decimal.Parse(txt.Text) >= 0 && decimal.Parse(txt.Text) % 1 == 0)
+                    {
+                        productosSeleccionados[x].cantidad = int.Parse(txt.Text);
+                        productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                    }
+
+
                 }
 
                 guardarSession();
@@ -209,8 +232,17 @@ namespace vista
                 for (int x = 0; x < cantidad; x++)
                 {
                     txt = (TextBox)(gvProductosSeleccionados.Rows[x].FindControl("TxtPrecio"));
-                    productosSeleccionados[x].precioVenta = decimal.Parse(txt.Text);
-                    productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+
+                    if (decimal.Parse(txt.Text) >= 0)
+                    {
+                        productosSeleccionados[x].precioVenta = decimal.Parse(txt.Text);
+                        productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;
+                    }
+                    else
+                    {
+                        AlertAltaCompra3 = true;
+                    }
+
                 }
 
                 guardarSession();

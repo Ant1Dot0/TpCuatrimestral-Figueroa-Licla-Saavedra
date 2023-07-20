@@ -16,7 +16,7 @@
                         <div class="col-md-10">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblCliente">Cliente</span>
-                                <asp:TextBox runat="server" CssClass="form-control" ID="txtCodigo" Enabled="false"></asp:TextBox>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="txtCodigo" Enabled="false" ra></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="ReqClienteNuevo" ControlToValidate="txtCodigo"
                                     ValidationGroup="ClienteNuevoGroup" runat="server"><h4 class="ms-2 text-danger"><i title="Campo obligatorio" class=" bi bi-exclamation-circle"></i></h4></asp:RequiredFieldValidator>
                             </div>
