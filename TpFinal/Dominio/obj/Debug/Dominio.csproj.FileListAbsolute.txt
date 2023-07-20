@@ -14,3 +14,13 @@ C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Sa
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.csproj.CopyComplete
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.dll
 C:\Users\escritorio1\Desktop\Revision 2 TP WEB\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.pdb
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\bin\Debug\Dominio.dll
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\bin\Debug\Dominio.pdb
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\bin\Debug\itextsharp.dll
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\bin\Debug\itextsharp.xml
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.csproj.CopyComplete
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.dll
+C:\Users\escritorio1\Desktop\FINAL WEB OrganizAR\TpCuatrimestral-Figueroa-Licla-Saavedra\TpFinal\Dominio\obj\Debug\Dominio.pdb

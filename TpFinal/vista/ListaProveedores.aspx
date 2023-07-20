@@ -124,7 +124,7 @@
             </div>
             <asp:Button ID="btnExportarExcel" runat="server" Text="Exportar a Excel" OnClick="btnExportarExcel_Click" />
             &nbsp;
-            <asp:Button ID="btnExportarPdf" runat="server" Text="Exportar a Pdf" />
+            <asp:Button ID="btnExportarPdf" runat="server" Text="Exportar a Pdf" OnClick="btnExportarPdf_Click" />
                    
 
            

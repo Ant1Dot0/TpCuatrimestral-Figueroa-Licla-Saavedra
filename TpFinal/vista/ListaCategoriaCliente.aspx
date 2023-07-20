@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ListaCategoriaCliente.aspx.cs" Inherits="vista.ListaCategoriaCliente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ListaCategoriaCliente.aspx.cs" enableEventValidation ="false" Inherits="vista.ListaCategoriaCliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -33,6 +33,10 @@
                 </asp:GridView>
             </div>
         </div>
+             <asp:Button ID="btnExportarExcel" runat="server" Text="Exportar a Excel" OnClick="btnExportarExcel_Click" />
+            &nbsp;
+            <asp:Button ID="btnExportarPdf" runat="server" Text="Exportar a Pdf" OnClick="btnExportarPdf_Click" />
+                   
         <!---------------------------------------FIN LISTADO---------------------------------->
     </div>
 </asp:Content>
