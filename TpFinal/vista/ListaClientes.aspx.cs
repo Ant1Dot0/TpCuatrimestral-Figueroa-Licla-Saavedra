@@ -14,14 +14,23 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+                ClientesNegocio negocio = new ClientesNegocio();
+                GridViewClientes.DataSource = negocio.Listar();
+                DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-            ClientesNegocio negocio = new ClientesNegocio();
-            GridViewClientes.DataSource = negocio.Listar();
-            DataBind();
 
         }
 

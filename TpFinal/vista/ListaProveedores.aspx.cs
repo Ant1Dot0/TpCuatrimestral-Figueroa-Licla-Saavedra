@@ -94,6 +94,11 @@ namespace vista
             var id = GridViewProveedores.SelectedDataKey.Value.ToString();
             Response.Redirect("AltaProveedor.aspx?id=" + id, false);
         }
+
+        protected void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

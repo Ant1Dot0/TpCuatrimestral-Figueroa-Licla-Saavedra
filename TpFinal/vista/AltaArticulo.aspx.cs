@@ -17,50 +17,63 @@ namespace vista
         public int accion = 0; // 0 para alta, 1 para editar.
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["User"] == null)
+
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+                if (Session["AccionProducto"] != null)
+                {
+                    accion = int.Parse(Session["AccionProducto"].ToString());
+                }
+
+                if (Session["ProductoSelected"] != null)
+                {
+                    auxProductoSeleccionado = (Producto)Session["ProductoSelected"];
+
+                }
+
+                if (Session["ProveedoresSelected"] != null)
+                {
+                    auxProveedoresSeleccionados = (List<ProveedorxProducto>)Session["ProveedoresSelected"];
+                }
+                else
+                {
+                    auxProveedoresSeleccionados = new ProveedorxProductoNegocio().ListarxProducto(auxProductoSeleccionado.codigo);
+                }
+
+
+                ddlCategoria.DataSource = new CategoriaArticuloNegocio().Listar();
+                ddlCategoria.DataValueField = "id";
+                ddlCategoria.DataTextField = "descripcion";
+
+
+                ddlMarca.DataSource = new MarcaArticuloNegocio().Listar();
+                ddlMarca.DataValueField = "id";
+                ddlMarca.DataTextField = "descripcion";
+
+                proveedores = proveedoresDisponibles();
+                gvProveedores.DataSource = proveedores;
+
+                if (!IsPostBack)
+                {
+                    repProveedores.DataSource = auxProveedoresSeleccionados;
+                    DataBind();
+                    cargarForm();
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-            if (Session["AccionProducto"] != null)
-            {
-                accion = int.Parse(Session["AccionProducto"].ToString());
-            }
-
-            if (Session["ProductoSelected"] != null)
-            {
-                auxProductoSeleccionado = (Producto)Session["ProductoSelected"];
-
-            }
-
-            if (Session["ProveedoresSelected"] != null)
-            {
-                auxProveedoresSeleccionados = (List<ProveedorxProducto>)Session["ProveedoresSelected"];
-            }
-            else
-            {
-                auxProveedoresSeleccionados = new ProveedorxProductoNegocio().ListarxProducto(auxProductoSeleccionado.codigo);
-            }
-
-
-            ddlCategoria.DataSource = new CategoriaArticuloNegocio().Listar();
-            ddlCategoria.DataValueField = "id";
-            ddlCategoria.DataTextField = "descripcion";
-
-
-            ddlMarca.DataSource = new MarcaArticuloNegocio().Listar();
-            ddlMarca.DataValueField = "id";
-            ddlMarca.DataTextField = "descripcion";
-
-            proveedores = proveedoresDisponibles();
-            gvProveedores.DataSource = proveedores;
-
-            if (!IsPostBack)
-            {
-                repProveedores.DataSource = auxProveedoresSeleccionados;
-                DataBind();
-                cargarForm();
-            }
 
 
         }
@@ -81,23 +94,34 @@ namespace vista
         }
         protected void gvProveedores_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GrabarProducto();
-            string codigo = gvProveedores.SelectedDataKey.Value.ToString();
-            ProveedorxProducto aux = new ProveedorxProducto();
-
-            if (auxProveedoresSeleccionados.FindIndex(a => a.codigoProveedor == codigo) == -1)
+            try
             {
-                aux.codigo = auxProductoSeleccionado.codigo + "-" + codigo;
-                aux.codigoProducto = auxProductoSeleccionado.codigo;
-                aux.codigoProveedor = codigo;
+                GrabarProducto();
+                string codigo = gvProveedores.SelectedDataKey.Value.ToString();
+                ProveedorxProducto aux = new ProveedorxProducto();
 
-                auxProveedoresSeleccionados.Add(aux);
+                if (auxProveedoresSeleccionados.FindIndex(a => a.codigoProveedor == codigo) == -1)
+                {
+                    aux.codigo = auxProductoSeleccionado.codigo + "-" + codigo;
+                    aux.codigoProducto = auxProductoSeleccionado.codigo;
+                    aux.codigoProveedor = codigo;
+
+                    auxProveedoresSeleccionados.Add(aux);
+                }
+
+
+
+                guardarSession();
+                Response.Redirect("AltaArticulo.aspx");
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
 
-            
-            guardarSession();
-            Response.Redirect("AltaArticulo.aspx");
         }
 
         protected void gvProveedores_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -107,20 +131,30 @@ namespace vista
 
         protected void cargarForm()
         {
-            
-            TxtCodigoProducto.Text = auxProductoSeleccionado.codigo;
-            if (accion==1)
+            try
             {
-                TxtCodigoProducto.Enabled = false;
-            }
+                TxtCodigoProducto.Text = auxProductoSeleccionado.codigo;
+                if (accion == 1)
+                {
+                    TxtCodigoProducto.Enabled = false;
+                }
 
-            TxtDescripcion.Text = auxProductoSeleccionado.descripcion;
-            ddlMarca.SelectedIndex = new MarcaArticuloNegocio().Listar().FindIndex(a => a.id == auxProductoSeleccionado.marca.id);
-            ddlCategoria.SelectedIndex = new CategoriaArticuloNegocio().Listar().FindIndex(a => a.id == auxProductoSeleccionado.categoria.id);
-            TxtPrecioCompra.Text = auxProductoSeleccionado.precioCompra.ToString();
-            TxtGanancia.Text = auxProductoSeleccionado.ganacia.ToString();
-            TxtStock.Text = auxProductoSeleccionado.stockActual.ToString();
-            TxtStockMinimo.Text = auxProductoSeleccionado.stockMinimo.ToString();
+                TxtDescripcion.Text = auxProductoSeleccionado.descripcion;
+                ddlMarca.SelectedIndex = new MarcaArticuloNegocio().Listar().FindIndex(a => a.id == auxProductoSeleccionado.marca.id);
+                ddlCategoria.SelectedIndex = new CategoriaArticuloNegocio().Listar().FindIndex(a => a.id == auxProductoSeleccionado.categoria.id);
+                TxtPrecioCompra.Text = auxProductoSeleccionado.precioCompra.ToString();
+                TxtGanancia.Text = auxProductoSeleccionado.ganacia.ToString();
+                TxtStock.Text = auxProductoSeleccionado.stockActual.ToString();
+                TxtStockMinimo.Text = auxProductoSeleccionado.stockMinimo.ToString();
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
+            }
+            
+
         }
         protected void GrabarProducto()
         {
@@ -142,13 +176,22 @@ namespace vista
 
         protected void btnCloseTag_Click(object sender, EventArgs e)
         {
-            string valor = ((Button)sender).CommandArgument;
-            auxProveedoresSeleccionados.RemoveAt(auxProveedoresSeleccionados.FindIndex(a => a.codigo == valor));
+            try
+            {
+                string valor = ((Button)sender).CommandArgument;
+                auxProveedoresSeleccionados.RemoveAt(auxProveedoresSeleccionados.FindIndex(a => a.codigo == valor));
 
-            GrabarProducto();
-            guardarSession();
+                GrabarProducto();
+                guardarSession();
 
-            Response.Redirect("AltaArticulo.aspx");
+                Response.Redirect("AltaArticulo.aspx");
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
+            }
 
         }
 
@@ -170,26 +213,37 @@ namespace vista
 
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
-            GrabarProducto();
-            if(accion == 1) // 1 para editar, 0 para guardar
-            {
-                new ProductoNegocio().Editar(auxProductoSeleccionado);
-            }
-            else
-            {
-                new ProductoNegocio().Agregar(auxProductoSeleccionado);
-            }
-            
 
-            new ProveedorxProductoNegocio().EliminarxProducto(auxProductoSeleccionado.codigo);
-
-            foreach (ProveedorxProducto x in auxProveedoresSeleccionados)
+            try
             {
-                new ProveedorxProductoNegocio().Agregar(x);
+                GrabarProducto();
+                if (accion == 1) // 1 para editar, 0 para guardar
+                {
+                    new ProductoNegocio().Editar(auxProductoSeleccionado);
+                }
+                else
+                {
+                    new ProductoNegocio().Agregar(auxProductoSeleccionado);
+                }
+
+
+                new ProveedorxProductoNegocio().EliminarxProducto(auxProductoSeleccionado.codigo);
+
+                foreach (ProveedorxProducto x in auxProveedoresSeleccionados)
+                {
+                    new ProveedorxProductoNegocio().Agregar(x);
+                }
+
+                BorrarSession();
+                Response.Redirect("ListaProductos.aspx");
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
-            BorrarSession();
-            Response.Redirect("ListaProductos.aspx");
+
         }
 
         protected void BtnCancelar_Click(object sender, EventArgs e)

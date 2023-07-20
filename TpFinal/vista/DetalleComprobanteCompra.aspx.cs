@@ -19,102 +19,156 @@ namespace vista
         public string pdv;
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
 
-            if (Session["User"] == null)
+
+                if (Session["ProveedorTemp"] != null)
+                {
+                    proveedorTemp = (Proveedor)Session["ProveedorTemp"];
+                }
+                else if (Session["ProveedorCompCompra"] != null)
+                {
+                    proveedorTemp = (Proveedor)Session["ProveedorCompCompra"];
+                }
+                if (Session["User"] != null)
+                {
+                    vendedor = (Usuario)Session["User"];
+                }
+
+                if (Session["NumeroTemp"] != null)
+                {
+                    numero = (string)Session["NumeroTemp"];
+                }
+                else if (Session["Numero"] != null)
+                {
+                    numero = (string)Session["Numero"];
+                }
+
+                if (Session["pdvTemp"] != null)
+                {
+                    pdv = (string)Session["pdvTemp"];
+                }
+                else if (Session["pdv"] != null)
+                {
+                    pdv = (string)Session["pdv"];
+                }
+
+                proveedores = new ProveedorNegocio().ListarProveedor();
+                gvProveedores.DataSource = proveedores;
+
+                ddlCategoria.DataSource = new CategoriasProveedorNegocio().Listar();
+                ddlCategoria.DataValueField = "id";
+                ddlCategoria.DataTextField = "descripcion";
+
+                if (!IsPostBack)
+                {
+                    cargarForm();
+                    DataBind();
+                }
+            }
+            catch (Exception ex)
             {
-                Response.Redirect("InicioSesion.aspx", false);
+
+                Session.Add("Error.aspx", ex.Message);
             }
 
 
-            if (Session["ProveedorTemp"] != null)
-            {
-                proveedorTemp = (Proveedor)Session["ProveedorTemp"];
-            }
-            else if (Session["ProveedorCompCompra"] != null)
-            {
-                proveedorTemp = (Proveedor)Session["ProveedorCompCompra"];
-            }
-            if (Session["User"] != null)
-            {
-                vendedor = (Usuario)Session["User"];
-            }
-
-            if (Session["NumeroTemp"] != null)
-            {
-                numero = (string)Session["NumeroTemp"];
-            }
-            else if (Session["Numero"] != null)
-            {
-                numero = (string)Session["Numero"];
-            }
-
-            if (Session["pdvTemp"] != null)
-            {
-                pdv = (string)Session["pdvTemp"];
-            }
-            else if (Session["pdv"] != null)
-            {
-                pdv = (string)Session["pdv"];
-            }
-
-            proveedores = new ProveedorNegocio().ListarProveedor();
-            gvProveedores.DataSource = proveedores;
-
-            ddlCategoria.DataSource = new CategoriasProveedorNegocio().Listar();
-            ddlCategoria.DataValueField = "id";
-            ddlCategoria.DataTextField = "descripcion";
-
-            if (!IsPostBack)
-            {
-                cargarForm();
-                DataBind();
-            }
         }
 
         protected void cargarForm()
         {
-            if (proveedorTemp.id > 0)
-                txtCodigo.Text = proveedorTemp.codigo + " - " + proveedorTemp.razonSocial;
-            TxtVendedor.Text = vendedor.ToString();
-            TxtNumero.Text = numero;
-            TxtPdv.Text = pdv;
+            try
+            {
+                if (proveedorTemp.id > 0)
+                    txtCodigo.Text = proveedorTemp.codigo + " - " + proveedorTemp.razonSocial;
+                TxtVendedor.Text = vendedor.ToString();
+                TxtNumero.Text = numero;
+                TxtPdv.Text = pdv;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         protected void guardarForm()
         {
-            numero = TxtNumero.Text;
-            pdv = TxtPdv.Text;
+            try
+            {
+                numero = TxtNumero.Text;
+                pdv = TxtPdv.Text;
 
 
-            Session.Add("NumeroTemp", numero);
-            Session.Add("pdvTemp", pdv);
+                Session.Add("NumeroTemp", numero);
+                Session.Add("pdvTemp", pdv);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         protected void guardarSession()
         {
-            Session.Add("ProveedorTemp", proveedorTemp);
-            Session.Add("NumeroTemp", numero);
-            Session.Add("pdvTemp", pdv);
+            try
+            {
+                Session.Add("ProveedorTemp", proveedorTemp);
+                Session.Add("NumeroTemp", numero);
+                Session.Add("pdvTemp", pdv);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
 
         }
 
         protected void borrarSession()
         {
-            Session.Add("ProveedorTemp", null);
-            Session.Add("NumeroTemp", null);
-            Session.Add("pdvTemp", null);
+            try
+            {
+                Session.Add("ProveedorTemp", null);
+                Session.Add("NumeroTemp", null);
+                Session.Add("pdvTemp", null);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
-            guardarForm();
-            numero = TxtNumero.Text;
-            pdv = TxtPdv.Text;
+            try
+            {
+                guardarForm();
+                numero = TxtNumero.Text;
+                pdv = TxtPdv.Text;
 
-            Session.Add("ProveedorCompCompra", proveedorTemp);
-            Session.Add("Numero", numero);
-            Session.Add("pdv", pdv);
+                Session.Add("ProveedorCompCompra", proveedorTemp);
+                Session.Add("Numero", numero);
+                Session.Add("pdv", pdv);
 
-            Response.Redirect("AltaCompra.aspx");
+                Response.Redirect("AltaCompra.aspx");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
@@ -125,12 +179,21 @@ namespace vista
 
         protected void gvProveedor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string codigo = gvProveedores.SelectedDataKey.Value.ToString();
-            proveedorTemp = proveedores.Find(x => x.codigo == codigo);
+            try
+            {
+                string codigo = gvProveedores.SelectedDataKey.Value.ToString();
+                proveedorTemp = proveedores.Find(x => x.codigo == codigo);
 
-            guardarForm();
-            guardarSession();
-            Response.Redirect("DetalleComprobanteCompra.aspx");
+                guardarForm();
+                guardarSession();
+                Response.Redirect("DetalleComprobanteCompra.aspx");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         protected void gvProveedor_PageIndexChanging(object sender, GridViewPageEventArgs e)

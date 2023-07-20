@@ -13,43 +13,52 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+
+                CategoriasProveedorNegocio categoriaProveedor = new CategoriasProveedorNegocio();
+                List<CategoriaProveedor> Lista = categoriaProveedor.Listar();
+
+
+                ddlCategoria.DataSource = Lista;
+                ddlCategoria.DataValueField = "id";
+                ddlCategoria.DataTextField = "descripcion";
+                DataBind();
+
+                if (Request.QueryString["id"] != null)
+                {
+
+                    List<Proveedor> categorias = new List<Proveedor>();
+                    ProveedorNegocio proveedor = new ProveedorNegocio();
+
+                    categorias = proveedor.ListarProveedor();
+                    int id = int.Parse(Request.QueryString["id"]);
+
+                    Proveedor seleccionado = categorias.Find(x => x.id == id);
+
+
+                    TxtCodigo.Text = seleccionado.codigo;
+                    TxtCuit.Text = seleccionado.cuit;
+                    TxtDireccion.Text = seleccionado.direccion;
+                    TxtRazonSocial.Text = seleccionado.razonSocial;
+                    TxtEmail.Text = seleccionado.email;
+                    TxtDireccion.Text = seleccionado.direccion;
+                    TxtTelefono.Text = seleccionado.telefono;
+
+                }
+
+
             }
-
-
-            CategoriasProveedorNegocio categoriaProveedor = new CategoriasProveedorNegocio();
-            List<CategoriaProveedor> Lista = categoriaProveedor.Listar();
-
-
-            ddlCategoria.DataSource = Lista;
-            ddlCategoria.DataValueField = "id";
-            ddlCategoria.DataTextField = "descripcion";
-            DataBind();
-
-            if (Request.QueryString["id"] != null)
+            catch (Exception ex)
             {
 
-                List<Proveedor> categorias = new List<Proveedor>();
-                ProveedorNegocio proveedor = new ProveedorNegocio();
-
-                categorias = proveedor.ListarProveedor();
-                int id = int.Parse(Request.QueryString["id"]);
-
-                Proveedor seleccionado = categorias.Find(x => x.id == id);
-
-
-                TxtCodigo.Text = seleccionado.codigo;
-                TxtCuit.Text = seleccionado.cuit;
-                TxtDireccion.Text = seleccionado.direccion;
-                TxtRazonSocial.Text = seleccionado.razonSocial;
-                TxtEmail.Text = seleccionado.email;
-                TxtDireccion.Text = seleccionado.direccion;
-                TxtTelefono.Text = seleccionado.telefono;
-
+                Session.Add("Error.aspx", ex.Message);
             }
-
 
 
         }
@@ -84,18 +93,27 @@ namespace vista
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("Error.aspx", ex.Message);
             }
 
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            ProveedorNegocio negocio = new ProveedorNegocio();
-            int Aux = int.Parse(Request.QueryString["Id"].ToString());
+            try
+            {
+                ProveedorNegocio negocio = new ProveedorNegocio();
+                int Aux = int.Parse(Request.QueryString["Id"].ToString());
 
-            negocio.Eliminar(Aux);
-            Response.Redirect("ListaProveedor.aspx", false);
+                negocio.Eliminar(Aux);
+                Response.Redirect("ListaProveedor.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
+            }
+
 
         }
     }

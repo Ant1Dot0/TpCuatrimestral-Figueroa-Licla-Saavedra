@@ -13,40 +13,49 @@ namespace vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+
+                CategoriasClienteNegocio categoriaCliente = new CategoriasClienteNegocio();
+                List<CategoriaCliente> Lista = categoriaCliente.Listar();
+
+
+                ddlCategoria.DataSource = Lista;
+                ddlCategoria.DataValueField = "id";
+                ddlCategoria.DataTextField = "descripcion";
+                DataBind();
+
+                if (Request.QueryString["id"] != null)
+                {
+
+                    List<Cliente> categorias = new List<Cliente>();
+                    ClientesNegocio negocio = new ClientesNegocio();
+
+                    categorias = negocio.Listar();
+                    int id = int.Parse(Request.QueryString["id"]);
+
+                    Cliente seleccionado = categorias.Find(x => x.id == id);
+
+                    TxtApellido.Text = seleccionado.apellido;
+                    TxtCodigo.Text = seleccionado.codigo;
+                    TxtDireccion.Text = seleccionado.direccion;
+                    TxtDNI.Text = seleccionado.nDocumento;
+                    TxtEmail.Text = seleccionado.email;
+                    TxtNombre.Text = seleccionado.nombre;
+                    TxtTelefono.Text = seleccionado.telefono;
+
+                }
+
             }
-
-
-            CategoriasClienteNegocio categoriaCliente = new CategoriasClienteNegocio();
-            List<CategoriaCliente> Lista = categoriaCliente.Listar();
-
-
-            ddlCategoria.DataSource = Lista;
-            ddlCategoria.DataValueField = "id";
-            ddlCategoria.DataTextField = "descripcion";
-            DataBind();
-
-            if (Request.QueryString["id"] != null)
+            catch (Exception ex)
             {
 
-                List<Cliente> categorias = new List<Cliente>();
-                ClientesNegocio negocio = new ClientesNegocio();
-
-                categorias = negocio.Listar();
-                int id = int.Parse(Request.QueryString["id"]);
-
-                Cliente seleccionado = categorias.Find(x => x.id == id);
-
-                TxtApellido.Text = seleccionado.apellido;
-                TxtCodigo.Text = seleccionado.codigo;
-                TxtDireccion.Text = seleccionado.direccion;
-                TxtDNI.Text = seleccionado.nDocumento;
-                TxtEmail.Text = seleccionado.email;
-                TxtNombre.Text = seleccionado.nombre;
-                TxtTelefono.Text = seleccionado.telefono;
-
+                Session.Add("Error.aspx", ex.Message);
             }
 
 
@@ -84,17 +93,26 @@ namespace vista
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("Error.aspx", ex.Message);
             }
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            ClientesNegocio negocio = new ClientesNegocio();
-            int Aux = int.Parse(Request.QueryString["Id"].ToString());
+            try
+            {
+                ClientesNegocio negocio = new ClientesNegocio();
+                int Aux = int.Parse(Request.QueryString["Id"].ToString());
 
-            negocio.Eliminar(Aux);
-            Response.Redirect("ListaClientes.aspx", false);
+                negocio.Eliminar(Aux);
+                Response.Redirect("ListaClientes.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error.aspx", ex.Message);
+            }
+
         }
 
         protected void BtnCancelar_Click(object sender, EventArgs e)

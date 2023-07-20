@@ -11,21 +11,31 @@ namespace vista
 {
     public partial class ListaVentas : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
+            try
             {
-                Response.Redirect("InicioSesion.aspx", false);
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("InicioSesion.aspx", false);
+                }
+
+                List<CompVenta> ventas = new VentaNegocio().Listar();
+
+                gvVentas.DataSource = ventas;
+
+                if (!IsPostBack)
+                {
+                    DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
 
-            List<CompVenta> ventas = new VentaNegocio().Listar();
-
-            gvVentas.DataSource = ventas;
-
-            if(!IsPostBack)
-            {
-                DataBind();
-            }
 
         }
         protected void borrarSession()
