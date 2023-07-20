@@ -14,6 +14,8 @@
                 <%if (Session["User"] != null && ((Dominio.Usuario)Session["User"]).rol.descripcion == Dominio.TipoRol.ADMIN.ToString())
                     {%>
                          <a href="AltaProveedor.aspx" class="btn btn-primary">Nuevo Proveedor</a>
+                
+                      
                 <%} %>
             </div>
         </div>
@@ -96,6 +98,7 @@
                     <div class="modal-footer">
                         
                         <asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary" OnClick="BtnCancelar_Click" />
+                       
                     </div>
                 </div>
             </div>
@@ -116,6 +119,10 @@
                     </Columns>
                 </asp:GridView>
             </div>
+            <asp:Button ID="btnExportarExcel" runat="server" Text="Exportar a Excel" OnClick="btnExportarExcel_Click" />
+            &nbsp;
+            <asp:Button ID="btnExportarPdf" runat="server" Text="Exportar a Pdf" />
+                   
         </div>
         <!---------------------------------------FIN LISTADO---------------------------------->
     </div>
