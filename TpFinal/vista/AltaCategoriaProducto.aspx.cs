@@ -62,7 +62,7 @@ namespace vista
                     nuevaCatProducto.descripcion = TxtDescripcion.Text;
 
                     negocio.Agregar(nuevaCatProducto);
-                    Response.Redirect("ListaCategoriaProduco.aspx",false);
+                    Response.Redirect("ListaCategoriaProducto.aspx",false);
 
                 }
             }

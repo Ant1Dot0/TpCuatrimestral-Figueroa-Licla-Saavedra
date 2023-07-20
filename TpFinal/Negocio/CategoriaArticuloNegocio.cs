@@ -51,8 +51,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("insert into CategoriaArticulo (id, codigo, descripcion, estado) values (@id, @cod, @desc, @est)");
-                datos.SetearPARAMETROS("@id", aux.id);
+                datos.setearConsulta("insert into CategoriaArticulo (codigo, descripcion, estado) values  (@cod, @desc, @est)");
                 datos.SetearPARAMETROS("@cod", aux.codigo);
                 datos.SetearPARAMETROS("@desc", aux.descripcion);
                 datos.SetearPARAMETROS("@est", true);

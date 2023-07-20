@@ -40,15 +40,17 @@ namespace vista
 
                 }
 
-                foreach(Producto x in lista)
+                foreach (Producto x in lista)
                 {
-                   foreach(DetalleProducto y in productosSeleccionados)
+                    foreach (DetalleProducto y in productosSeleccionados)
                     {
-                        if(x.codigo == y.codProducto)
+                        if (x.codigo == y.codProducto)
                         {
-                            x.stockActual -= y.cantidad; 
+                            x.stockActual -= y.cantidad;
                         }
                     }
+
+                    x.precioCompra = x.precioCompra * ((100 + x.ganacia) / 100);
                 }
 
 
@@ -93,10 +95,10 @@ namespace vista
 
             int cont = 0;
 
-            for(int x = 0; x < aux2.Count; x++)
+            for (int x = 0; x < aux2.Count; x++)
             {
                 DetalleProducto aux3 = new DetalleProducto();
-                aux3.codComprobante =  aux2[cont].codComprobante;
+                aux3.codComprobante = aux2[cont].codComprobante;
                 aux3.codProducto = aux2[cont].codProducto;
                 aux3.cantidad = (int)aux2[cont].cantidad;
                 aux3.estado = aux2[cont].estado;
@@ -104,28 +106,28 @@ namespace vista
                 aux3.monto = (decimal)aux2[cont].monto;
                 aux3.id = (int)aux2[cont].id;
                 aux3.descripcion = aux2[cont].descripcion;
-                aux3.precioVenta = (decimal) aux2[cont].precioVenta;
+                aux3.precioVenta = (decimal)aux2[cont].precioVenta;
 
                 aux.Add(aux3);
                 cont++;
             }
 
-        /*    foreach (DetalleProducto x in aux2)
-            {
+            /*    foreach (DetalleProducto x in aux2)
+                {
 
 
-                aux3.codComprobante = x.codComprobante;
-                aux3.codProducto = x.codProducto;
-                aux3.cantidad = x.cantidad;
-                aux3.estado = x.estado;
-                aux3.montoDescuento = x.montoDescuento;
-                aux3.monto = x.monto;
-                aux3.id = x.id;
-                aux3.descripcion = x.descripcion;
-                aux3.precioVenta = x.precioVenta;
+                    aux3.codComprobante = x.codComprobante;
+                    aux3.codProducto = x.codProducto;
+                    aux3.cantidad = x.cantidad;
+                    aux3.estado = x.estado;
+                    aux3.montoDescuento = x.montoDescuento;
+                    aux3.monto = x.monto;
+                    aux3.id = x.id;
+                    aux3.descripcion = x.descripcion;
+                    aux3.precioVenta = x.precioVenta;
 
-                aux.Add(aux3);
-            }*/
+                    aux.Add(aux3);
+                }*/
             return aux;
         }
 
@@ -151,7 +153,7 @@ namespace vista
             DetalleProducto auxDet = new DetalleProducto();
 
             int indx = productosSeleccionados.FindIndex(x => x.codProducto == codigo);
-            if(auxProducto.stockActual > 0)
+            if (auxProducto.stockActual > 0)
             {
                 if (indx != -1)
                 {
@@ -163,7 +165,7 @@ namespace vista
                     auxDet.codProducto = auxProducto.codigo;
                     auxDet.cantidad = 1;
                     auxDet.descripcion = auxProducto.descripcion;
-                    auxDet.precioVenta = auxProducto.precioCompra * ((100 + auxProducto.ganacia) / 100);
+                    auxDet.precioVenta = auxProducto.precioCompra;
                     auxDet.monto = auxDet.precioVenta;
                     productosSeleccionados.Add(auxDet);
                 }
@@ -174,9 +176,9 @@ namespace vista
                 AlertAltaVenta1 = true;
                 Session.Add("AlertAltaVenta1", AlertAltaVenta1);
             }
-            
 
-            
+
+
             Response.Redirect("DetalleProductosVenta.aspx");
 
         }
@@ -200,7 +202,7 @@ namespace vista
                 txt = (TextBox)(gvProductosSeleccionados.Rows[x].FindControl("TxtCantidad"));
                 Producto auxP = lista.Find(a => a.codigo == aux);
 
-                if(decimal.Parse(txt.Text) > 0  && decimal.Parse(txt.Text) % 1 == 0)
+                if (decimal.Parse(txt.Text) > 0 && decimal.Parse(txt.Text) % 1 == 0)
                 {
                     if (auxP.stockActual - int.Parse(txt.Text) + productosSeleccionados[x].cantidad >= 0)
                     {
@@ -216,7 +218,7 @@ namespace vista
                 {
                     AlertAltaVenta2 = true;
                 }
-                
+
 
             }
 
@@ -236,7 +238,7 @@ namespace vista
 
                 txt = (TextBox)(gvProductosSeleccionados.Rows[x].FindControl("TxtPrecio"));
 
-                if(decimal.Parse(txt.Text) >= 0)
+                if (decimal.Parse(txt.Text) >= 0)
                 {
                     productosSeleccionados[x].precioVenta = decimal.Parse(txt.Text);
                     productosSeleccionados[x].monto = productosSeleccionados[x].cantidad * productosSeleccionados[x].precioVenta;

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
 
 namespace vista
 {
@@ -16,6 +18,14 @@ namespace vista
                 Response.Redirect("InicioSesion.aspx", false);
             }
 
+            List<MarcaArticulo> marcas = new MarcaArticuloNegocio().Listar();
+
+            GridViewMarca.DataSource = marcas;
+
+            if(!IsPostBack)
+            {
+                DataBind();
+            }
         }
 
         protected void GridViewMarca_SelectedIndexChanged(object sender, EventArgs e)

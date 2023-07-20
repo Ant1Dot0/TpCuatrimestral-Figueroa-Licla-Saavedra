@@ -64,7 +64,7 @@ namespace vista
                     nuevaMarProducto.descripcion = TxtDescripcion.Text;
 
                     negocio.Agregar(nuevaMarProducto);
-                    Response.Redirect("ListaMarcaProductos.aspx", false);
+                    Response.Redirect("ListaMarcasProductos.aspx", false);
 
                 }
             }
