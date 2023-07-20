@@ -42,6 +42,15 @@ namespace vista
         protected global::System.Web.UI.WebControls.TextBox TxtTelefono;
 
         /// <summary>
+        /// Control TxtMovil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtMovil;
+
+        /// <summary>
         /// Control TxtDireccion.
         /// </summary>
         /// <remarks>
@@ -60,13 +69,13 @@ namespace vista
         protected global::System.Web.UI.WebControls.TextBox TxtEmail;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control TxtPassword.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TxtPassword;
 
         /// <summary>
         /// Control btnLista.
